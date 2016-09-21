@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cAn-Uu-Y23">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selected Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A9N-JO-tY1">
+                                <color key="backgroundColor" red="0.63470627154678083" green="0.67215783039196497" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="EZV-Ka-Pzb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.93027650316490851" green="0.97356530327236868" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Ngf-GF-jZt">
+                                <date key="date" timeIntervalSinceReferenceDate="496153254.68383598">
+                                    <!--2016-09-21 12:20:54 +0000-->
+                                </date>
+                                <connections>
+                                    <action selector="selectDate:" destination="BYZ-38-t0r" eventType="valueChanged" id="96n-jz-tox"/>
+                                </connections>
+                            </datePicker>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="A9N-JO-tY1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="4bC-y4-En4"/>
+                            <constraint firstAttribute="trailing" secondItem="A9N-JO-tY1" secondAttribute="trailing" constant="20" id="CTe-FV-0gC"/>
+                            <constraint firstItem="Ngf-GF-jZt" firstAttribute="top" secondItem="A9N-JO-tY1" secondAttribute="bottom" constant="20" id="Fyl-TJ-I4m"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Ngf-GF-jZt" secondAttribute="bottom" constant="20" id="GDm-oG-eUm"/>
+                            <constraint firstAttribute="trailing" secondItem="Ngf-GF-jZt" secondAttribute="trailing" constant="20" id="Md1-ei-hRa"/>
+                            <constraint firstItem="A9N-JO-tY1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="RPL-QU-Ahi"/>
+                            <constraint firstItem="Ngf-GF-jZt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="cNq-dR-H0u"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="3aI-LH-6Vd"/>
+                    <connections>
+                        <outlet property="m_datePicker" destination="Ngf-GF-jZt" id="QCf-hO-I6r"/>
+                        <outlet property="m_lblDate" destination="A9N-JO-tY1" id="IFs-zV-3VS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="382.5" y="28.52112676056338"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Ts3-c5-JyA">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cAn-Uu-Y23" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lcS-wf-ekd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="5iR-hH-4LL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yFx-Np-mYk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-338" y="29"/>
+        </scene>
+    </scenes>
+</document>
