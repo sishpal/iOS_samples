@@ -14,6 +14,11 @@
 		6115F9021D94ECA1000B9173 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6115F9011D94ECA1000B9173 /* Assets.xcassets */; };
 		6115F9051D94ECA1000B9173 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6115F9031D94ECA1000B9173 /* LaunchScreen.storyboard */; };
 		6115F9101D94ECA2000B9173 /* jSonParsingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6115F90F1D94ECA2000B9173 /* jSonParsingTests.m */; };
+		611702291D993D1300C8209E /* JSONResponseSerializerWithData.m in Sources */ = {isa = PBXBuildFile; fileRef = 611702261D993D1300C8209E /* JSONResponseSerializerWithData.m */; };
+		6117022A1D993D1300C8209E /* NGAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 611702281D993D1300C8209E /* NGAPIClient.m */; };
+		6117022D1D993D2A00C8209E /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 6117022C1D993D2A00C8209E /* Utility.m */; };
+		611702361D99514100C8209E /* tagInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 611702351D99514100C8209E /* tagInfo.m */; };
+		98E27CF5A2A582E835826B1F /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CF78A0A52139F7962073180 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		24BD08A2BEAA22EC28CBBF04 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		6115F8F21D94ECA1000B9173 /* jSonParsing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jSonParsing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6115F8F61D94ECA1000B9173 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6115F8F81D94ECA1000B9173 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -40,6 +46,18 @@
 		6115F90B1D94ECA2000B9173 /* jSonParsingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = jSonParsingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6115F90F1D94ECA2000B9173 /* jSonParsingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = jSonParsingTests.m; sourceTree = "<group>"; };
 		6115F9111D94ECA2000B9173 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6117021D1D98F76900C8209E /* jSonParsing-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "jSonParsing-Prefix.pch"; sourceTree = "<group>"; };
+		611702241D993D1300C8209E /* Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
+		611702251D993D1300C8209E /* JSONResponseSerializerWithData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONResponseSerializerWithData.h; sourceTree = "<group>"; };
+		611702261D993D1300C8209E /* JSONResponseSerializerWithData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONResponseSerializerWithData.m; sourceTree = "<group>"; };
+		611702271D993D1300C8209E /* NGAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGAPIClient.h; sourceTree = "<group>"; };
+		611702281D993D1300C8209E /* NGAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGAPIClient.m; sourceTree = "<group>"; };
+		6117022B1D993D2A00C8209E /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		6117022C1D993D2A00C8209E /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
+		611702341D99514100C8209E /* tagInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tagInfo.h; sourceTree = "<group>"; };
+		611702351D99514100C8209E /* tagInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tagInfo.m; sourceTree = "<group>"; };
+		7CF78A0A52139F7962073180 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DEE40B428D0FE93B3E5C277D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98E27CF5A2A582E835826B1F /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +85,8 @@
 				6115F8F41D94ECA1000B9173 /* jSonParsing */,
 				6115F90E1D94ECA2000B9173 /* jSonParsingTests */,
 				6115F8F31D94ECA1000B9173 /* Products */,
+				7ADA29FBA67F96F96E6D49D6 /* Pods */,
+				8C787B019CA07B6EBD386B7B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -81,12 +102,14 @@
 		6115F8F41D94ECA1000B9173 /* jSonParsing */ = {
 			isa = PBXGroup;
 			children = (
-				6115F8F81D94ECA1000B9173 /* AppDelegate.h */,
-				6115F8F91D94ECA1000B9173 /* AppDelegate.m */,
-				6115F8FB1D94ECA1000B9173 /* ViewController.h */,
-				6115F8FC1D94ECA1000B9173 /* ViewController.m */,
+				611702331D9940A100C8209E /* JSONResponseSeriallizerWithData */,
+				611702301D993DFF00C8209E /* Utility */,
+				611702371D99514600C8209E /* tagInfo */,
+				611702321D993E3A00C8209E /* NGAPIClient */,
+				6117022F1D993DD000C8209E /* AppDelegate */,
+				6117022E1D993DAD00C8209E /* ViewController */,
+				611702241D993D1300C8209E /* Constant.h */,
 				6115F8FE1D94ECA1000B9173 /* Main.storyboard */,
-				6115F9011D94ECA1000B9173 /* Assets.xcassets */,
 				6115F9031D94ECA1000B9173 /* LaunchScreen.storyboard */,
 				6115F9061D94ECA1000B9173 /* Info.plist */,
 				6115F8F51D94ECA1000B9173 /* Supporting Files */,
@@ -98,6 +121,8 @@
 			isa = PBXGroup;
 			children = (
 				6115F8F61D94ECA1000B9173 /* main.m */,
+				6117021D1D98F76900C8209E /* jSonParsing-Prefix.pch */,
+				6115F9011D94ECA1000B9173 /* Assets.xcassets */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -111,6 +136,77 @@
 			path = jSonParsingTests;
 			sourceTree = "<group>";
 		};
+		6117022E1D993DAD00C8209E /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6115F8FB1D94ECA1000B9173 /* ViewController.h */,
+				6115F8FC1D94ECA1000B9173 /* ViewController.m */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		6117022F1D993DD000C8209E /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				6115F8F81D94ECA1000B9173 /* AppDelegate.h */,
+				6115F8F91D94ECA1000B9173 /* AppDelegate.m */,
+			);
+			name = AppDelegate;
+			sourceTree = "<group>";
+		};
+		611702301D993DFF00C8209E /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				6117022B1D993D2A00C8209E /* Utility.h */,
+				6117022C1D993D2A00C8209E /* Utility.m */,
+			);
+			name = Utility;
+			sourceTree = "<group>";
+		};
+		611702321D993E3A00C8209E /* NGAPIClient */ = {
+			isa = PBXGroup;
+			children = (
+				611702271D993D1300C8209E /* NGAPIClient.h */,
+				611702281D993D1300C8209E /* NGAPIClient.m */,
+			);
+			name = NGAPIClient;
+			sourceTree = "<group>";
+		};
+		611702331D9940A100C8209E /* JSONResponseSeriallizerWithData */ = {
+			isa = PBXGroup;
+			children = (
+				611702251D993D1300C8209E /* JSONResponseSerializerWithData.h */,
+				611702261D993D1300C8209E /* JSONResponseSerializerWithData.m */,
+			);
+			name = JSONResponseSeriallizerWithData;
+			sourceTree = "<group>";
+		};
+		611702371D99514600C8209E /* tagInfo */ = {
+			isa = PBXGroup;
+			children = (
+				611702341D99514100C8209E /* tagInfo.h */,
+				611702351D99514100C8209E /* tagInfo.m */,
+			);
+			name = tagInfo;
+			sourceTree = "<group>";
+		};
+		7ADA29FBA67F96F96E6D49D6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DEE40B428D0FE93B3E5C277D /* Pods.debug.xcconfig */,
+				24BD08A2BEAA22EC28CBBF04 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		8C787B019CA07B6EBD386B7B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7CF78A0A52139F7962073180 /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -118,9 +214,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6115F9141D94ECA2000B9173 /* Build configuration list for PBXNativeTarget "jSonParsing" */;
 			buildPhases = (
+				C374882CC00DEA51D9CE18EB /* Check Pods Manifest.lock */,
 				6115F8EE1D94ECA1000B9173 /* Sources */,
 				6115F8EF1D94ECA1000B9173 /* Frameworks */,
 				6115F8F01D94ECA1000B9173 /* Resources */,
+				3F2EAD7EFC20D4D56B5098C4 /* Embed Pods Frameworks */,
+				232E17FF2D548F34D56E57A3 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -208,13 +307,65 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		232E17FF2D548F34D56E57A3 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3F2EAD7EFC20D4D56B5098C4 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C374882CC00DEA51D9CE18EB /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		6115F8EE1D94ECA1000B9173 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				611702291D993D1300C8209E /* JSONResponseSerializerWithData.m in Sources */,
+				6117022A1D993D1300C8209E /* NGAPIClient.m in Sources */,
 				6115F8FD1D94ECA1000B9173 /* ViewController.m in Sources */,
 				6115F8FA1D94ECA1000B9173 /* AppDelegate.m in Sources */,
+				6117022D1D993D2A00C8209E /* Utility.m in Sources */,
+				611702361D99514100C8209E /* tagInfo.m in Sources */,
 				6115F8F71D94ECA1000B9173 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -349,8 +500,11 @@
 		};
 		6115F9151D94ECA2000B9173 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DEE40B428D0FE93B3E5C277D /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "jSonParsing/jSonParsing-Prefix.pch";
 				INFOPLIST_FILE = jSonParsing/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -362,8 +516,11 @@
 		};
 		6115F9161D94ECA2000B9173 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24BD08A2BEAA22EC28CBBF04 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "jSonParsing/jSonParsing-Prefix.pch";
 				INFOPLIST_FILE = jSonParsing/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface ViewController : UIViewController <UIAlertViewDelegate>
+@property (nonatomic, strong) NSMutableArray *infoArray;
+@property(nonatomic,strong) tagInfo *objTagInfo;
+@property (nonatomic, strong) NSMutableArray *arrTagInfo;
 
 @end
 
