@@ -1,0 +1,258 @@
+{
+    "error_code": "",
+    "redeem_status": "1",
+    "status": "200",
+    "venues": [{
+               "attributes": {
+               "address": "49 Grove Street ",
+               "contact_no": "",
+               "description": "49 Grove, among one of the most premier lounges in all of New York City, offers everything you could want in your nightlife experience. ",
+               "distance": "5268.68",
+               "images": [
+                          "https://kobe-craveit.s3.amazonaws.com/uploads/image/name/4/small_49-Grove.jpg",
+                          "https://kobe-craveit.s3.amazonaws.com/uploads/image/name/5/small_copacabana.jpg",
+                          "https://kobe-craveit.s3.amazonaws.com/uploads/image/name/6/small_Ava.jpg"
+                          ],
+               "is_open": 1,
+               "latitude": "42.34472",
+               "longitude": "-71.247387",
+               "name": "49 Grove",
+               "working_hour": [
+                                "S   12AM - 3AM                    4AM - 11PM",
+                                "M   12AM - 3AM                    4AM - 11PM",
+                                "T   12AM - 3AM                    4AM - 11PM",
+                                "W   12AM - 3AM                    4AM - 11PM",
+                                "Th  12AM - 3AM                    4AM - 11PM",
+                                "F   4AM - 11PM                    12AM - 7AM",
+                                "Sa  12AM - 3AM                    4AM - 11PM"
+                                ]
+               },
+               "id": "2",
+               "type": "venues"
+               }, {
+               "attributes": {
+               "address": "104 Avenue C",
+               "contact_no": "",
+               "description": "Amidst the glamour of New York City nightlife, Alphabet Lounge stands alone.",
+               "distance": "5384.2",
+               "images": [
+                          "https://kobe-craveit.s3.amazonaws.com/uploads/image/name/9/small_Alphabet-Lounge.jpg"
+                          ],
+               "is_open": "1",
+               "latitude": "40.7238184",
+               "longitude": "-73.97868130000001",
+               "name": "Alphabet Lounge",
+               "working_hour": [
+                                "S   12AM - 3AM                    4AM - 11PM",
+                                "M   12AM - 3AM                    4AM - 11PM",
+                                "T   12AM - 3AM                    4AM - 11PM",
+                                "W   12AM - 3AM                    4AM - 11PM",
+                                "Th  12AM - 3AM                    4AM - 11PM",
+                                "F   12AM - 3AM                    4AM - 11PM",
+                                "Sa  12AM - 3AM                    4AM - 11PM"
+                                ]
+               },
+               "id": "5",
+               "type": "venues"
+               }, {
+               "attributes": {
+               "address": "131 Avenue C",
+               "contact_no": "",
+               "description": "Middle Eastern entertainment and the New York City nightlife spirit comes together at Babel Lounge in Alphabet City (Lower East Side). ",
+               "distance": "5384.21",
+               "images": [
+                          "https://kobe-craveit.s3.amazonaws.com/uploads/image/name/15/small_Babel.jpg"
+                          ],
+               "is_open": "1",
+               "latitude": "40.7249779",
+               "longitude": "-73.97849359999999",
+               "name": "Babel Lounge",
+               "working_hour": [
+                                "S   12AM - 3AM                    4AM - 11PM",
+                                "M   12AM - 3AM                    4AM - 11PM",
+                                "T   12AM - 3AM                    4AM - 11PM",
+                                "W   12AM - 3AM                    4AM - 11PM",
+                                "Th  12AM - 3AM                    4AM - 11PM",
+                                "F   12AM - 3AM                    4AM - 11PM",
+                                "Sa  12AM - 3AM                    4AM - 11PM"
+                                ]
+               },
+               "id": "11",
+               "type": "venues"
+               }, {
+               "attributes": {
+               "address": "9 Avenue A, New York",
+               "contact_no": "",
+               "description": "Ella allows one to experience all of the luxury of New York City nightlife.",
+               "distance": "5384.58",
+               "images": [
+                          "https://kobe-craveit.s3.amazonaws.com/uploads/image/name/23/small_ella-lounge1.jpg"
+                          ],
+               "is_open": "1",
+               "latitude": "40.7226599",
+               "longitude": "-73.9863256",
+               "name": "Ella",
+               "working_hour": [
+                                "S   12AM - 3AM                    4AM - 11PM",
+                                "M   12AM - 3AM                    4AM - 11PM",
+                                "T   12AM - 3AM                    4AM - 11PM",
+                                "W   12AM - 3AM                    4AM - 11PM",
+                                "Th  12AM - 3AM                    4AM - 11PM",
+                                "F   12AM - 3AM                    4AM - 11PM",
+                                "Sa  12AM - 3AM                    4AM - 11PM"
+                                ]
+               },
+               "id": "19",
+               "type": "venues"
+               }, {
+               "attributes": {
+               "address": "190 Allen Street",
+               "contact_no": "",
+               "description": "An intimate rooftop lounge & bar makes Above Allen a picturesque venue with amazing views of the New York City skyline.",
+               "distance": "5384.68",
+               "images": [
+                          "https://kobe-craveit.s3.amazonaws.com/uploads/image/name/7/small_above_allen.jpg"
+                          ],
+               "is_open": "1",
+               "latitude": "40.7220729",
+               "longitude": "-73.98850830000001",
+               "name": "Above Allen",
+               "working_hour": [
+                                "S   12AM - 3AM                    4AM - 11PM",
+                                "M   12AM - 3AM                    4AM - 11PM",
+                                "T   12AM - 3AM                    4AM - 11PM",
+                                "W   12AM - 3AM                    4AM - 11PM",
+                                "Th  12AM - 3AM                    4AM - 11PM",
+                                "F   12AM - 3AM                    4AM - 11PM",
+                                "Sa  12AM - 3AM                    4AM - 11PM"
+                                ]
+               },
+               "id": "3",
+               "type": "venues"
+               }, {
+               "attributes": {
+               "address": "20 West 39th Street",
+               "contact_no": "",
+               "description": "Culture Club U2019s multi-level venue has everything you could ask for in New York City nightlife.",
+               "distance": "5384.81",
+               "images": [
+                          "https://kobe-craveit.s3.amazonaws.com/uploads/image/name/22/small_culture_club.jpg"
+                          ],
+               "is_open": "1",
+               "latitude": "40.7518649",
+               "longitude": "-73.9835417",
+               "name": "Culture Club",
+               "working_hour": [
+                                "S   12AM - 3AM                    4AM - 11PM",
+                                "M   12AM - 3AM                    4AM - 11PM",
+                                "T   12AM - 3AM                    4AM - 11PM",
+                                "W   12AM - 3AM                    4AM - 11PM",
+                                "Th  12AM - 3AM                    4AM - 11PM",
+                                "F   12AM - 3AM                    4AM - 11PM",
+                                "Sa  12AM - 3AM                    4AM - 11PM"
+                                ]
+               },
+               "id": "18",
+               "type": "venues"
+               }, {
+               "attributes": {
+               "address": "54 West 39th Street",
+               "contact_no": "",
+               "description": "An esteemed mixologist, raised DJ booth, combined with an assorted array of elegant lighting and design makes EVR one of the most up and coming lounges in all of New York City.",
+               "distance": "5384.88",
+               "images": [
+                          "https://kobe-craveit.s3.amazonaws.com/uploads/image/name/25/small_evr.jpg"
+                          ],
+               "is_open": "1",
+               "latitude": "40.7523955",
+               "longitude": "-73.9847682",
+               "name": "EVR",
+               "working_hour": [
+                                "S   12AM - 3AM                    4AM - 11PM",
+                                "M   12AM - 3AM                    4AM - 11PM",
+                                "T   12AM - 3AM                    4AM - 11PM",
+                                "W   12AM - 3AM                    4AM - 11PM",
+                                "Th  12AM - 3AM                    4AM - 11PM",
+                                "F   12AM - 3AM                    4AM - 11PM",
+                                "Sa  12AM - 3AM                    4AM - 11PM"
+                                ]
+               },
+               "id": "21",
+               "type": "venues"
+               }, {
+               "attributes": {
+               "address": "210 W 55th Street",
+               "contact_no": "",
+               "description": "Known for outstanding service, Ava Lounge is a gem among rocks, with it U2019s rooftop location overlooking Times Square.",
+               "distance": "5384.89",
+               "images": [
+                          "https://kobe-craveit.s3.amazonaws.com/uploads/image/name/12/small_Ava.jpg"
+                          ],
+               "is_open": "1",
+               "latitude": "40.7644231",
+               "longitude": "-73.9819603",
+               "name": "Ava Lounge",
+               "working_hour": [
+                                "S   12AM - 3AM                    4AM - 11PM",
+                                "M   12AM - 3AM                    4AM - 11PM",
+                                "T   12AM - 3AM                    4AM - 11PM",
+                                "W   12AM - 3AM                    4AM - 11PM",
+                                "Th  12AM - 3AM                    4AM - 11PM",
+                                "F   12AM - 3AM                    4AM - 11PM",
+                                "Sa  12AM - 3AM                    4AM - 11PM"
+                                ]
+               },
+               "id": "8",
+               "type": "venues"
+               }, {
+               "attributes": {
+               "address": "157 W 47th Street",
+               "contact_no": "",
+               "description": "Amidst the hustle and bustle of the Times Square/Theater District area of New York City, one can find an intimate lounge known as Aspen Social Club.",
+               "distance": "5384.91",
+               "images": [
+                          "https://kobe-craveit.s3.amazonaws.com/uploads/image/name/10/small_aspen-social-Arcade.jpg"
+                          ],
+               "is_open": "1",
+               "latitude": "40.7590695",
+               "longitude": "-73.9837169",
+               "name": "Aspen Social Club",
+               "working_hour": [
+                                "S   12AM - 3AM                    4AM - 11PM",
+                                "M   12AM - 3AM                    4AM - 11PM",
+                                "T   12AM - 3AM                    4AM - 11PM",
+                                "W   12AM - 3AM                    4AM - 11PM",
+                                "Th  12AM - 3AM                    4AM - 11PM",
+                                "F   12AM - 3AM                    4AM - 11PM",
+                                "Sa  12AM - 3AM                    4AM - 11PM"
+                                ]
+               },
+               "id": "6",
+               "type": "venues"
+               }, {
+               "attributes": {
+               "address": "135 West 41st Street",
+               "contact_no": "",
+               "description": "Boasting some up and coming names in the music industry, Circle Nightclub is known for some of the best music, dancing and parties in the New York City nightlife scene. ",
+               "distance": "5384.96",
+               "images": [
+                          "https://kobe-craveit.s3.amazonaws.com/uploads/image/name/20/small_circle.jpg"
+                          ],
+               "is_open": "1",
+               "latitude": "40.7548706",
+               "longitude": "-73.985709",
+               "name": "Circle",
+               "working_hour": [
+                                "S   12AM - 3AM                    4AM - 11PM",
+                                "M   12AM - 3AM                    4AM - 11PM",
+                                "T   12AM - 3AM                    4AM - 11PM",
+                                "W   12AM - 3AM                    4AM - 11PM",
+                                "Th  12AM - 3AM                    4AM - 11PM",
+                                "F   12AM - 3AM                    4AM - 11PM",
+                                "Sa  12AM - 3AM                    4AM - 11PM"
+                                ]
+               },
+               "id": "16",
+               "type": "venues"
+               }]
+}
