@@ -70,13 +70,14 @@
     customCell.m_lblName.text = data.m_Name;
     customCell.m_lblAddress.text = data.m_Address;
     customCell.m_lblDistance.text = data.m_Distance;
-    
     return customCell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DetailsViewController *detailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"DetailsViewController"];
+    DataHolder *data = (DataHolder *) [_m_arrInfo objectAtIndex:indexPath.row];
+    detailVC.data = data;
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 

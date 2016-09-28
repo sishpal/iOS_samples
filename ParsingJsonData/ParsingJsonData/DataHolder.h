@@ -13,6 +13,10 @@
 @property (nonatomic, strong) NSString *m_Address;
 @property (nonatomic, strong) NSString *m_Distance;
 @property (nonatomic, strong) NSDictionary *value;
+@property (nonatomic, strong) NSString *m_Description;
+@property (nonatomic, strong) NSArray *m_Hours;
+
+
 
 
 -(id)initWithData:(NSDictionary *)value;

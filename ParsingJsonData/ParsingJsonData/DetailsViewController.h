@@ -8,6 +8,10 @@
 
 #import "ViewController.h"
 
-@interface DetailsViewController : ViewController
+@interface DetailsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@property (nonatomic, strong) DataHolder *data;
+
+
+
 
 @end

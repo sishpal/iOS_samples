@@ -20,6 +20,7 @@
 		61244C061D9A8C8100094FE3 /* Test.json in Resources */ = {isa = PBXBuildFile; fileRef = 61244C051D9A8C8100094FE3 /* Test.json */; };
 		61244C0A1D9AAB3C00094FE3 /* download.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 61244C091D9AAB3C00094FE3 /* download.jpeg */; };
 		61244C121D9AAF7D00094FE3 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61244C111D9AAF7D00094FE3 /* DetailsViewController.m */; };
+		6124A7EF1D9B8C79005BB430 /* CustomDetailsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6124A7EE1D9B8C79005BB430 /* CustomDetailsViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,8 @@
 		61244C091D9AAB3C00094FE3 /* download.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = download.jpeg; path = ../../../download.jpeg; sourceTree = "<group>"; };
 		61244C101D9AAF7D00094FE3 /* DetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
 		61244C111D9AAF7D00094FE3 /* DetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
+		6124A7ED1D9B8C79005BB430 /* CustomDetailsViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomDetailsViewCell.h; sourceTree = "<group>"; };
+		6124A7EE1D9B8C79005BB430 /* CustomDetailsViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomDetailsViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,8 +87,9 @@
 				61244BF91D9A7A9F00094FE3 /* Utility */,
 				61244BFB1D9A7B2600094FE3 /* DataHolder */,
 				61244BF81D9A7A8100094FE3 /* CustomViewCell */,
-				61244C0F1D9AAF5600094FE3 /* DetailViewController */,
+				6124A7F01D9B8C86005BB430 /* CustomDetailsViewCell */,
 				61244BF71D9A7A6C00094FE3 /* ViewController */,
+				61244C0F1D9AAF5600094FE3 /* DetailViewController */,
 				61244BD01D9A7A3F00094FE3 /* ParsingJsonData */,
 				61244BEA1D9A7A4000094FE3 /* ParsingJsonDataTests */,
 				61244BCF1D9A7A3F00094FE3 /* Products */,
@@ -190,6 +194,16 @@
 				61244C111D9AAF7D00094FE3 /* DetailsViewController.m */,
 			);
 			name = DetailViewController;
+			path = ParsingJsonData;
+			sourceTree = "<group>";
+		};
+		6124A7F01D9B8C86005BB430 /* CustomDetailsViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				6124A7ED1D9B8C79005BB430 /* CustomDetailsViewCell.h */,
+				6124A7EE1D9B8C79005BB430 /* CustomDetailsViewCell.m */,
+			);
+			name = CustomDetailsViewCell;
 			path = ParsingJsonData;
 			sourceTree = "<group>";
 		};
@@ -303,6 +317,7 @@
 				61244BD61D9A7A3F00094FE3 /* AppDelegate.m in Sources */,
 				61244C121D9AAF7D00094FE3 /* DetailsViewController.m in Sources */,
 				61244C041D9A8B5000094FE3 /* Utility.m in Sources */,
+				6124A7EF1D9B8C79005BB430 /* CustomDetailsViewCell.m in Sources */,
 				61244BD31D9A7A3F00094FE3 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -504,6 +519,7 @@
 				61244BF21D9A7A4000094FE3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		61244BF31D9A7A4000094FE3 /* Build configuration list for PBXNativeTarget "ParsingJsonDataTests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +528,7 @@
 				61244BF51D9A7A4000094FE3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
