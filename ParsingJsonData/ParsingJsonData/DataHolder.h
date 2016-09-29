@@ -10,6 +10,7 @@
 
 @interface DataHolder : NSObject
 @property (nonatomic, strong) NSString *m_Name;
+@property (nonatomic, strong) NSString *m_isOpen;
 @property (nonatomic, strong) NSString *m_Address;
 @property (nonatomic, strong) NSString *m_Distance;
 @property (nonatomic, strong) NSDictionary *value;

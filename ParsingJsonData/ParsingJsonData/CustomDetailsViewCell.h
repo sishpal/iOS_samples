@@ -15,8 +15,7 @@
 @property (nonatomic, strong) IBOutlet UILabel *m_lblHours;
 @property (nonatomic, strong) IBOutlet UIImageView *m_imgview;
 @property (nonatomic, strong) IBOutlet UILabel *m_lblDistance;
-@property (nonatomic, strong) IBOutlet UIButton *m_btnRedeem;
-@property (nonatomic, strong) IBOutlet UILabel *m_lblInfo;
+@property (nonatomic, strong) IBOutlet UILabel *m_lblIsOpen;
 
 
 @end

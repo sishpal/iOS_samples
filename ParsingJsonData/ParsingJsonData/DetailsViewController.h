@@ -10,6 +10,9 @@
 
 @interface DetailsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) DataHolder *data;
+@property (nonatomic, strong) IBOutlet UIButton *m_btnRedeem;
+@property (nonatomic, strong) IBOutlet UITableView *m_tableView;
+@property (nonatomic, strong) NSString *isOpen;
 
 
 

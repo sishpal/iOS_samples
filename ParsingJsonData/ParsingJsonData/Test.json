@@ -13,7 +13,7 @@
                           "https://kobe-craveit.s3.amazonaws.com/uploads/image/name/5/small_copacabana.jpg",
                           "https://kobe-craveit.s3.amazonaws.com/uploads/image/name/6/small_Ava.jpg"
                           ],
-               "is_open": 1,
+               "is_open": "0",
                "latitude": "42.34472",
                "longitude": "-71.247387",
                "name": "49 Grove",
@@ -63,7 +63,7 @@
                "images": [
                           "https://kobe-craveit.s3.amazonaws.com/uploads/image/name/15/small_Babel.jpg"
                           ],
-               "is_open": "1",
+               "is_open": "0",
                "latitude": "40.7249779",
                "longitude": "-73.97849359999999",
                "name": "Babel Lounge",
@@ -113,7 +113,7 @@
                "images": [
                           "https://kobe-craveit.s3.amazonaws.com/uploads/image/name/7/small_above_allen.jpg"
                           ],
-               "is_open": "1",
+               "is_open": "0",
                "latitude": "40.7220729",
                "longitude": "-73.98850830000001",
                "name": "Above Allen",

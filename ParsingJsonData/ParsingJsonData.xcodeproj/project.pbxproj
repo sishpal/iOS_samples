@@ -21,6 +21,10 @@
 		61244C0A1D9AAB3C00094FE3 /* download.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 61244C091D9AAB3C00094FE3 /* download.jpeg */; };
 		61244C121D9AAF7D00094FE3 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61244C111D9AAF7D00094FE3 /* DetailsViewController.m */; };
 		6124A7EF1D9B8C79005BB430 /* CustomDetailsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6124A7EE1D9B8C79005BB430 /* CustomDetailsViewCell.m */; };
+		61524B971D9CF1D300023FEB /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61524B961D9CF1D300023FEB /* MapViewController.m */; };
+		61524B9B1D9CF86600023FEB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61524B9A1D9CF86600023FEB /* QuartzCore.framework */; };
+		61524B9D1D9D024900023FEB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61524B9C1D9D024900023FEB /* MapKit.framework */; };
+		61524BA01D9D286B00023FEB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61524B9E1D9D26DB00023FEB /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +64,12 @@
 		61244C111D9AAF7D00094FE3 /* DetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 		6124A7ED1D9B8C79005BB430 /* CustomDetailsViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomDetailsViewCell.h; sourceTree = "<group>"; };
 		6124A7EE1D9B8C79005BB430 /* CustomDetailsViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomDetailsViewCell.m; sourceTree = "<group>"; };
+		61524B951D9CF1D300023FEB /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		61524B961D9CF1D300023FEB /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		61524B9A1D9CF86600023FEB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		61524B9C1D9D024900023FEB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		61524B9E1D9D26DB00023FEB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		61524BA11D9D354500023FEB /* Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constant.h; path = ../../../../Downloads/Constant.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +77,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61524BA01D9D286B00023FEB /* CoreLocation.framework in Frameworks */,
+				61524B9D1D9D024900023FEB /* MapKit.framework in Frameworks */,
+				61524B9B1D9CF86600023FEB /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,9 +103,11 @@
 				6124A7F01D9B8C86005BB430 /* CustomDetailsViewCell */,
 				61244BF71D9A7A6C00094FE3 /* ViewController */,
 				61244C0F1D9AAF5600094FE3 /* DetailViewController */,
+				61524B981D9CF1DD00023FEB /* MapViewController */,
 				61244BD01D9A7A3F00094FE3 /* ParsingJsonData */,
 				61244BEA1D9A7A4000094FE3 /* ParsingJsonDataTests */,
 				61244BCF1D9A7A3F00094FE3 /* Products */,
+				61524B991D9CF86500023FEB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -122,6 +137,7 @@
 			children = (
 				61244C091D9AAB3C00094FE3 /* download.jpeg */,
 				61244BD21D9A7A3F00094FE3 /* main.m */,
+				61524BA11D9D354500023FEB /* Constant.h */,
 				61244C051D9A8C8100094FE3 /* Test.json */,
 				61244BFA1D9A7AD600094FE3 /* ParsingJsonData-Prefix.pch */,
 			);
@@ -205,6 +221,26 @@
 			);
 			name = CustomDetailsViewCell;
 			path = ParsingJsonData;
+			sourceTree = "<group>";
+		};
+		61524B981D9CF1DD00023FEB /* MapViewController */ = {
+			isa = PBXGroup;
+			children = (
+				61524B951D9CF1D300023FEB /* MapViewController.h */,
+				61524B961D9CF1D300023FEB /* MapViewController.m */,
+			);
+			name = MapViewController;
+			path = ParsingJsonData;
+			sourceTree = "<group>";
+		};
+		61524B991D9CF86500023FEB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				61524B9E1D9D26DB00023FEB /* CoreLocation.framework */,
+				61524B9C1D9D024900023FEB /* MapKit.framework */,
+				61524B9A1D9CF86600023FEB /* QuartzCore.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,6 +350,7 @@
 				61244C011D9A8AB800094FE3 /* DataHolder.m in Sources */,
 				61244BD91D9A7A3F00094FE3 /* ViewController.m in Sources */,
 				61244BFE1D9A7C9900094FE3 /* CustomViewCell.m in Sources */,
+				61524B971D9CF1D300023FEB /* MapViewController.m in Sources */,
 				61244BD61D9A7A3F00094FE3 /* AppDelegate.m in Sources */,
 				61244C121D9AAF7D00094FE3 /* DetailsViewController.m in Sources */,
 				61244C041D9A8B5000094FE3 /* Utility.m in Sources */,

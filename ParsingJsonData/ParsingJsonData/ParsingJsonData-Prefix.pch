@@ -9,13 +9,14 @@
 #ifndef ParsingJsonData_Prefix_pch
 #define ParsingJsonData_Prefix_pch
 
+#import <CoreLocation/CoreLocation.h>
 #import "Utility.h"
 #import "CustomViewCell.h"
 #import "ViewController.h"
 #import "DataHolder.h"
 #import "DetailsViewController.h"
 #import "CustomDetailsViewCell.h"
-
+#import "Constant.h"
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 

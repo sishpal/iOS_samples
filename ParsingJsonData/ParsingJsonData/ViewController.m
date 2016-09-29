@@ -18,6 +18,7 @@
     [super viewDidLoad];
     self.navigationController.navigationBar.translucent = NO;
     self.m_arrInfo = [[NSMutableArray alloc] init];
+    self.title = @"HOME";
 
 
     // Do any additional setup after loading the view, typically from a nib.

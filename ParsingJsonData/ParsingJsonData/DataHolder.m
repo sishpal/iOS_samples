@@ -18,6 +18,7 @@
         self.m_Address= @"";
         self.m_Distance = @"";
         self.m_Description = @"";
+        self.m_isOpen = @"";
     }
     return self;
 }
@@ -29,6 +30,7 @@
     self.m_Address = [Utility getFormattedValue:[dicAttribute objectForKey:@"address"]];
     self.m_Distance = [Utility getFormattedValue:[dicAttribute objectForKey:@"distance"]];
     self.m_Name = [Utility getFormattedValue:[dicAttribute objectForKey:@"name"]];
+    self.m_isOpen = [Utility getFormattedValue:[dicAttribute objectForKey:@"is_open"]];
     self.m_Description = [Utility getFormattedValue:[dicAttribute objectForKey:@"description"]];
     self.m_Hours = [Utility getFormattedValue:[dicAttribute objectForKey:@"working_hour"]];
     NSLog(@"description is => %@",self.m_Description);
