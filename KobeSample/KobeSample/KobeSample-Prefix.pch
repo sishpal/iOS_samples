@@ -14,5 +14,9 @@
 #import "Constant.h"
 #import "NGAPIClient.h"
 #import "Utility.h"
+#import "userInfo.h"
+#import <CoreLocation/CoreLocation.h>
+#import "AppDelegate.h"
+
 
 #endif /* KobeSample_Prefix_pch */

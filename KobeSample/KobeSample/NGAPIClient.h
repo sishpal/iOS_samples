@@ -11,11 +11,13 @@
 @interface NGAPIClient : AFHTTPSessionManager
 
 
-
 + (NGAPIClient *)sharedHTTPClient;
 - (instancetype)initWithBaseURL:(NSURL *)url;
 
 
 - (void)getUserInfo : (NSMutableDictionary *)parameter completion:(void (^)(NSMutableDictionary *message, NSError *error))completion;
+
+- (void)showAllVenues : (NSMutableDictionary *)parameter completion:(void (^)(NSMutableDictionary *message, NSError *error))completion;
+
 
 @end

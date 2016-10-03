@@ -14,7 +14,7 @@
 
 #define kItuenesURL  @"https://itunes.apple.com/us/app/kobe/id1128317590?ls=1&mt=8"
 
-#define kAppName        @"JsonParsing"
+#define kAppName        @"Parsing"
 
 #define iPhone4s  @"iPhone4s"
 #define iPhone5s  @"iPhone5s"

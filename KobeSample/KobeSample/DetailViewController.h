@@ -7,8 +7,9 @@
 //
 
 #import "ViewController.h"
+#import "DetailsViewController.h"
 
-@interface DetailViewController : UIViewController <UITextFieldDelegate, UINavigationControllerDelegate>
+@interface DetailViewController : UIViewController <UITextFieldDelegate, UINavigationControllerDelegate,UIActionSheetDelegate>
 
 @property (nonatomic, strong) IBOutlet UIScrollView *m_scrollView;
 @property (nonatomic, strong) IBOutlet UIView *m_view;
@@ -19,6 +20,6 @@
 @property (nonatomic, strong) UITextField *m_txtActive;
 @property (nonatomic, strong) IBOutlet UIDatePicker *m_datePicker;
 @property (nonatomic, strong) IBOutlet UIButton *m_btnDateOfBirth;
-
+@property (nonnull, assign) IBOutlet UIToolbar *m_btnDone;
 
 @end

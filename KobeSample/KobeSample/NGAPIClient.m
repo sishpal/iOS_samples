@@ -51,7 +51,21 @@ static NSString *const apiVersion = @"application/vnd.kobe.v1";
    // [self.requestSerializer setValue:@"1e6f2fb7bde87dd3dededd4727684618" forHTTPHeaderField:@"Authorization"];
     [self.requestSerializer setValue:contentType forHTTPHeaderField:@"Content-Type"];
     [self.requestSerializer setValue:apiVersion forHTTPHeaderField:@"Accept"];
-    [self POST:path parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [self POST:path parameters:parameter success:^(NSURLSessionDataTask *task, id responseObject) {
+        completion(responseObject, nil);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        completion(nil, error);
+    }];
+}
+
+
+- (void)showAllVenues : (NSMutableDictionary *)parameter completion:(void (^)(NSMutableDictionary *message, NSError *error))completion
+{
+    NSString *path = @"venues";
+     [self.requestSerializer setValue:@"1e6f2fb7bde87dd3dededd4727684618" forHTTPHeaderField:@"Authorization"];
+    [self.requestSerializer setValue:contentType forHTTPHeaderField:@"Content-Type"];
+    [self.requestSerializer setValue:apiVersion forHTTPHeaderField:@"Accept"];
+    [self GET:path parameters:parameter success:^(NSURLSessionDataTask *task, id responseObject) {
         completion(responseObject, nil);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         completion(nil, error);

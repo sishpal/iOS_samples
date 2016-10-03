@@ -17,6 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [self startUpdatingCurrentLocation];
     return YES;
 }
 
@@ -45,6 +46,97 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)startUpdatingCurrentLocation
+{
+    if ([CLLocationManager locationServicesEnabled])
+    {
+        if(_m_locationManager == nil)
+        {
+            _m_locationManager = [[CLLocationManager alloc] init];
+            _m_locationManager.delegate = self;
+        }
+        if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+            [self.m_locationManager requestWhenInUseAuthorization];
+        [_m_locationManager startUpdatingLocation];
+    }
+    else
+    {
+        // show message
+        
+        NSString *sMessage = [NSString stringWithFormat:@"Turn On Location Services to Allow \"%@\" to Determine Your Location",kAppName];
+        UIAlertView *alertvw = [[UIAlertView alloc]initWithTitle:sMessage message:@"We use this to get your current location and improve our services." delegate:self cancelButtonTitle:@"Settings" otherButtonTitles:@"Cancel", nil];
+        alertvw.tag = 100;
+        [alertvw show];
+    }
+}
+
+
+#pragma mark -
+#pragma mark CLLocationManagerDelegate Methods
+
+// Called when the location is updated
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+    // Horizontal coordinates
+    if (signbit(newLocation.horizontalAccuracy))
+    {
+        // Negative accuracy means an invalid or unavailable measurement
+    }
+    else
+    {
+        /////////// Update location of the user found.
+        
+        self.m_currentCoordinate = newLocation.coordinate;
+        NSLog(@" value of latitude and longitude are =>%f %f",self.m_currentCoordinate.latitude,self.m_currentCoordinate.longitude);
+        //self.isLocationAvailable = YES;
+        
+        [self.m_locationManager stopUpdatingLocation];
+        
+    }
+    
+}
+
+
+// Called when there is an error getting the location
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    //self.isLocationAvailable = NO;
+    
+    NSString *sErrorString = nil;
+    
+    if ([error domain] == kCLErrorDomain)
+    {
+        // We handle CoreLocation-related errors here
+        switch ([error code])
+        {
+            case kCLErrorLocationUnknown:
+                sErrorString = [NSString stringWithFormat:NSLocalizedString(@"Your location could not be determined.", @"")];
+                break;
+            case kCLErrorDenied:
+                sErrorString = [NSString stringWithFormat:NSLocalizedString(@"denied.",@"")];
+                break;
+                
+            default:
+                sErrorString = [NSString stringWithFormat:NSLocalizedString(@"Unknown location.",@"")];
+                break;
+        }
+    }
+    
+    if(sErrorString)
+    {
+        NSLog(@"error: %@", sErrorString);
+    }
+    if (error.code == kCLErrorDenied)
+    {
+        NSString *sMessage = [NSString stringWithFormat:@"Turn On Location Services to Allow \"%@\" to Determine Your Location",kAppName];
+        UIAlertView *alertvw = [[UIAlertView alloc]initWithTitle:sMessage message:@"We use this to get your current location and improve our services." delegate:self cancelButtonTitle:@"Settings" otherButtonTitles:@"Cancel", nil];
+        alertvw.tag = 100;
+        [alertvw show];
+        
+    }
 }
 
 

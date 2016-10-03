@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate>
 
+@property (nonatomic, retain) CLLocationManager *m_locationManager;
+@property (nonatomic, assign) CLLocationCoordinate2D m_currentCoordinate;
 @property (strong, nonatomic) UIWindow *window;
-
 
 @end
 
