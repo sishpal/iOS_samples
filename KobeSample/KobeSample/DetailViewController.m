@@ -18,8 +18,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
-     //[self userInfo];
     [self setAutomaticallyAdjustsScrollViewInsets:NO];
+    self.m_datePicker.hidden = YES;
 
 
 }
@@ -34,7 +34,6 @@
 
 -(void)userInfo
 {
-    NSMutableDictionary *dicData = [NSMutableDictionary new];
         NGAPIClient *client = [NGAPIClient sharedHTTPClient];
         [client getUserInfo : [self setJsonData] completion:^(NSMutableDictionary *message, NSError *error)
          {
@@ -50,25 +49,22 @@
      }];
 }
 
-//- (NSMutableDictionary *)setJsonData
-//{
-//    NSMutableArray *dicData = [[NSMutableDictionary alloc]init];
-//    [dicData]
-//    NSMutableDictionary *dictAttribute = [[NSMutableDictionary alloc]init];
-//    [dictAttribute setObject:self.m_txtFirstName forKey:@"first_name"];
-//    [dictAttribute setObject:self.m_txtFirstName forKey:@"last_name"];
-//    [dictAttribute setObject:self.m_txtFirstName forKey:@"email"];
-//    [dictAttribute setObject:self.m_txtFirstName forKey:@"password"];
-//    [dictAttribute setObject:self.m_txtFirstName forKey:@"date_of_birth"];
-//
-//
-//
-//    
-//
-//    return dicData;
-//
-//
-//}
+- (NSMutableDictionary *)setJsonData
+{
+    NSMutableDictionary *dicFinal =[[NSMutableDictionary alloc]init];
+    NSMutableDictionary *dicUser =[[NSMutableDictionary alloc]init];
+    NSMutableDictionary *dicData = [[NSMutableDictionary alloc]init];
+    NSMutableDictionary *dictAttribute = [[NSMutableDictionary alloc]init];
+    [dictAttribute setObject:self.m_txtFirstName forKey:@"first_name"];
+    [dictAttribute setObject:self.m_txtFirstName forKey:@"last_name"];
+    [dictAttribute setObject:self.m_txtFirstName forKey:@"email"];
+    [dictAttribute setObject:self.m_txtFirstName forKey:@"password"];
+    [dictAttribute setObject:self.m_txtFirstName forKey:@"date_of_birth"];
+    [dictAttribute setObject:dicData forKey:@"attributes"];
+    [dictAttribute setObject:dicUser forKey:@"data"];
+    [dictAttribute setObject:dicFinal forKey:@"user"];
+    return dicFinal;
+}
 
 
 /*
@@ -158,20 +154,24 @@
 
 -(IBAction)onDateofBirthButtonPressed:(id)sender
 {
+
+    self.m_datePicker.hidden = NO;
     NSLog(@"Pressed selectedDate");
     NSDate *date = [self.m_datePicker date];
     NSLog(@"date is -> %@",date);
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd"];
-    
-    //NSData *today = @"2016-09-21";
-    //[self.m_datePicker setMaximumDate:today];
-    
     NSString *outputString = [formatter stringFromDate:date];
     NSLog(@"new formate of date is => %@",outputString);
-    self.m_btnDateOfBirth.titleLabel.text = [NSString stringWithFormat:@"%@",outputString];
-
-
+  //  self.m_btnDateOfBirth.titleLabel.text = [NSString stringWithFormat:@"%@",outputString];
+    [self.m_btnDateOfBirth setTitle:[NSString stringWithFormat:@"%@",outputString] forState:UIControlStateNormal];
+    
+    
+}
+-(IBAction)onSignInButtonPressed:(id)sender
+{
+    NSLog(@"SignInButton Pressed");
+    [self userInfo];
 
 }
 
