@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.title = @"Sign Up";
 
     [self setAutomaticallyAdjustsScrollViewInsets:NO];
     self.m_datePicker.hidden = YES;
@@ -62,7 +63,7 @@
                      [[NSUserDefaults standardUserDefaults]setObject:message forKey:@"userdata"];
                      [[NSUserDefaults standardUserDefaults]synchronize];
         
-                     DetailsViewController *detailsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"DetailsViewController"];
+                     AfterSignUpViewController *detailsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"AfterSignUpViewController"];
                      [self.navigationController pushViewController:detailsVC animated:YES];
                  }
                  else

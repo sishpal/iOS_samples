@@ -17,6 +17,7 @@
 #import "userInfo.h"
 #import <CoreLocation/CoreLocation.h>
 #import "AppDelegate.h"
-
+#import "venueInfo.h"
+#import "UIImageView+AFNetworking.h"
 
 #endif /* KobeSample_Prefix_pch */

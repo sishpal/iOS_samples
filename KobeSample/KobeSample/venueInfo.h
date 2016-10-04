@@ -16,13 +16,13 @@
 @property (nonatomic, strong) NSString *m_type;
 @property (nonatomic, strong) NSString *m_name;
 @property (nonatomic, strong) NSString *m_address;
-//@property (nonatomic, strong) UIImage *m_image;
+@property (nonatomic, strong) NSMutableArray *m_imageURL;
 @property (nonatomic, strong) NSString *m_description;
 @property (nonatomic, strong) NSString *m_contactNumber;
 @property (nonatomic, strong) NSString *m_distance;
 @property (nonatomic, strong) NSString *m_isOpen;
 @property (nonatomic, strong) NSMutableArray *m_workingHours;
 
--(id)initWithData:(NSDictionary *)value;
+-(id)initWithVenueData:(NSDictionary *)value;
 
 @end

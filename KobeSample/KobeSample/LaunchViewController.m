@@ -17,13 +17,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"called");
+//    self.title = @"Launch";
+    [self.navigationItem setHidesBackButton:YES];
     NSMutableDictionary *dicMessage = [[NSUserDefaults standardUserDefaults]objectForKey:@"userdata"];
     NSLog(@"message is -> %@",dicMessage);
     if(dicMessage != nil)
     {
         NSLog(@"Push on showAllVenues");
         ShowAllVenue *showallvenuevC = [self.storyboard instantiateViewControllerWithIdentifier:@"ShowAllVenue"];
-        [self.navigationController pushViewController:showallvenuevC animated:YES];
+        
+        [self.navigationController pushViewController:showallvenuevC animated:NO];
+
         
     }
     else

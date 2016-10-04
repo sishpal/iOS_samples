@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
+#import "CustomViewCell.h"
+#import "DetailsViewController.h"
 
-@interface ShowAllVenue : UIViewController
+@interface ShowAllVenue : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@property (nonatomic, strong) NSMutableArray *m_arrInfo;
+@property (nonatomic, strong) IBOutlet UITableView *tableview;
 
 
 

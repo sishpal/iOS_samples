@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "DetailsViewController.h"
+#import "AfterSignUpViewController.h"
 
 @interface DetailViewController : UIViewController <UITextFieldDelegate, UINavigationControllerDelegate,UIActionSheetDelegate>
 
