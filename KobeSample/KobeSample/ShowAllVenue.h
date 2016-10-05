@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "CustomViewCell.h"
 #import "DetailsViewController.h"
+#import "SearchViewController.h"
 
 @interface ShowAllVenue : UIViewController <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) NSMutableArray *m_arrInfo;

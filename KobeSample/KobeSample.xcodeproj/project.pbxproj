@@ -14,6 +14,8 @@
 		32C194EA1D9F8FC0009B7070 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32C194E81D9F8FC0009B7070 /* Main.storyboard */; };
 		32C194EC1D9F8FC0009B7070 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32C194EB1D9F8FC0009B7070 /* Assets.xcassets */; };
 		32C194EF1D9F8FC0009B7070 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32C194ED1D9F8FC0009B7070 /* LaunchScreen.storyboard */; };
+		611E37361DA51C1A006CCDEE /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 611E37351DA51C19006CCDEE /* SearchViewController.m */; };
+		611E373A1DA526BF006CCDEE /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 611E37391DA526BF006CCDEE /* CollectionViewCell.m */; };
 		611F32CF1DA23C9300009F07 /* userInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 611F32CE1DA23C9300009F07 /* userInfo.m */; };
 		611F32D31DA260F300009F07 /* AfterSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 611F32D21DA260F300009F07 /* AfterSignUpViewController.m */; };
 		611F32D71DA26CB000009F07 /* LaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 611F32D61DA26CB000009F07 /* LaunchViewController.m */; };
@@ -42,6 +44,10 @@
 		32C194EB1D9F8FC0009B7070 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32C194EE1D9F8FC0009B7070 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32C194F01D9F8FC0009B7070 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		611E37341DA51C19006CCDEE /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		611E37351DA51C19006CCDEE /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		611E37381DA526BF006CCDEE /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
+		611E37391DA526BF006CCDEE /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
 		611F32CD1DA23C9300009F07 /* userInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = userInfo.h; sourceTree = "<group>"; };
 		611F32CE1DA23C9300009F07 /* userInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = userInfo.m; sourceTree = "<group>"; };
 		611F32D11DA260F300009F07 /* AfterSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AfterSignUpViewController.h; sourceTree = "<group>"; };
@@ -125,13 +131,15 @@
 				611F32D01DA2609E00009F07 /* AfterSignUpViewController */,
 				611F32E31DA28FB400009F07 /* ShowAllVenue */,
 				61379A581DA383AE007ABD99 /* CustomViewCell */,
+				611E37331DA51BB8006CCDEE /* SearchViewController */,
+				611E37371DA52686006CCDEE /* CollectionViewCell */,
 				61379A611DA39177007ABD99 /* DetailsViewController */,
 				61379A651DA394AF007ABD99 /* CustomDetailsViewCell */,
-				32C194EB1D9F8FC0009B7070 /* Assets.xcassets */,
 				61379A691DA3AE12007ABD99 /* MapViewController */,
 				6147A43F1D9F9914003DB950 /* Constant.h */,
 				32C194E81D9F8FC0009B7070 /* Main.storyboard */,
 				32C194ED1D9F8FC0009B7070 /* LaunchScreen.storyboard */,
+				32C194EB1D9F8FC0009B7070 /* Assets.xcassets */,
 				32C194F01D9F8FC0009B7070 /* Info.plist */,
 				32C194DF1D9F8FC0009B7070 /* Supporting Files */,
 			);
@@ -145,6 +153,24 @@
 				6147A4481D9F9A17003DB950 /* KobeSample-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		611E37331DA51BB8006CCDEE /* SearchViewController */ = {
+			isa = PBXGroup;
+			children = (
+				611E37341DA51C19006CCDEE /* SearchViewController.h */,
+				611E37351DA51C19006CCDEE /* SearchViewController.m */,
+			);
+			name = SearchViewController;
+			sourceTree = "<group>";
+		};
+		611E37371DA52686006CCDEE /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				611E37381DA526BF006CCDEE /* CollectionViewCell.h */,
+				611E37391DA526BF006CCDEE /* CollectionViewCell.m */,
+			);
+			name = CollectionViewCell;
 			sourceTree = "<group>";
 		};
 		611F32CC1DA23C6100009F07 /* userInfo */ = {
@@ -429,12 +455,14 @@
 				6147A4451D9F9914003DB950 /* NGAPIClient.m in Sources */,
 				611F32D71DA26CB000009F07 /* LaunchViewController.m in Sources */,
 				32C194E71D9F8FC0009B7070 /* ViewController.m in Sources */,
+				611E37361DA51C1A006CCDEE /* SearchViewController.m in Sources */,
 				32C194E41D9F8FC0009B7070 /* AppDelegate.m in Sources */,
 				611F32E61DA28FE100009F07 /* ShowAllVenue.m in Sources */,
 				61379A681DA39511007ABD99 /* CustomDetailsViewCell.m in Sources */,
 				611F32DB1DA27F2800009F07 /* venueInfo.m in Sources */,
 				6147A44B1D9F9A6F003DB950 /* Utility.m in Sources */,
 				611F32D31DA260F300009F07 /* AfterSignUpViewController.m in Sources */,
+				611E373A1DA526BF006CCDEE /* CollectionViewCell.m in Sources */,
 				61379A6C1DA3AE41007ABD99 /* MapViewController.m in Sources */,
 				32C194E11D9F8FC0009B7070 /* main.m in Sources */,
 				61379A641DA391D3007ABD99 /* DetailsViewController.m in Sources */,

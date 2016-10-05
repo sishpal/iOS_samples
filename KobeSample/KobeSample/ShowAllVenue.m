@@ -142,10 +142,20 @@
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 
-//- (IBAction)onBackButtonPressed:(id)sender
-//{
-//    //[self.navigationController popViewControllerAnimated:YES];
-//}
+
+- (IBAction)onVenueListButtonPressed:(id)sender
+{
+    NSLog(@"Venue list button pressed");
+   
+}
+
+- (IBAction)onSearchButtonPressed:(id)sender
+{
+    NSLog(@"Search button pressed");
+    SearchViewController *searchVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SearchViewController"];
+    [self.navigationController pushViewController:searchVC animated:YES];
+}
+
 /*
 #pragma mark - Navigation
 

@@ -17,7 +17,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"called");
-//    self.title = @"Launch";
     [self.navigationItem setHidesBackButton:YES];
     NSMutableDictionary *dicMessage = [[NSUserDefaults standardUserDefaults]objectForKey:@"userdata"];
     NSLog(@"message is -> %@",dicMessage);
@@ -34,7 +33,7 @@
     {
         NSLog(@"Push on ViewController");
         ViewController *vC = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
-        [self.navigationController pushViewController:vC animated:YES];
+        [self.navigationController pushViewController:vC animated:NO];
         
     }
     

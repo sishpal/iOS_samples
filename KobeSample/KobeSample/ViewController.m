@@ -16,6 +16,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.navigationItem setHidesBackButton:YES];
+
     // Do any additional setup after loading the view, typically from a nib.
     self.navigationController.navigationBar.translucent = NO;
 }
@@ -24,7 +26,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 
 

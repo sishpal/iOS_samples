@@ -18,7 +18,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"Sign Up";
-
+    [self.navigationItem setHidesBackButton:YES];
     [self setAutomaticallyAdjustsScrollViewInsets:NO];
     self.m_datePicker.hidden = YES;
     self.m_btnDone.hidden = YES;
