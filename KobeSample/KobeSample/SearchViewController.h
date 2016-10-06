@@ -8,7 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import "CollectionViewCell.h"
+#import "tagInfo.h"
 
 @interface SearchViewController : UIViewController <UITextFieldDelegate, UICollectionViewDelegate,UICollectionViewDataSource>
+
+@property(nonatomic,strong) tagInfo *objTagInfo;
+@property (nonatomic, strong) NSMutableArray *arrTagInfo;
+@property (nonatomic, strong) NSMutableArray *arrSelectedTagInfo;
+@property (nonatomic, assign) BOOL cellSelected;
+@property (nonatomic, strong) IBOutlet UIView *m_view;
+@property (nonatomic, strong) IBOutlet UIView *m_searchView;
+@property (nonatomic, strong) IBOutlet UIView *m_addressView;
+
+
+@property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
+
 
 @end

@@ -8,6 +8,7 @@
 
 #import "ShowAllVenue.h"
 #import "UIImageView+AFNetworking.h"
+#import "REFrostedViewController.h"
 
 @interface ShowAllVenue ()
 
@@ -20,6 +21,7 @@
     // Do any additional setup after loading the view.
     //self.navigationController.navigationBar.translucent = NO;
     self.m_arrInfo = [[NSMutableArray alloc] init];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
      [self.navigationItem setHidesBackButton:YES];
     [self showAllVenue];
     self.title = @"Venues List";
@@ -28,6 +30,11 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)onMenuButtonPressed:(id)sender
+{
+    [self.frostedViewController presentMenuViewController];
 }
 
 -(NSMutableDictionary *)setJsonDataForVenue
@@ -69,9 +76,12 @@
          if(error)
          {
              NSLog(@"Something bad happend. Please try again.");
+             [MBProgressHUD hideHUDForView:self.view animated:YES];
+
          }
          else
          {
+             [MBProgressHUD hideHUDForView:self.view animated:YES];
              NSLog(@" showAllVenue message is => %@",message);
              NSString *status =  [Utility  getFormattedValue:[message objectForKey:@"status"]];
              NSString *errorCode =  [Utility  getFormattedValue:[message objectForKey:@"error_code"]];
@@ -106,14 +116,8 @@
     CustomViewCell *customCell = [tableView dequeueReusableCellWithIdentifier:@"CustomViewCell"];
     venueInfo *data = (venueInfo *) [_m_arrInfo objectAtIndex:indexPath.row];
     NSLog(@"m_name is => %@",data.m_name);
-    
-   // UIImage *img = [UIImage imageWithData:[NSData dataWithContentsOfURL:data.m_imageURL]];
-    
- 
-    
-   // customCell.m_imgview = data.m_imageURL;
+    customCell.selectionStyle = UITableViewCellSelectionStyleNone;
     NSLog(@"url of image is => %@",[data.m_imageURL objectAtIndex:0]);
-    
     
 //    NSURL *url = [NSURL URLWithString: data.m_imageURL];
 //    NSData *imgData = [NSData dataWithContentsOfURL:url];
@@ -124,11 +128,15 @@
 //    NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
 //    UIImage *image = [UIImage imageWithData:imageData];
     
-    
+    UIFont* boldFont = [UIFont boldSystemFontOfSize:[UIFont systemFontSize]];
+//    [myLabel setFont:boldFont];
      [customCell.m_imgview setImageWithURL:[NSURL URLWithString:[data.m_imageURL objectAtIndex:0]] placeholderImage:[UIImage imageNamed:@"pin"]];
     customCell.m_lblName.text = data.m_name;
+    [customCell.m_lblName setFont:boldFont];
+    
+//setFont:[UIFont fontWithName:@"Arial" size:16]];
     customCell.m_lblAddress.text = data.m_address;
-    customCell.m_lblDistance.text = data.m_distance;
+    customCell.m_lblDistance.text = [data.m_distance stringByAppendingPathComponent:@"miles"];
     
     return customCell;
 }
@@ -153,7 +161,7 @@
 {
     NSLog(@"Search button pressed");
     SearchViewController *searchVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SearchViewController"];
-    [self.navigationController pushViewController:searchVC animated:YES];
+    [self.navigationController pushViewController:searchVC animated:NO];
 }
 
 /*

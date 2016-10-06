@@ -60,7 +60,7 @@
                      NSDictionary *dicData = [Utility getFormattedValue:[dicUser objectForKey:@"data"]];
                      NSLog(@"user data is => %@",dicData);
 
-                     [[NSUserDefaults standardUserDefaults]setObject:message forKey:@"userdata"];
+                     [[NSUserDefaults standardUserDefaults]setObject:dicData forKey:@"userdata"];
                      [[NSUserDefaults standardUserDefaults]synchronize];
         
                      AfterSignUpViewController *detailsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"AfterSignUpViewController"];

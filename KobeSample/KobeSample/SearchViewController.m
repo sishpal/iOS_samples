@@ -17,6 +17,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.navigationBar.translucent = NO;
+    self.arrTagInfo = [[NSMutableArray alloc] init];
+    self.arrSelectedTagInfo = [[NSMutableArray alloc] init];
+    self.m_searchView.layer.borderWidth = 1;
+    self.m_addressView.layer.borderWidth = 1;
+//    self.m_currentAddressView.layer.borderColor = [UIColor lightGrayColor];
+//    self.m_searchView.layer.borderColor = [UIColor lightGrayColor];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [self tagList];
+
     // Do any additional setup after loading the view.
 }
 
@@ -25,25 +34,91 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark
+#pragma Method
+
+-(void)tagList
+{
+        NGAPIClient *client = [NGAPIClient sharedHTTPClient];
+        [client getTagList : @"" completion:^(NSMutableDictionary *message, NSError *error)
+         {
+             if(error)
+             {
+                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                 NSLog(@"Something bad happend. Please try again.");
+             }
+    else
+    {
+        NSLog(@"message is => %@",message);
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        NSDictionary *tags = [Utility getFormattedValue:[message objectForKey:@"tags"]];
+        NSLog(@"tags are => %@",tags);
+    
+        NSArray *arrData = [Utility getFormattedValue:[tags objectForKey:@"data"]];
+        NSLog(@"data is=> %@",arrData);
+    
+        for (NSDictionary *dicData in arrData) {
+            tagInfo *objtagInfo = [[tagInfo alloc]initWithData:dicData];
+            [self.arrTagInfo addObject:objtagInfo];
+        }
+    
+    
+        NSLog(@"count of array is -> %ld",(long)_arrTagInfo.count);
+        [_collectionView reloadData];
+
+    }
+             
+     }];
+}
+
+
 
 #pragma mark
 #pragma UICollectionView Delegates and DataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 30;
+    return _arrTagInfo.count;
 }
+
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CollectionViewCell" forIndexPath:indexPath];
-    if(indexPath.row%2 == 0)
-        cell.backgroundColor = [UIColor redColor];
-    else
-        cell.backgroundColor = [UIColor blueColor];
-    cell.m_lblTagName.text = [NSString stringWithFormat:@"%ld",indexPath.row+1];
+    cell.layer.cornerRadius = 40/2;
+
+    cell.backgroundColor = [UIColor blueColor];
+    tagInfo *data = (tagInfo *) [_arrTagInfo objectAtIndex:indexPath.row];
+    cell.m_lblTagName.textColor = [UIColor whiteColor];
+    cell.m_lblTagName.text = data.m_Name;
+
     return cell;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    CollectionViewCell *cell = (CollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    cell.layer.cornerRadius = 40/2;
+    tagInfo *data = (tagInfo *) [_arrTagInfo objectAtIndex:indexPath.row];
+    if([_arrSelectedTagInfo containsObject:data.m_Name])
+    {
+        cell.backgroundColor = [UIColor blueColor];
+        [self.arrSelectedTagInfo removeObject:data.m_Name];
+    }
+        else{
+        [self.arrSelectedTagInfo addObject:data.m_Name];
+        cell.backgroundColor = [UIColor orangeColor];
+    }
+    NSLog(@"array is => %@",_arrSelectedTagInfo);
+    
+    
+}
+
+
+//- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
+//{
+
+
+//}
 
 - (IBAction)onBackButtonPressed:(id)sender
 {
@@ -58,6 +133,18 @@
     NSLog(@"retun called");
     return YES;
 }
+
+- (IBAction)onVenueListButtonPressed:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:NO];
+}
+
+- (IBAction)onSearchButtonPressed:(id)sender
+{
+    NSLog(@"Search Button Pressed");
+}
+
+
 /*
 #pragma mark - Navigation
 

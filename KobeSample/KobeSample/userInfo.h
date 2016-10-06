@@ -16,7 +16,7 @@
 @property (nonatomic, strong) NSString *m_lastName;
 @property (nonatomic, strong) NSString *m_phoneNumber;
 @property (nonatomic, strong) NSString *m_id;
-@property (nonatomic, strong) NSString *m_urlLink;
+@property (nonatomic, strong) NSString *m_linkSelf;
 @property (nonatomic, strong) NSString *m_type;
 @property (nonatomic, strong) NSString *m_invitationCode;
 //@property (nonatomic, strong) NSDictionary *value;

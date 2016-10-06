@@ -7,6 +7,7 @@
 //
 
 #import "LaunchViewController.h"
+#import "RootViewController.h"
 
 @interface LaunchViewController ()
 
@@ -19,13 +20,13 @@
     NSLog(@"called");
     [self.navigationItem setHidesBackButton:YES];
     NSMutableDictionary *dicMessage = [[NSUserDefaults standardUserDefaults]objectForKey:@"userdata"];
-    NSLog(@"message is -> %@",dicMessage);
+    NSLog(@"dicData is -> %@",dicMessage);
     if(dicMessage != nil)
     {
         NSLog(@"Push on showAllVenues");
-        ShowAllVenue *showallvenuevC = [self.storyboard instantiateViewControllerWithIdentifier:@"ShowAllVenue"];
-        
-        [self.navigationController pushViewController:showallvenuevC animated:NO];
+        RootViewController *showallvenuevC = [self.storyboard instantiateViewControllerWithIdentifier:@"rootController"];
+        [self presentViewController:showallvenuevC animated:YES completion:nil];
+       // [self.navigationController pushViewController:showallvenuevC animated:NO];
 
         
     }

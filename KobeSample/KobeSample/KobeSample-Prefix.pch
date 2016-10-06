@@ -19,5 +19,8 @@
 #import "AppDelegate.h"
 #import "venueInfo.h"
 #import "UIImageView+AFNetworking.h"
+#import "MBProgressHUD.h"
+#import "userInfo.h"
+#import "REFrostedViewController.h"
 
 #endif /* KobeSample_Prefix_pch */

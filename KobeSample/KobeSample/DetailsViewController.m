@@ -28,7 +28,7 @@
         self.isOpen = @"OPEN NOW";
     else
         self.isOpen = @"CLOSE NOW";
-    self.m_btnRedeem.layer.cornerRadius = 30/2;
+    self.m_btnRedeem.layer.cornerRadius = 50/2;
     self.m_tableView.estimatedRowHeight = 50;
     self.m_tableView.rowHeight = UITableViewAutomaticDimension;
 }

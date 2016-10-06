@@ -19,5 +19,8 @@
 
 - (void)showAllVenues : (NSMutableDictionary *)parameter completion:(void (^)(NSMutableDictionary *message, NSError *error))completion;
 
+- (void)getTagList : (NSString *)parameter completion:(void (^)(NSMutableDictionary *message, NSError *error))completion;
+
+
 
 @end
