@@ -31,6 +31,7 @@
 		6147A4451D9F9914003DB950 /* NGAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 6147A4431D9F9914003DB950 /* NGAPIClient.m */; };
 		6147A44B1D9F9A6F003DB950 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 6147A44A1D9F9A6F003DB950 /* Utility.m */; };
 		6147A44F1D9FB5A3003DB950 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6147A44E1D9FB5A3003DB950 /* DetailViewController.m */; };
+		616CD1C01DA7848C008558D5 /* AfterMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 616CD1BF1DA7848C008558D5 /* AfterMenuViewController.m */; };
 		616ECCC21DA60E3800BA6852 /* tagInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 616ECCC11DA60E3800BA6852 /* tagInfo.m */; };
 		616ECCD01DA66A1200BA6852 /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 616ECCC51DA66A1200BA6852 /* RECommonFunctions.m */; };
 		616ECCD11DA66A1200BA6852 /* REFrostedContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 616ECCC71DA66A1200BA6852 /* REFrostedContainerViewController.m */; };
@@ -91,6 +92,8 @@
 		6147A44A1D9F9A6F003DB950 /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		6147A44D1D9FB5A3003DB950 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		6147A44E1D9FB5A3003DB950 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		616CD1BE1DA7848C008558D5 /* AfterMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AfterMenuViewController.h; sourceTree = "<group>"; };
+		616CD1BF1DA7848C008558D5 /* AfterMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AfterMenuViewController.m; sourceTree = "<group>"; };
 		616ECCC01DA60E3800BA6852 /* tagInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tagInfo.h; sourceTree = "<group>"; };
 		616ECCC11DA60E3800BA6852 /* tagInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tagInfo.m; sourceTree = "<group>"; };
 		616ECCC41DA66A1200BA6852 /* RECommonFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RECommonFunctions.h; path = REFrostedViewController/RECommonFunctions.h; sourceTree = "<group>"; };
@@ -157,6 +160,7 @@
 			children = (
 				616ECCE61DA66DD600BA6852 /* DataHolders */,
 				616ECCD61DA66A3E00BA6852 /* Menu */,
+				616CD1BD1DA78468008558D5 /* AfterMenuViewController */,
 				616ECCC31DA669F400BA6852 /* RefrostedViewControllers */,
 				6147A4341D9F9748003DB950 /* AppDelegate */,
 				6147A4461D9F9921003DB950 /* JSONResponseSerializerWithData */,
@@ -325,6 +329,15 @@
 				6147A44E1D9FB5A3003DB950 /* DetailViewController.m */,
 			);
 			name = SignUpViewController;
+			sourceTree = "<group>";
+		};
+		616CD1BD1DA78468008558D5 /* AfterMenuViewController */ = {
+			isa = PBXGroup;
+			children = (
+				616CD1BE1DA7848C008558D5 /* AfterMenuViewController.h */,
+				616CD1BF1DA7848C008558D5 /* AfterMenuViewController.m */,
+			);
+			name = AfterMenuViewController;
 			sourceTree = "<group>";
 		};
 		616ECCC31DA669F400BA6852 /* RefrostedViewControllers */ = {
@@ -542,6 +555,7 @@
 				616ECCE31DA66A5800BA6852 /* HeaderViewCell.m in Sources */,
 				611F32D31DA260F300009F07 /* AfterSignUpViewController.m in Sources */,
 				611E373A1DA526BF006CCDEE /* CollectionViewCell.m in Sources */,
+				616CD1C01DA7848C008558D5 /* AfterMenuViewController.m in Sources */,
 				61379A6C1DA3AE41007ABD99 /* MapViewController.m in Sources */,
 				32C194E11D9F8FC0009B7070 /* main.m in Sources */,
 				61379A641DA391D3007ABD99 /* DetailsViewController.m in Sources */,

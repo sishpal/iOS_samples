@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "REFrostedViewController.h"
 #import <MessageUI/MessageUI.h>
+#import "AfterMenuViewController.h"
 
 @interface DEMOMenuViewController : UITableViewController <MFMailComposeViewControllerDelegate>
 @property (nonatomic, strong) NSMutableArray *arrMenuTitle;

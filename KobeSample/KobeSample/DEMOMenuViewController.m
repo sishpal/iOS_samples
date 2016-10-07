@@ -78,14 +78,22 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if(indexPath.row == 0)
+    if(indexPath.row != 0)
     {
+        NSLog(@"Select row for push on AfterMenuViewController");
+        AfterMenuViewController *detailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"AfterMenuViewController"];
+        [self.navigationController pushViewController:detailVC animated:YES];
+        
+
+        
+        
 //        ProfileViewController *profileVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ProfileViewController"];
 //        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:profileVC];
 //        [self presentViewController:nav animated:YES completion:nil];
 //        [self.frostedViewController hideMenuViewController];
 
     }
+    
 }
 
 
@@ -127,28 +135,34 @@
         NSString *cellIdentifier = @"HeaderViewCell";
         HeaderViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         NSMutableDictionary *dictData = [[NSUserDefaults standardUserDefaults]objectForKey:@"userdata"];
+        cell.m_profileImage.layer.cornerRadius = 60;
+        cell.m_profileImage.layer.masksToBounds = YES;
+        cell.m_profileImage.clipsToBounds = YES;
+        //cell.m_profileImage.maj
+    
         if(dictData!=nil)
         {
             userInfo *info = [[userInfo alloc]initWithData:dictData];
             cell.m_lblName.text = [NSString stringWithFormat:@"%@ %@",info.m_firstName,info.m_lastName];
-            cell.m_lblEmail.text = info.m_emailAddress;
+            //cell.m_lblEmail.text = info.m_emailAddress;
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
         return cell;
     }
+    
     else
     {
         NSString *cellIdentifier = @"MenuViewCell";
         MenuViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-        cell.m_lblTitle.text = [self.arrMenuTitle objectAtIndex:indexPath.row-1];
-        NSString *sImageName = [NSString stringWithFormat:@"menu_%@",[self.arrMenuTitle objectAtIndex:indexPath.row-1]];
-        cell.m_menuImage.image = [UIImage imageNamed:sImageName];
+        cell.m_lblTitle.text = [self.arrMenuTitle objectAtIndex:indexPath.row];
+        //  NSString *sImageName = [NSString stringWithFormat:@"menu_%@",[self.arrMenuTitle objectAtIndex:indexPath.row-1]];
+       // cell.m_menuImage.image = [UIImage imageNamed:sImageName];
         [cell.vwSeperator setHidden:YES];
         return cell;
     }
-    
-
 }
+
+
 
 #pragma mark
 #pragma mark - MailController

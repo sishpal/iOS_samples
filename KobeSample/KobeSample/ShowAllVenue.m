@@ -44,13 +44,8 @@
     NSMutableDictionary *dictAttribute = [[NSMutableDictionary alloc]init];
     
     NSMutableDictionary *dicMessage = [[NSUserDefaults standardUserDefaults]objectForKey:@"userdata"];
-    NSDictionary *dicUser1 = [Utility getFormattedValue:[dicMessage objectForKey:@"user"]];
-    NSLog(@"user info is  => %@",dicUser1);
     
-    NSDictionary *dicData1 = [Utility getFormattedValue:[dicUser1 objectForKey:@"data"]];
-    NSLog(@"user data is => %@",dicData1);
-    
-    userInfo *objUserInfo = [[userInfo alloc]initWithData:dicData1];
+    userInfo *objUserInfo = [[userInfo alloc]initWithData:dicMessage];
     NSLog(@"objUserInfo is => %@",objUserInfo.m_id);
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
