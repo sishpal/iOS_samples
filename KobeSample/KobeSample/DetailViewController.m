@@ -7,6 +7,7 @@
 //
 
 #import "DetailViewController.h"
+#import "RootViewController.h"
 
 @interface DetailViewController ()
 
@@ -63,8 +64,8 @@
                      [[NSUserDefaults standardUserDefaults]setObject:dicData forKey:@"userdata"];
                      [[NSUserDefaults standardUserDefaults]synchronize];
         
-                     AfterSignUpViewController *detailsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"AfterSignUpViewController"];
-                     [self.navigationController pushViewController:detailsVC animated:YES];
+                     RootViewController *showallvenuevC = [self.storyboard instantiateViewControllerWithIdentifier:@"rootController"];
+                     [self presentViewController:showallvenuevC animated:YES completion:nil];
                  }
                  else
                  {

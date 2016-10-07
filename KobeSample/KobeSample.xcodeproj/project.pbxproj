@@ -443,6 +443,7 @@
 				TargetAttributes = {
 					32C194DB1D9F8FC0009B7070 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 5KMQP3KP7U;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -680,6 +681,9 @@
 			baseConfigurationReference = A33C704130F87A32DEDD2651 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Amit Gupta (9PKDCXC3GY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 5KMQP3KP7U;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KobeSample/KobeSample-Prefix.pch";
 				INFOPLIST_FILE = KobeSample/Info.plist;
@@ -687,6 +691,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.berylsystems.KobeSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -695,6 +701,9 @@
 			baseConfigurationReference = 91430912B476C170740FCE34 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Amit Gupta (9PKDCXC3GY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 5KMQP3KP7U;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KobeSample/KobeSample-Prefix.pch";
 				INFOPLIST_FILE = KobeSample/Info.plist;
@@ -702,6 +711,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.berylsystems.KobeSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};

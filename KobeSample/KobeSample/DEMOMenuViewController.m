@@ -81,16 +81,17 @@
     if(indexPath.row != 0)
     {
         NSLog(@"Select row for push on AfterMenuViewController");
-        AfterMenuViewController *detailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"AfterMenuViewController"];
-        [self.navigationController pushViewController:detailVC animated:YES];
+        
+//        AfterMenuViewController *detailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"AfterMenuViewController"];
+//        [self.navigationController pushViewController:detailVC animated:YES];
         
 
         
         
-//        ProfileViewController *profileVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ProfileViewController"];
-//        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:profileVC];
-//        [self presentViewController:nav animated:YES completion:nil];
-//        [self.frostedViewController hideMenuViewController];
+        AfterMenuViewController *profileVC = [self.storyboard instantiateViewControllerWithIdentifier:@"AfterMenuViewController"];
+        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:profileVC];
+        [self presentViewController:nav animated:YES completion:nil];
+        [self.frostedViewController hideMenuViewController];
 
     }
     

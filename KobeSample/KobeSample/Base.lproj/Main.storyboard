@@ -1594,7 +1594,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="6K0-JU-H0e"/>
+                    <navigationItem key="navigationItem" id="6K0-JU-H0e">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="O6z-HD-tKo">
+                            <connections>
+                                <action selector="onDoneButtonPressed:" destination="38U-v2-zWZ" id="7fb-pn-3tp"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4hL-Sh-pJ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
