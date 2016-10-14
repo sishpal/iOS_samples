@@ -20,6 +20,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"Map";
+    NSLog(@"value of holder is => %@",_holder);
     NSLog(@"Value of latitude is => %@",self.holder.m_latitude);
     NSLog(@"Value of longitude is => %@",self.holder.m_longitude);
     float latitude = [self.holder.m_latitude floatValue];

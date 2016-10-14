@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "REFrostedViewController.h"
 #import <MessageUI/MessageUI.h>
+#import "UpdateUserInfoViewController.h"
 #import "AfterMenuViewController.h"
 
 @interface DEMOMenuViewController : UITableViewController <MFMailComposeViewControllerDelegate>
 @property (nonatomic, strong) NSMutableArray *arrMenuTitle;
 @property (nonatomic, strong) IBOutlet UIView *vwBottomView;
+@property (nonatomic, strong) NSMutableArray *arrData;
 
 - (void)ReloadData;
 

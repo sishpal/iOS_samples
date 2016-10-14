@@ -45,6 +45,7 @@
     self.m_invitationCode = [Utility getFormattedValue:[dicAttribute objectForKey:@"invitation_code"]];
     self.m_phoneNumber = [Utility getFormattedValue:[dicAttribute objectForKey:@"phone_no"]];
     NSLog(@"first name is -> %@",_m_firstName);
+    NSLog(@"token is =>%@",_m_authToken);
 
     return self;
 }

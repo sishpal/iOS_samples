@@ -32,6 +32,8 @@
     //self.tableView.backgroundColor = [UIColor whiteColor];//[UIColor colorWithWhite:0.80 alpha:1.0];
     self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width - 100, self.tableView.frame.size.height);
     self.arrMenuTitle = [[NSMutableArray alloc]initWithObjects:@"Subscription",@"Notifications",@"How it works",@"Earn free drinks",@"FAQ",@"About", nil];
+    self.arrData = [[NSMutableArray alloc] init];
+
     
     /*
     CGRect screenRect = [[UIScreen mainScreen] bounds];
@@ -81,18 +83,22 @@
     if(indexPath.row != 0)
     {
         NSLog(@"Select row for push on AfterMenuViewController");
-        
-//        AfterMenuViewController *detailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"AfterMenuViewController"];
-//        [self.navigationController pushViewController:detailVC animated:YES];
-        
-
-        
-        
         AfterMenuViewController *profileVC = [self.storyboard instantiateViewControllerWithIdentifier:@"AfterMenuViewController"];
         UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:profileVC];
         [self presentViewController:nav animated:YES completion:nil];
         [self.frostedViewController hideMenuViewController];
-
+    }
+    if(indexPath.row == 0)
+    {
+      
+        NSLog(@"Push on updateUserInfo page");
+        UpdateUserInfoViewController *updateUserVC = [self.storyboard instantiateViewControllerWithIdentifier:@"UpdateUserInfoViewController"];
+        userInfo *data = (userInfo *) [_arrData objectAtIndex:indexPath.row];
+        updateUserVC.data = data;
+        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:updateUserVC];
+        [self presentViewController:nav animated:NO completion:nil];
+        [self.frostedViewController hideMenuViewController];
+        
     }
     
 }
@@ -144,8 +150,8 @@
         if(dictData!=nil)
         {
             userInfo *info = [[userInfo alloc]initWithData:dictData];
+            [self.arrData addObject:info];
             cell.m_lblName.text = [NSString stringWithFormat:@"%@ %@",info.m_firstName,info.m_lastName];
-            //cell.m_lblEmail.text = info.m_emailAddress;
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
         return cell;

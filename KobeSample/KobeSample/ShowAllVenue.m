@@ -159,6 +159,13 @@
     [self.navigationController pushViewController:searchVC animated:NO];
 }
 
+- (IBAction)onMapButtonPressed:(id)sender
+{
+    AllVenueMapViewController *mapVC = [self.storyboard instantiateViewControllerWithIdentifier:@"AllVenueMapViewController"];
+    //mapVC.holder = self.mapdata;
+    [self.navigationController pushViewController:mapVC animated:YES];
+}
+
 /*
 #pragma mark - Navigation
 

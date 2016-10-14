@@ -11,9 +11,11 @@
 #import "CustomViewCell.h"
 #import "DetailsViewController.h"
 #import "SearchViewController.h"
+#import "AllVenueMapViewController.h"
 
 @interface ShowAllVenue : UIViewController <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) NSMutableArray *m_arrInfo;
+@property (nonatomic, strong) venueInfo *mapdata;
 @property (nonatomic, strong) IBOutlet UITableView *tableview;
 
 

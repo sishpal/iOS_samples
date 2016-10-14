@@ -30,7 +30,6 @@
 - (IBAction)onDoneButtonPressed:(id)sender
 {
     NSLog(@"Search button pressed");
-//    SearchViewController *searchVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SearchViewController"];
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 

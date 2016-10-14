@@ -44,6 +44,9 @@
 		616ECCE31DA66A5800BA6852 /* HeaderViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 616ECCDC1DA66A5800BA6852 /* HeaderViewCell.m */; };
 		616ECCE41DA66A5800BA6852 /* MenuViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 616ECCDE1DA66A5800BA6852 /* MenuViewCell.m */; };
 		616ECCE51DA66A5800BA6852 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 616ECCE01DA66A5800BA6852 /* RootViewController.m */; };
+		618329451DB0AD6C00DC53FA /* AllVenueMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 618329441DB0AD6C00DC53FA /* AllVenueMapViewController.m */; };
+		618329491DB0D47600DC53FA /* UpdateUserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 618329481DB0D47600DC53FA /* UpdateUserInfoViewController.m */; };
+		6183294C1DB10B8500DC53FA /* profileEdit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6183294B1DB10B8500DC53FA /* profileEdit.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,6 +121,12 @@
 		616ECCDE1DA66A5800BA6852 /* MenuViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewCell.m; sourceTree = "<group>"; };
 		616ECCDF1DA66A5800BA6852 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		616ECCE01DA66A5800BA6852 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		618329431DB0AD6C00DC53FA /* AllVenueMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllVenueMapViewController.h; sourceTree = "<group>"; };
+		618329441DB0AD6C00DC53FA /* AllVenueMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllVenueMapViewController.m; sourceTree = "<group>"; };
+		618329471DB0D47600DC53FA /* UpdateUserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateUserInfoViewController.h; sourceTree = "<group>"; };
+		618329481DB0D47600DC53FA /* UpdateUserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateUserInfoViewController.m; sourceTree = "<group>"; };
+		6183294A1DB10B8500DC53FA /* profileEdit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = profileEdit.h; sourceTree = "<group>"; };
+		6183294B1DB10B8500DC53FA /* profileEdit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = profileEdit.m; sourceTree = "<group>"; };
 		91430912B476C170740FCE34 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A33C704130F87A32DEDD2651 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A49CEE22DF02AABD5F72CE05 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -160,6 +169,7 @@
 			children = (
 				616ECCE61DA66DD600BA6852 /* DataHolders */,
 				616ECCD61DA66A3E00BA6852 /* Menu */,
+				618329461DB0D43000DC53FA /* UpdateUserInfoViewController */,
 				616CD1BD1DA78468008558D5 /* AfterMenuViewController */,
 				616ECCC31DA669F400BA6852 /* RefrostedViewControllers */,
 				6147A4341D9F9748003DB950 /* AppDelegate */,
@@ -171,6 +181,7 @@
 				6147A4501D9FB5AB003DB950 /* SignUpViewController */,
 				611F32D01DA2609E00009F07 /* AfterSignUpViewController */,
 				611F32E31DA28FB400009F07 /* ShowAllVenue */,
+				618329421DB0ACCF00DC53FA /* AllVenueMapViewController */,
 				61379A581DA383AE007ABD99 /* CustomViewCell */,
 				611E37331DA51BB8006CCDEE /* SearchViewController */,
 				611E37371DA52686006CCDEE /* CollectionViewCell */,
@@ -383,10 +394,30 @@
 				616ECCC11DA60E3800BA6852 /* tagInfo.m */,
 				611F32CD1DA23C9300009F07 /* userInfo.h */,
 				611F32CE1DA23C9300009F07 /* userInfo.m */,
+				6183294A1DB10B8500DC53FA /* profileEdit.h */,
+				6183294B1DB10B8500DC53FA /* profileEdit.m */,
 				611F32D91DA27F2800009F07 /* venueInfo.h */,
 				611F32DA1DA27F2800009F07 /* venueInfo.m */,
 			);
 			name = DataHolders;
+			sourceTree = "<group>";
+		};
+		618329421DB0ACCF00DC53FA /* AllVenueMapViewController */ = {
+			isa = PBXGroup;
+			children = (
+				618329431DB0AD6C00DC53FA /* AllVenueMapViewController.h */,
+				618329441DB0AD6C00DC53FA /* AllVenueMapViewController.m */,
+			);
+			name = AllVenueMapViewController;
+			sourceTree = "<group>";
+		};
+		618329461DB0D43000DC53FA /* UpdateUserInfoViewController */ = {
+			isa = PBXGroup;
+			children = (
+				618329471DB0D47600DC53FA /* UpdateUserInfoViewController.h */,
+				618329481DB0D47600DC53FA /* UpdateUserInfoViewController.m */,
+			);
+			name = UpdateUserInfoViewController;
 			sourceTree = "<group>";
 		};
 		CC7F86F817E045666D5A4ED8 /* Frameworks */ = {
@@ -535,6 +566,7 @@
 				616ECCD51DA66A1200BA6852 /* UIViewController+REFrostedViewController.m in Sources */,
 				611F32CF1DA23C9300009F07 /* userInfo.m in Sources */,
 				6147A4441D9F9914003DB950 /* JSONResponseSerializerWithData.m in Sources */,
+				6183294C1DB10B8500DC53FA /* profileEdit.m in Sources */,
 				6147A4451D9F9914003DB950 /* NGAPIClient.m in Sources */,
 				616ECCE11DA66A5800BA6852 /* DEMOMenuViewController.m in Sources */,
 				616ECCC21DA60E3800BA6852 /* tagInfo.m in Sources */,
@@ -547,12 +579,14 @@
 				616ECCE21DA66A5800BA6852 /* DEMONavigationController.m in Sources */,
 				611F32E61DA28FE100009F07 /* ShowAllVenue.m in Sources */,
 				616ECCE51DA66A5800BA6852 /* RootViewController.m in Sources */,
+				618329451DB0AD6C00DC53FA /* AllVenueMapViewController.m in Sources */,
 				61379A681DA39511007ABD99 /* CustomDetailsViewCell.m in Sources */,
 				611F32DB1DA27F2800009F07 /* venueInfo.m in Sources */,
 				616ECCD01DA66A1200BA6852 /* RECommonFunctions.m in Sources */,
 				616ECCE41DA66A5800BA6852 /* MenuViewCell.m in Sources */,
 				6147A44B1D9F9A6F003DB950 /* Utility.m in Sources */,
 				616ECCD11DA66A1200BA6852 /* REFrostedContainerViewController.m in Sources */,
+				618329491DB0D47600DC53FA /* UpdateUserInfoViewController.m in Sources */,
 				616ECCE31DA66A5800BA6852 /* HeaderViewCell.m in Sources */,
 				611F32D31DA260F300009F07 /* AfterSignUpViewController.m in Sources */,
 				611E373A1DA526BF006CCDEE /* CollectionViewCell.m in Sources */,

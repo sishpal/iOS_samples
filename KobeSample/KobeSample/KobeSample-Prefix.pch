@@ -22,5 +22,6 @@
 #import "MBProgressHUD.h"
 #import "userInfo.h"
 #import "REFrostedViewController.h"
+#import "profileEdit.h"
 
 #endif /* KobeSample_Prefix_pch */

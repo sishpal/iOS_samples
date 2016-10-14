@@ -50,8 +50,9 @@
     self.m_distance = [Utility getFormattedValue:[dicAttribute objectForKey:@"distance"]];
     self.m_isOpen = [Utility getFormattedValue:[dicAttribute objectForKey:@"is_open"]];
     self.m_workingHours = [Utility getFormattedValue:[dicAttribute objectForKey:@"working_hour"]];
-    NSLog(@"m_id is %@",_m_id);
+   // NSLog(@"m_id is %@",_m_id);
     NSLog(@"m_distance is %@",_m_distance);
+    NSLog(@"_m_latitude is => %@",_m_latitude);
 
     return self;
 }

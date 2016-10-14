@@ -6,16 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "KobeSample/DEMOMenuViewController.m"
-            timestampString = "497519709.818223"
+            filePath = "KobeSample/UpdateUserInfoViewController.m"
+            timestampString = "498145395.157249"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "-setJsonDataForProfileEdit"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
