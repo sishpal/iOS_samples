@@ -17,21 +17,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    UITapGestureRecognizer *tapGesture1 = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(tapGesture:)];
+//    tapGesture1.numberOfTapsRequired = 1;
+    [tapGesture1 setDelegate:self];
+    [self.m_imageView addGestureRecognizer:tapGesture1];
+    
+    
     [self setAutomaticallyAdjustsScrollViewInsets:NO];
     self.m_datePicker.hidden = YES;
     self.m_btnDone.hidden = YES;
-    NSLog(@"Selected first name is => %@",self.data.m_firstName);
-    NSLog(@"Selected last name is => %@",self.data.m_lastName);
-    NSLog(@"Selected Email Address is => %@",self.data.m_emailAddress);
-    NSLog(@"Selected Date of birth is => %@",self.data.m_dateOfBirth);
-    self.m_firstName.text = self.data.m_firstName;
-    self.m_lastName.text = self.data.m_lastName;
-    self.m_emailAddress.text = self.data.m_emailAddress;
-    NSLog(@"dob is => %@",_data.m_dateOfBirth);
-    [self.m_dateOfBirth setTitle:self.data.m_dateOfBirth forState:UIControlStateNormal];
-//    self.m_image.layer.cornerRadius = 125;
-//    self.m_image.layer.masksToBounds = YES;
-//    self.m_image.clipsToBounds = YES;
+    NSMutableDictionary *dictData = [[NSUserDefaults standardUserDefaults]objectForKey:@"userdata"];
+    userInfo *info = [[userInfo alloc]initWithData:dictData];
+    //[self.arrData addObject:info];
+    self.m_firstName.text = info.m_firstName;
+    self.m_lastName.text = info.m_lastName;
+    self.m_emailAddress.text = info.m_emailAddress;
+    [self.m_dateOfBirth setTitle:info.m_dateOfBirth forState:UIControlStateNormal];
+    
+    [self.m_imageView setImageWithURL:[NSURL URLWithString: info.m_image] placeholderImage:[UIImage imageNamed:@"download"]];
+    
+    //self.m_imageView.image = [UIImage imageNamed:info.m_image];
+    NSLog(@"image s->%@",info.m_image);
+    self.m_imageView.layer.cornerRadius = 40;
+    self.m_imageView.layer.masksToBounds = YES;
+    self.m_imageView.clipsToBounds = YES;
 
 }
 
@@ -50,19 +60,28 @@
     NSMutableDictionary *dicUser = [[NSMutableDictionary alloc]init];
     NSMutableDictionary *dicData = [[NSMutableDictionary alloc]init];
     NSMutableDictionary *dictAttribute = [[NSMutableDictionary alloc]init];
-    NSString *firstName = self.data.m_firstName;
-    NSString *lastName = self.data.m_lastName;
-    NSString *emailAddress = self.data.m_emailAddress;
-    NSString *dateOfBirth = self.data.m_dateOfBirth;
-    NSMutableDictionary *dicMessage = [[NSUserDefaults standardUserDefaults]objectForKey:@"userdata"];
-    userInfo *objUserInfo = [[userInfo alloc]initWithData:dicMessage];
-    NSLog(@"objUserInfo is => %@",objUserInfo.m_id);
+    NSMutableDictionary *dictData = [[NSUserDefaults standardUserDefaults]objectForKey:@"userdata"];
+    userInfo *info = [[userInfo alloc]initWithData:dictData];
+    
+    self.m_sImgData =  UIImageJPEGRepresentation(self.m_imageView.image, 0.50f);
+    NSString *imgString = [Utility base64StringFromData:self.m_sImgData length:self.m_sImgData.length];
+    
+    //= [NSString stringWithFormat:@"%@", self.m_sImgData];
+    
+    NSString *fname = self.m_firstName.text;
+    NSLog(@"name is ==>%@",fname);
+    NSString *firstName = self.m_firstName.text;
+    NSString *lastName = self.m_lastName.text;
+    NSString *emailAddress = self.m_emailAddress.text;
+    NSString *dateOfBirth = self.m_dateOfBirth.titleLabel.text;
+    NSLog(@"dob is %@",dateOfBirth);
     [dictAttribute setObject:dateOfBirth forKey:@"date_of_birth"];
     [dictAttribute setObject:firstName forKey:@"first_name"];
     [dictAttribute setObject:lastName forKey:@"last_name"];
     [dictAttribute setObject:emailAddress forKey:@"email"];
+    [dictAttribute setObject:imgString forKey:@"image"];
     [dicData setObject:dictAttribute forKey:@"attributes"];
-    [dicData setObject:objUserInfo.m_id forKey:@"id"];
+    [dicData setObject:info.m_id forKey:@"id"];
     [dicUser setObject:dicData forKey:@"data"];
     [dicFinal setObject:dicUser forKey:@"user"];
     return dicFinal;
@@ -87,12 +106,31 @@
              NSString *errorCode =  [Utility  getFormattedValue:[message objectForKey:@"error_code"]];
              NSLog(@"error code is => %@",errorCode);
              NSLog(@"status %@",status);
+             
+             NSMutableDictionary *dicUser = [Utility getFormattedValue:[message objectForKey:@"user"]];
+             NSLog(@"data is=> %@",dicUser);
+     
+             
+             NSDictionary *dicData = [Utility getFormattedValue:[dicUser objectForKey:@"data"]];
+             NSLog(@"user data is => %@",dicData);
+             
+             [[NSUserDefaults standardUserDefaults]setObject:dicData forKey:@"userdata"];
+             [[NSUserDefaults standardUserDefaults]synchronize];
+             
+             
          }
      }];
 }
 
+- (void) tapGesture: (id)sender
+{
+    [self selectImages];
+}
 
-
+-(IBAction)onEditButtonPressed:(id)sender
+{
+    [self selectImages];
+}
 -(IBAction)onDateofBirthButtonPressed:(id)sender
 {
     self.m_datePicker.hidden = NO;
@@ -194,9 +232,47 @@
 }
 -(IBAction)onupdateButtonPressed:(id)sender
 {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
     [self profileEdit];
 
 }
+
+
+
+#pragma mark
+#pragma imagepicker method
+
+
+-(void)selectImages
+{
+    if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypePhotoLibrary])
+    {
+        UIImagePickerController *controller = [[UIImagePickerController alloc] init];
+        controller.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        controller.allowsEditing = NO;
+        controller.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType: UIImagePickerControllerSourceTypePhotoLibrary];
+            controller.delegate = self;
+        [self.navigationController presentViewController: controller animated: YES completion: nil];
+    }
+}
+
+#pragma mark
+#pragma imagepicker delegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    
+    
+    UIImage *imageSelected = [info valueForKey: UIImagePickerControllerOriginalImage];
+    self.m_imageView.image = imageSelected;
+    [picker dismissViewControllerAnimated: YES completion: nil];
+}
+-(IBAction)onImageClicked:(id)sender
+{
+    [self selectImages];
+}
+
 
 /*
 #pragma mark - Navigation

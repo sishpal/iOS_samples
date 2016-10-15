@@ -7,19 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "userInfo.h"
 
-@interface UpdateUserInfoViewController : UIViewController <UITextFieldDelegate, UINavigationControllerDelegate,UIActionSheetDelegate>
+@interface UpdateUserInfoViewController : UIViewController <UITextFieldDelegate, UINavigationControllerDelegate,UIActionSheetDelegate, UIImagePickerControllerDelegate,UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) IBOutlet UIDatePicker *m_datePicker;
-@property (nonatomic, strong) userInfo *data;
+@property (nonatomic, strong) IBOutlet UIImageView *m_imageView;
 @property (nonatomic, assign) IBOutlet UIToolbar *m_btnDone;
 @property (nonatomic, strong) IBOutlet UITextField *m_firstName;
 @property (nonatomic, strong) IBOutlet UITextField *m_lastName;
 @property (nonatomic, strong) IBOutlet UITextField *m_emailAddress;
 @property (nonatomic, strong) IBOutlet UIButton *m_dateOfBirth;
 @property (nonatomic, strong) UITextField *m_txtActive;
+@property (nonatomic, strong) NSData *m_sImgData;
 @property (nonatomic, strong) IBOutlet UIScrollView *m_scrollView;
-@property (nonatomic, strong) IBOutlet UIImageView *m_image;
 
 
 @end

@@ -44,9 +44,11 @@
     self.m_lastName = [Utility getFormattedValue:[dicAttribute objectForKey:@"last_name"]];
     self.m_invitationCode = [Utility getFormattedValue:[dicAttribute objectForKey:@"invitation_code"]];
     self.m_phoneNumber = [Utility getFormattedValue:[dicAttribute objectForKey:@"phone_no"]];
+    self.m_image = [Utility getFormattedValue:[dicAttribute objectForKey:@"image"]];
+
     NSLog(@"first name is -> %@",_m_firstName);
     NSLog(@"token is =>%@",_m_authToken);
-
+    NSLog(@"image string is %@",_m_image);
     return self;
 }
 

@@ -46,7 +46,6 @@
 		616ECCE51DA66A5800BA6852 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 616ECCE01DA66A5800BA6852 /* RootViewController.m */; };
 		618329451DB0AD6C00DC53FA /* AllVenueMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 618329441DB0AD6C00DC53FA /* AllVenueMapViewController.m */; };
 		618329491DB0D47600DC53FA /* UpdateUserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 618329481DB0D47600DC53FA /* UpdateUserInfoViewController.m */; };
-		6183294C1DB10B8500DC53FA /* profileEdit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6183294B1DB10B8500DC53FA /* profileEdit.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -125,8 +124,6 @@
 		618329441DB0AD6C00DC53FA /* AllVenueMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllVenueMapViewController.m; sourceTree = "<group>"; };
 		618329471DB0D47600DC53FA /* UpdateUserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateUserInfoViewController.h; sourceTree = "<group>"; };
 		618329481DB0D47600DC53FA /* UpdateUserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateUserInfoViewController.m; sourceTree = "<group>"; };
-		6183294A1DB10B8500DC53FA /* profileEdit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = profileEdit.h; sourceTree = "<group>"; };
-		6183294B1DB10B8500DC53FA /* profileEdit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = profileEdit.m; sourceTree = "<group>"; };
 		91430912B476C170740FCE34 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A33C704130F87A32DEDD2651 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A49CEE22DF02AABD5F72CE05 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -394,8 +391,6 @@
 				616ECCC11DA60E3800BA6852 /* tagInfo.m */,
 				611F32CD1DA23C9300009F07 /* userInfo.h */,
 				611F32CE1DA23C9300009F07 /* userInfo.m */,
-				6183294A1DB10B8500DC53FA /* profileEdit.h */,
-				6183294B1DB10B8500DC53FA /* profileEdit.m */,
 				611F32D91DA27F2800009F07 /* venueInfo.h */,
 				611F32DA1DA27F2800009F07 /* venueInfo.m */,
 			);
@@ -566,7 +561,6 @@
 				616ECCD51DA66A1200BA6852 /* UIViewController+REFrostedViewController.m in Sources */,
 				611F32CF1DA23C9300009F07 /* userInfo.m in Sources */,
 				6147A4441D9F9914003DB950 /* JSONResponseSerializerWithData.m in Sources */,
-				6183294C1DB10B8500DC53FA /* profileEdit.m in Sources */,
 				6147A4451D9F9914003DB950 /* NGAPIClient.m in Sources */,
 				616ECCE11DA66A5800BA6852 /* DEMOMenuViewController.m in Sources */,
 				616ECCC21DA60E3800BA6852 /* tagInfo.m in Sources */,

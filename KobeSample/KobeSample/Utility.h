@@ -14,6 +14,7 @@
 
 + (NSString *)iPhoneModel;
 + (id)getFormattedValue:(id)value;
++ (NSString *) base64StringFromData: (NSData *)data length: (int)length;
 
 
 @end

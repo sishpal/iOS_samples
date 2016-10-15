@@ -93,8 +93,6 @@
       
         NSLog(@"Push on updateUserInfo page");
         UpdateUserInfoViewController *updateUserVC = [self.storyboard instantiateViewControllerWithIdentifier:@"UpdateUserInfoViewController"];
-        userInfo *data = (userInfo *) [_arrData objectAtIndex:indexPath.row];
-        updateUserVC.data = data;
         UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:updateUserVC];
         [self presentViewController:nav animated:NO completion:nil];
         [self.frostedViewController hideMenuViewController];
@@ -152,6 +150,7 @@
             userInfo *info = [[userInfo alloc]initWithData:dictData];
             [self.arrData addObject:info];
             cell.m_lblName.text = [NSString stringWithFormat:@"%@ %@",info.m_firstName,info.m_lastName];
+            [cell.m_profileImage setImageWithURL:[NSURL URLWithString: info.m_image] placeholderImage:[UIImage imageNamed:@"download"]];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
         return cell;

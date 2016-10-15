@@ -18,6 +18,7 @@
 @property (nonatomic, strong) NSString *m_id;
 @property (nonatomic, strong) NSString *m_linkSelf;
 @property (nonatomic, strong) NSString *m_type;
+@property (nonatomic, strong) NSString *m_image;
 @property (nonatomic, strong) NSString *m_invitationCode;
 //@property (nonatomic, strong) NSDictionary *value;
 
