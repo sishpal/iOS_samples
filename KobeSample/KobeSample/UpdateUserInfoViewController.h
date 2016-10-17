@@ -21,6 +21,7 @@
 @property (nonatomic, strong) UITextField *m_txtActive;
 @property (nonatomic, strong) NSData *m_sImgData;
 @property (nonatomic, strong) IBOutlet UIScrollView *m_scrollView;
+@property (nonatomic, strong) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 
 @end

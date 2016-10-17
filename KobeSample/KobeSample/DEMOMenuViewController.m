@@ -31,7 +31,7 @@
     self.tableView.opaque = YES;
     //self.tableView.backgroundColor = [UIColor whiteColor];//[UIColor colorWithWhite:0.80 alpha:1.0];
     self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width - 100, self.tableView.frame.size.height);
-    self.arrMenuTitle = [[NSMutableArray alloc]initWithObjects:@"Subscription",@"Notifications",@"How it works",@"Earn free drinks",@"FAQ",@"About", nil];
+    self.arrMenuTitle = [[NSMutableArray alloc]initWithObjects:@"Subscription",@"Notifications",@"How it works",@"Earn free drinks",@"FAQ",@"About",@"Share With", nil];
     self.arrData = [[NSMutableArray alloc] init];
 
     
@@ -80,7 +80,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if(indexPath.row != 0)
+    if(indexPath.row == 1 || indexPath.row == 2 || indexPath.row == 3 || indexPath.row == 4 || indexPath.row == 5)
     {
         NSLog(@"Select row for push on AfterMenuViewController");
         AfterMenuViewController *profileVC = [self.storyboard instantiateViewControllerWithIdentifier:@"AfterMenuViewController"];
@@ -94,7 +94,15 @@
         NSLog(@"Push on updateUserInfo page");
         UpdateUserInfoViewController *updateUserVC = [self.storyboard instantiateViewControllerWithIdentifier:@"UpdateUserInfoViewController"];
         UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:updateUserVC];
-        [self presentViewController:nav animated:NO completion:nil];
+        [self presentViewController:nav animated:YES completion:nil];
+        [self.frostedViewController hideMenuViewController];
+    }
+    if(indexPath.row == 6)
+    {
+        NSLog(@"Share With is selected");
+        ShareWithViewController *shareWithVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ShareWithViewController"];
+        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:shareWithVC];
+        [self presentViewController:nav animated:YES completion:nil];
         [self.frostedViewController hideMenuViewController];
         
     }
@@ -140,7 +148,7 @@
         NSString *cellIdentifier = @"HeaderViewCell";
         HeaderViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         NSMutableDictionary *dictData = [[NSUserDefaults standardUserDefaults]objectForKey:@"userdata"];
-        cell.m_profileImage.layer.cornerRadius = 60;
+        cell.m_profileImage.layer.cornerRadius = 50;
         cell.m_profileImage.layer.masksToBounds = YES;
         cell.m_profileImage.clipsToBounds = YES;
         //cell.m_profileImage.maj
@@ -148,9 +156,12 @@
         if(dictData!=nil)
         {
             userInfo *info = [[userInfo alloc]initWithData:dictData];
-            [self.arrData addObject:info];
             cell.m_lblName.text = [NSString stringWithFormat:@"%@ %@",info.m_firstName,info.m_lastName];
-            [cell.m_profileImage setImageWithURL:[NSURL URLWithString: info.m_image] placeholderImage:[UIImage imageNamed:@"download"]];
+            NSLog(@"image url is => %@",info.m_image);
+            
+            [cell setCellData:info.m_image];
+        
+//            [cell.m_profileImage setImageWithURL:[NSURL URLWithString: info.m_image] placeholderImage:[UIImage imageNamed:@"download"]];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
         return cell;
@@ -167,6 +178,8 @@
         return cell;
     }
 }
+
+
 
 
 

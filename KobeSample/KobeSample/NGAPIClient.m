@@ -62,6 +62,7 @@ static NSString *const apiVersion = @"application/vnd.kobe.v1";
 - (void)showAllVenues : (NSMutableDictionary *)parameter completion:(void (^)(NSMutableDictionary *message, NSError *error))completion
 {
     NSString *path = @"venues";
+    
      [self.requestSerializer setValue:@"1e6f2fb7bde87dd3dededd4727684618" forHTTPHeaderField:@"Authorization"];
     [self.requestSerializer setValue:contentType forHTTPHeaderField:@"Content-Type"];
     [self.requestSerializer setValue:apiVersion forHTTPHeaderField:@"Accept"];

@@ -21,18 +21,17 @@
     self.arrSelectedTagInfo = [[NSMutableArray alloc] init];
     self.m_searchView.layer.borderWidth = 1;
     self.m_addressView.layer.borderWidth = 1;
-//    self.m_currentAddressView.layer.borderColor = [UIColor lightGrayColor];
-//    self.m_searchView.layer.borderColor = [UIColor lightGrayColor];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [self tagList];
-
     // Do any additional setup after loading the view.
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 #pragma mark
 #pragma Method
@@ -49,32 +48,26 @@
              }
     else
     {
-        NSLog(@"message is => %@",message);
+//        NSLog(@"message is => %@",message);
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         NSDictionary *tags = [Utility getFormattedValue:[message objectForKey:@"tags"]];
-        NSLog(@"tags are => %@",tags);
-    
+//        NSLog(@"tags are => %@",tags);
         NSArray *arrData = [Utility getFormattedValue:[tags objectForKey:@"data"]];
-        NSLog(@"data is=> %@",arrData);
-    
+//        NSLog(@"data is=> %@",arrData);
         for (NSDictionary *dicData in arrData) {
             tagInfo *objtagInfo = [[tagInfo alloc]initWithData:dicData];
             [self.arrTagInfo addObject:objtagInfo];
         }
-    
-    
-        NSLog(@"count of array is -> %ld",(long)_arrTagInfo.count);
+//        NSLog(@"count of array is -> %ld",(long)_arrTagInfo.count);
         [_collectionView reloadData];
-
     }
-             
      }];
 }
 
 
-
 #pragma mark
 #pragma UICollectionView Delegates and DataSource
+
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
@@ -85,12 +78,10 @@
 {
     CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CollectionViewCell" forIndexPath:indexPath];
     cell.layer.cornerRadius = 40/2;
-
     cell.backgroundColor = [UIColor blueColor];
     tagInfo *data = (tagInfo *) [_arrTagInfo objectAtIndex:indexPath.row];
     cell.m_lblTagName.textColor = [UIColor whiteColor];
     cell.m_lblTagName.text = data.m_Name;
-
     return cell;
 }
 
@@ -109,8 +100,6 @@
         cell.backgroundColor = [UIColor orangeColor];
     }
     NSLog(@"array is => %@",_arrSelectedTagInfo);
-    
-    
 }
 
 
@@ -120,11 +109,11 @@
 
 //}
 
+
 - (IBAction)onBackButtonPressed:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
-
 
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -134,10 +123,12 @@
     return YES;
 }
 
+
 - (IBAction)onVenueListButtonPressed:(id)sender
 {
     [self.navigationController popViewControllerAnimated:NO];
 }
+
 
 - (IBAction)onSearchButtonPressed:(id)sender
 {

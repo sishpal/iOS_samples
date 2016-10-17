@@ -22,10 +22,10 @@
     // Configure the view for the selected state
 }
 
-/*
-- (void)setCellData : (UserInfo *)userInfo
+
+- (void)setCellData : (NSString *)sUrl
 {
-    if([userInfo.sProfileImage isEqualToString:@""] || userInfo.sProfileImage == nil)
+    if([sUrl isEqualToString:@""] || sUrl == nil)
     {
         [self.activityIndicator setHidden:YES];
         [self.activityIndicator stopAnimating];
@@ -34,10 +34,10 @@
     {
     [self.activityIndicator setHidden:NO];
     [self.activityIndicator startAnimating];
-    [NSThread detachNewThreadSelector:@selector(downloadImageFromUrl:) toTarget:self withObject:userInfo.sProfileImage];
+    [NSThread detachNewThreadSelector:@selector(downloadImageFromUrl:) toTarget:self withObject:sUrl];
     }
 }
-*/
+
 - (void)downloadImageFromUrl:(NSString *)sUrl
 {
     

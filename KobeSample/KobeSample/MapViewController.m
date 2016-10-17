@@ -16,30 +16,29 @@
 @synthesize m_coordinate;
 
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"Map";
-    NSLog(@"value of holder is => %@",_holder);
-    NSLog(@"Value of latitude is => %@",self.holder.m_latitude);
-    NSLog(@"Value of longitude is => %@",self.holder.m_longitude);
+//    NSLog(@"value of holder is => %@",_holder);
+//    NSLog(@"Value of latitude is => %@",self.holder.m_latitude);
+//    NSLog(@"Value of longitude is => %@",self.holder.m_longitude);
     float latitude = [self.holder.m_latitude floatValue];
     float longitude = [self.holder.m_longitude floatValue];
     NSString *name = self.holder.m_name;
     NSString *address = self.holder.m_address;
     MKPointAnnotation * pointAnnotation = [[MKPointAnnotation alloc] init];
-    
     pointAnnotation.title = name;
     pointAnnotation.subtitle = address;
     m_coordinate.latitude = latitude;
     m_coordinate.longitude = longitude;
     pointAnnotation.coordinate = m_coordinate;
     [_mapView addAnnotation:pointAnnotation];
-    
-    
     MKCoordinateRegion adjustedRegion = [self.mapView regionThatFits:MKCoordinateRegionMakeWithDistance(m_coordinate, 200, 100)];
     [self.mapView setRegion:adjustedRegion animated:YES];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -51,7 +50,6 @@
 {
     static NSString *AnnotationViewID = @"annotationViewID";
     MKAnnotationView *annotationView = (MKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:AnnotationViewID];
-    
     if (annotationView == nil)
     {
         annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:AnnotationViewID];
@@ -63,9 +61,9 @@
     annotationView.annotation = annotation;
     UIImageView *myCustomImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"download"]];
     annotationView.leftCalloutAccessoryView = myCustomImage;
-    
     return annotationView;
 }
+
 
 - (IBAction)onBackButtonPressed:(id)sender
 {
@@ -83,5 +81,7 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
 
 @end

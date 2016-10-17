@@ -11,11 +11,15 @@
 #import <MessageUI/MessageUI.h>
 #import "UpdateUserInfoViewController.h"
 #import "AfterMenuViewController.h"
+#import "HeaderViewCell.h"
+#import "ShareWithViewController.h"
+
 
 @interface DEMOMenuViewController : UITableViewController <MFMailComposeViewControllerDelegate>
 @property (nonatomic, strong) NSMutableArray *arrMenuTitle;
 @property (nonatomic, strong) IBOutlet UIView *vwBottomView;
 @property (nonatomic, strong) NSMutableArray *arrData;
+@property (nonatomic, strong) HeaderViewCell *header;
 
 - (void)ReloadData;
 

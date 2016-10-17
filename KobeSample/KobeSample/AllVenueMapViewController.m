@@ -14,24 +14,25 @@
 
 @implementation AllVenueMapViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"Map";
     NSMutableDictionary *dicMessage = [[NSUserDefaults standardUserDefaults]objectForKey:@"venues"];
-    NSLog(@"dicData is -> %@",dicMessage);
+//    NSLog(@"dicData is -> %@",dicMessage);
     NSArray *arrData = [Utility getFormattedValue:[dicMessage objectForKey:@"venues"]];
-    NSLog(@"Array is => %@",arrData);
-    
-    for (NSDictionary *dicVenues in arrData) {
+//    NSLog(@"Array is => %@",arrData);
+    for(NSDictionary *dicVenues in arrData)
+    {
         MKPointAnnotation * pointAnnotation = [[MKPointAnnotation alloc] init];
         NSDictionary *dicAttribute = [Utility getFormattedValue:[dicVenues objectForKey:@"attributes"]];
         self.m_latitude = [Utility getFormattedValue:[dicAttribute objectForKey:@"latitude"]];
         self.m_longitude = [Utility getFormattedValue:[dicAttribute objectForKey:@"longitude"]];
         self.m_name = [Utility getFormattedValue:[dicAttribute objectForKey:@"name"]];
         self.m_address = [Utility getFormattedValue:[dicAttribute objectForKey:@"address"]];
-        NSLog(@"latitude are=> %@",_m_latitude);
-        NSLog(@"longitude are=> %@",_m_longitude);
+//        NSLog(@"latitude are=> %@",_m_latitude);
+//        NSLog(@"longitude are=> %@",_m_longitude);
         float latitude = [self.m_latitude floatValue];
         float longitude = [self.m_longitude floatValue];
         NSString *name = self.m_name;
@@ -43,10 +44,10 @@
         pointAnnotation.subtitle = address;
         [_mapView addAnnotation:pointAnnotation];
     }
-    
     MKCoordinateRegion adjustedRegion = [self.mapView regionThatFits:MKCoordinateRegionMakeWithDistance(_m_coordinate, 200, 100)];
     [self.mapView setRegion:adjustedRegion animated:YES];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

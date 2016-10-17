@@ -18,12 +18,12 @@
     [super viewDidLoad];
     self.title = @"Venue";
     // Do any additional setup after loading the view.
-    NSLog(@"Selected name is => %@",self.data.m_name);
-    NSLog(@"Selected latitude is => %@",self.data.m_latitude);
-    NSLog(@"Selected address is => %@",self.data.m_address);
-    NSLog(@"Selected description is=> %@",self.data.m_description);
-    NSLog(@"Selected hours is => %@",[self.data.m_workingHours componentsJoinedByString:@"\n"]);
-    NSLog(@"value of is_open is => %@",self.data.m_isOpen);
+//    NSLog(@"Selected name is => %@",self.data.m_name);
+//    NSLog(@"Selected latitude is => %@",self.data.m_latitude);
+//    NSLog(@"Selected address is => %@",self.data.m_address);
+//    NSLog(@"Selected description is=> %@",self.data.m_description);
+//    NSLog(@"Selected hours is => %@",[self.data.m_workingHours componentsJoinedByString:@"\n"]);
+//    NSLog(@"value of is_open is => %@",self.data.m_isOpen);
     if([self.data.m_isOpen isEqualToString:@"1"])
         self.isOpen = @"OPEN NOW";
     else
@@ -43,13 +43,13 @@
 {
     return 4;
 }
+
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    NSLog(@"Set Cell Size");
+//    NSLog(@"Set Cell Size");
     if(indexPath.row == 0)
     {
-        // NSInteger hieght = 60;
         return 60.0;
     }else if(indexPath.row == 1)
     {
@@ -65,6 +65,7 @@
     
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
@@ -76,28 +77,23 @@
         Cell.m_lblDistance.text = [self.data.m_distance stringByAppendingPathComponent:@"miles"];
         Cell.m_lblIsOpen.text = _isOpen;
         Cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
         return Cell;
     }
     else if(indexPath.row == 1)
     {
-        
         CustomDetailsViewCell *Cell = [tableView dequeueReusableCellWithIdentifier:@"image"];
         Cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
          [Cell.m_imgview setImageWithURL:[NSURL URLWithString:[self.data.m_imageURL objectAtIndex:0]] placeholderImage:[UIImage imageNamed:@"pin"]];
-        
         return Cell;
-        
     }
-    
     else if(indexPath.row == 2)
     {
         CustomDetailsViewCell *Cell = [tableView dequeueReusableCellWithIdentifier:@"description"];
         Cell.m_lblDescription.text = self.data.m_description;
         Cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return Cell;
-    }else
+    }
+    else
     {
         CustomDetailsViewCell *Cell = [tableView dequeueReusableCellWithIdentifier:@"hours"];
         NSString *hours = [self.data.m_workingHours componentsJoinedByString:@"\n"];
@@ -106,6 +102,8 @@
         return Cell;
     }
 }
+
+
 - (IBAction)onBackButtonPressed:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
@@ -115,9 +113,9 @@
 {
     MapViewController *mapVC = [self.storyboard instantiateViewControllerWithIdentifier:@"MapViewController"];
     mapVC.holder = self.data;
-    
     [self.navigationController pushViewController:mapVC animated:YES];
 }
+
 
 /*
 #pragma mark - Navigation
@@ -128,5 +126,7 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
 
 @end

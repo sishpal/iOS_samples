@@ -34,10 +34,11 @@
     self.m_lastName.text = info.m_lastName;
     self.m_emailAddress.text = info.m_emailAddress;
     [self.m_dateOfBirth setTitle:info.m_dateOfBirth forState:UIControlStateNormal];
+    NSLog(@"img url => %@",info.m_image);
     
-    [self.m_imageView setImageWithURL:[NSURL URLWithString: info.m_image] placeholderImage:[UIImage imageNamed:@"download"]];
+    [self setCellData:info.m_image];
+//    [self.m_imageView setImageWithURL:[NSURL URLWithString: info.m_image] placeholderImage:[UIImage imageNamed:@"download"]];
     
-    //self.m_imageView.image = [UIImage imageNamed:info.m_image];
     NSLog(@"image s->%@",info.m_image);
     self.m_imageView.layer.cornerRadius = 40;
     self.m_imageView.layer.masksToBounds = YES;
@@ -56,18 +57,15 @@
 
 -(NSMutableDictionary *)setJsonDataForProfileEdit
 {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     NSMutableDictionary *dicFinal =[[NSMutableDictionary alloc]init];
     NSMutableDictionary *dicUser = [[NSMutableDictionary alloc]init];
     NSMutableDictionary *dicData = [[NSMutableDictionary alloc]init];
     NSMutableDictionary *dictAttribute = [[NSMutableDictionary alloc]init];
     NSMutableDictionary *dictData = [[NSUserDefaults standardUserDefaults]objectForKey:@"userdata"];
     userInfo *info = [[userInfo alloc]initWithData:dictData];
-    
     self.m_sImgData =  UIImageJPEGRepresentation(self.m_imageView.image, 0.50f);
-    NSString *imgString = [Utility base64StringFromData:self.m_sImgData length:self.m_sImgData.length];
-    
-    //= [NSString stringWithFormat:@"%@", self.m_sImgData];
-    
+    NSString *imgString = [Utility base64StringFromData:self.m_sImgData length:(int)self.m_sImgData.length];
     NSString *fname = self.m_firstName.text;
     NSLog(@"name is ==>%@",fname);
     NSString *firstName = self.m_firstName.text;
@@ -232,8 +230,6 @@
 }
 -(IBAction)onupdateButtonPressed:(id)sender
 {
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    
     [self profileEdit];
 
 }
@@ -273,7 +269,40 @@
     [self selectImages];
 }
 
+- (void)setCellData : (NSString *)sUrl
+{
+    if([sUrl isEqualToString:@""] || sUrl == nil)
+    {
+        [self.activityIndicator setHidden:YES];
+        [self.activityIndicator stopAnimating];
+    }
+    else
+    {
+        [self.activityIndicator setHidden:NO];
+        [self.activityIndicator startAnimating];
+        [NSThread detachNewThreadSelector:@selector(downloadImageFromUrl:) toTarget:self withObject:sUrl];
+    }
+}
 
+- (void)downloadImageFromUrl:(NSString *)sUrl
+{
+    
+    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:sUrl]];
+    
+    if(data)
+    {
+        UIImage *image = [UIImage imageWithData:data];
+        //        [[ImageCache sharedImageCache] storeImage:image forUrl:self.imageURL];
+        //[[ImageCache sharedImageCache] AddImage:sUrl :image];
+        [self performSelectorOnMainThread:@selector(imageDownloadingPerformed:) withObject:image waitUntilDone:YES];
+    }
+}
+- (void)imageDownloadingPerformed:(UIImage *)image
+{
+    [self.activityIndicator stopAnimating];
+    [self.activityIndicator setHidden:YES];
+    [self.m_imageView setImage:image];
+}
 /*
 #pragma mark - Navigation
 

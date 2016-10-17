@@ -23,16 +23,13 @@
     NSLog(@"dicData is -> %@",dicMessage);
     if(dicMessage != nil)
     {
-        NSLog(@"Push on showAllVenues");
+        NSLog(@"Present on showAllVenues");
         RootViewController *showallvenuevC = [self.storyboard instantiateViewControllerWithIdentifier:@"rootController"];
         [self presentViewController:showallvenuevC animated:YES completion:nil];
-       // [self.navigationController pushViewController:showallvenuevC animated:NO];
-
-        
     }
     else
     {
-        NSLog(@"Push on ViewController");
+        NSLog(@"Push on ViewController for Sign In or Register");
         ViewController *vC = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
         [self.navigationController pushViewController:vC animated:NO];
         

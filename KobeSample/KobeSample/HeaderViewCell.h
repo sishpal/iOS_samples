@@ -16,6 +16,6 @@
 
 @property (nonatomic, strong) IBOutlet UIActivityIndicatorView *activityIndicator;
 
-- (void)setCellData : (userInfo *)userInfo;
+- (void)setCellData : (NSString *)userInfo;
 
 @end
