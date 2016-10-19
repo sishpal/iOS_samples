@@ -23,11 +23,12 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="FAW-4Q-NRk"/>
                                 </constraints>
-                                <state key="normal" title="Get Info">
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="Log In with Facebook">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="onFacebookButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ILd-QB-pDY"/>
+                                    <action selector="onFacebookButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ncn-zm-vXY"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -40,9 +41,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="38F-Yp-oHr"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
-                    <connections>
-                        <outlet property="m_btnFacebook" destination="xgI-fR-Cvp" id="lHk-Uj-JYh"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

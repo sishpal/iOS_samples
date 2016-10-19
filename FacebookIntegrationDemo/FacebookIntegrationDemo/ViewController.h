@@ -11,8 +11,12 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKShareKit/FBSDKShareKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <UIAlertViewDelegate>
+@property (nonatomic, strong) FacebookInfo *faceBookInfo;
+@property (nonatomic, strong) NSString *sIsProvider;
+@property (nonatomic, strong) NSMutableDictionary *dicFacebookInfo;
+@property (nonatomic, strong) NSString *m_fbId;
 
-@property(nonatomic, strong) IBOutlet UIButton *m_btnFacebook;
+
 @end
 
