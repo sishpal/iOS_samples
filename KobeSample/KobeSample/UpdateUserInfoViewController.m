@@ -17,13 +17,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     UITapGestureRecognizer *tapGesture1 = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(tapGesture:)];
 //    tapGesture1.numberOfTapsRequired = 1;
     [tapGesture1 setDelegate:self];
     [self.m_imageView addGestureRecognizer:tapGesture1];
-    
-    
     [self setAutomaticallyAdjustsScrollViewInsets:NO];
     self.m_datePicker.hidden = YES;
     self.m_btnDone.hidden = YES;
@@ -35,16 +32,14 @@
     self.m_emailAddress.text = info.m_emailAddress;
     [self.m_dateOfBirth setTitle:info.m_dateOfBirth forState:UIControlStateNormal];
     NSLog(@"img url => %@",info.m_image);
-    
     [self setCellData:info.m_image];
 //    [self.m_imageView setImageWithURL:[NSURL URLWithString: info.m_image] placeholderImage:[UIImage imageNamed:@"download"]];
-    
-    NSLog(@"image s->%@",info.m_image);
+//    NSLog(@"image s->%@",info.m_image);
     self.m_imageView.layer.cornerRadius = 40;
     self.m_imageView.layer.masksToBounds = YES;
     self.m_imageView.clipsToBounds = YES;
-
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -54,6 +49,7 @@
 
 #pragma mark
 #pragma setJsonFormate for profilrEdit
+
 
 -(NSMutableDictionary *)setJsonDataForProfileEdit
 {
@@ -85,6 +81,7 @@
     return dicFinal;
 }
 
+
 -(void)profileEdit
 {
     NGAPIClient *client = [NGAPIClient sharedHTTPClient];
@@ -94,7 +91,6 @@
          {
              NSLog(@"Something bad happend. Please try again.");
              [MBProgressHUD hideHUDForView:self.view animated:YES];
-             
          }
          else
          {
@@ -107,28 +103,27 @@
              
              NSMutableDictionary *dicUser = [Utility getFormattedValue:[message objectForKey:@"user"]];
              NSLog(@"data is=> %@",dicUser);
-     
-             
              NSDictionary *dicData = [Utility getFormattedValue:[dicUser objectForKey:@"data"]];
              NSLog(@"user data is => %@",dicData);
-             
              [[NSUserDefaults standardUserDefaults]setObject:dicData forKey:@"userdata"];
              [[NSUserDefaults standardUserDefaults]synchronize];
-             
-             
          }
      }];
 }
+
 
 - (void) tapGesture: (id)sender
 {
     [self selectImages];
 }
 
+
 -(IBAction)onEditButtonPressed:(id)sender
 {
     [self selectImages];
 }
+
+
 -(IBAction)onDateofBirthButtonPressed:(id)sender
 {
     self.m_datePicker.hidden = NO;
@@ -143,8 +138,8 @@
     NSString *outputString = [formatter stringFromDate:date];
     NSLog(@"new formate of date is => %@",outputString);
     [self.m_dateOfBirth setTitle:[NSString stringWithFormat:@"%@",outputString] forState:UIControlStateNormal];
-    
 }
+
 
 -(IBAction)onCancelButtonPressed:(id)sender
 {

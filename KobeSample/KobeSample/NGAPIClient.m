@@ -90,8 +90,12 @@ static NSString *const apiVersion = @"application/vnd.kobe.v1";
 
 - (void)profileEdit : (NSMutableDictionary *)parameter completion:(void (^)(NSMutableDictionary *message, NSError *error))completion
 {
+    NSMutableDictionary *dicMessage = [[NSUserDefaults standardUserDefaults]objectForKey:@"userdata"];
+    NSLog(@"dicData is -> %@",dicMessage);
+    NSMutableDictionary *dicAttributes = [Utility getFormattedValue:[dicMessage objectForKey:@"attributes"]];
+    NSString *authToken = [Utility getFormattedValue:[dicAttributes objectForKey:@"auth_token"]];
     NSString *path = @"users";
-    [self.requestSerializer setValue:@"7ac17138ccf0978ad0e3daf7353e231a" forHTTPHeaderField:@"Authorization"];
+    [self.requestSerializer setValue:authToken forHTTPHeaderField:@"Authorization"];
     [self.requestSerializer setValue:contentType forHTTPHeaderField:@"Content-Type"];
     [self.requestSerializer setValue:apiVersion forHTTPHeaderField:@"Accept"];
     [self PATCH:path parameters:parameter success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -100,5 +104,46 @@ static NSString *const apiVersion = @"application/vnd.kobe.v1";
         completion(nil, error);
     }];
 }
+
+- (void)getFaceBookInfoFromGraphAPI : (NSString *)accessToken completion:(void (^)(NSMutableDictionary *message, NSError *error))completion
+{
+    NSString *sURl = [NSString stringWithFormat:@"https://graph.facebook.com/me?fields=id,name,email,first_name,last_name,birthday&access_token=%@",accessToken];
+    [self GET:sURl parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        completion(responseObject, nil);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        completion(nil, error);
+    }];
+}
+
+
+
+- (void)facebookAccountVerification : (NSString *)parameter completion:(void (^)(NSMutableDictionary *message, NSError *error))completion
+{
+    NSString *path = @"account_verification";
+    path = [path stringByAppendingPathComponent:parameter];
+    path = [path stringByAppendingPathComponent:@"device_token/device123"];
+    [self.requestSerializer setValue:contentType forHTTPHeaderField:@"Content-Type"];
+    [self.requestSerializer setValue:apiVersion forHTTPHeaderField:@"Accept"];
+    [self GET:path parameters:parameter success:^(NSURLSessionDataTask *task, id responseObject) {
+        completion(responseObject, nil);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        completion(nil, error);
+    }];
+}
+
+- (void)SignUpUserViaFacebook : (NSMutableDictionary *)parameter completion:(void (^)(NSMutableDictionary *message, NSError *error))completion
+{
+    NSString *path = @"users/login";
+    //    [self.requestSerializer setValue:@"1e6f2fb7bde87dd3dededd4727684618" forHTTPHeaderField:@"Authorization"];
+    [self.requestSerializer setValue:contentType forHTTPHeaderField:@"Content-Type"];
+    [self.requestSerializer setValue:apiVersion forHTTPHeaderField:@"Accept"];
+    [self POST:path parameters:parameter success:^(NSURLSessionDataTask *task, id responseObject) {
+        completion(responseObject, nil);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        completion(nil, error);
+    }];
+}
+
+
 
 @end

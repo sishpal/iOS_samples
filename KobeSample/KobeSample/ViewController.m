@@ -32,5 +32,10 @@
     DetailViewController *detailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"DetailViewController"];
     [self.navigationController pushViewController:detailVC animated:YES];
 }
+-(IBAction)onSignInButtonPressed:(id)sender
+{
+    NSLog(@"Sign In button pressed");
+
+}
 
 @end

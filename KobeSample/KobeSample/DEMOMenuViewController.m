@@ -31,7 +31,7 @@
     self.tableView.opaque = YES;
     //self.tableView.backgroundColor = [UIColor whiteColor];//[UIColor colorWithWhite:0.80 alpha:1.0];
     self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width - 100, self.tableView.frame.size.height);
-    self.arrMenuTitle = [[NSMutableArray alloc]initWithObjects:@"Subscription",@"Notifications",@"How it works",@"Earn free drinks",@"FAQ",@"About",@"Share With", nil];
+    self.arrMenuTitle = [[NSMutableArray alloc]initWithObjects:@"Subscription",@"Notifications",@"How it works",@"Earn free drinks",@"FAQ",@"About",@"Share With",@"Logout", nil];
     self.arrData = [[NSMutableArray alloc] init];
 
     
@@ -106,7 +106,16 @@
         [self.frostedViewController hideMenuViewController];
         
     }
-    
+    if(indexPath.row == 7)
+    {
+        NSLog(@"logout pressed");
+        [[NSUserDefaults standardUserDefaults]setObject:nil forKey:@"userdata"];
+        [[NSUserDefaults standardUserDefaults]synchronize];
+        ViewController *detailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
+        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:detailVC];
+        [self presentViewController:nav animated:YES completion:nil];
+        [self.frostedViewController hideMenuViewController];
+    }
 }
 
 

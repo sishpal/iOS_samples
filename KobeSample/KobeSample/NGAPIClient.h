@@ -23,4 +23,11 @@
 
 - (void)profileEdit : (NSMutableDictionary *)parameter completion:(void (^)(NSMutableDictionary *message, NSError *error))completion;
 
+- (void)facebookAccountVerification : (NSString *)parameter completion:(void (^)(NSMutableDictionary *message, NSError *error))completion;
+
+- (void)getFaceBookInfoFromGraphAPI : (NSString *)accessToken completion:(void (^)(NSMutableDictionary *message, NSError *error))completion;
+
+- (void)SignUpUserViaFacebook : (NSMutableDictionary *)parameter completion:(void (^)(NSMutableDictionary *message, NSError *error))completion;
+
+
 @end

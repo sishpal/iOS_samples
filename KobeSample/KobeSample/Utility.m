@@ -17,6 +17,14 @@ static char base64EncodingTable[64] = {
     'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '/'
 };
 
+
++ (void)showAlertWithTitle:(NSString *)title withMessage:(NSString *)message
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+}
+
+
 + (id)getFormattedValue:(id)value
 {
     if(value)

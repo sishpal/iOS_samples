@@ -23,4 +23,8 @@
 #import "userInfo.h"
 #import "REFrostedViewController.h"
 #import <Social/Social.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKShareKit/FBSDKShareKit.h>
+#import "FacebookInfo.h"
 #endif /* KobeSample_Prefix_pch */
