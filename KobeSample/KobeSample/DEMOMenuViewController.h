@@ -13,6 +13,7 @@
 #import "AfterMenuViewController.h"
 #import "HeaderViewCell.h"
 #import "ShareWithViewController.h"
+#import "HowItWorksViewController.h"
 
 
 @interface DEMOMenuViewController : UITableViewController <MFMailComposeViewControllerDelegate>

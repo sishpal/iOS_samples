@@ -14,6 +14,8 @@
 @property (nonatomic, retain) CLLocationManager *m_locationManager;
 @property (nonatomic, assign) CLLocationCoordinate2D m_currentCoordinate;
 @property (strong, nonatomic) UIWindow *window;
+@property (nonatomic, retain) UIViewController *topViewController;
+
 
 @end
 

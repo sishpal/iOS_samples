@@ -29,5 +29,7 @@
 
 - (void)SignUpUserViaFacebook : (NSMutableDictionary *)parameter completion:(void (^)(NSMutableDictionary *message, NSError *error))completion;
 
+- (void)getUserInfoForLogIn : (NSMutableDictionary *)parameter completion:(void (^)(NSMutableDictionary *message, NSError *error))completion;
+
 
 @end

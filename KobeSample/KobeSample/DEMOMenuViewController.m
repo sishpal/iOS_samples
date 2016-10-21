@@ -80,7 +80,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if(indexPath.row == 1 || indexPath.row == 2 || indexPath.row == 3 || indexPath.row == 4 || indexPath.row == 5)
+    if(indexPath.row == 1 || indexPath.row == 3 || indexPath.row == 4 || indexPath.row == 5)
     {
         NSLog(@"Select row for push on AfterMenuViewController");
         AfterMenuViewController *profileVC = [self.storyboard instantiateViewControllerWithIdentifier:@"AfterMenuViewController"];
@@ -94,6 +94,15 @@
         NSLog(@"Push on updateUserInfo page");
         UpdateUserInfoViewController *updateUserVC = [self.storyboard instantiateViewControllerWithIdentifier:@"UpdateUserInfoViewController"];
         UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:updateUserVC];
+        [self presentViewController:nav animated:YES completion:nil];
+        [self.frostedViewController hideMenuViewController];
+    }
+    if(indexPath.row == 2)
+    {
+        
+        NSLog(@"Push on how it works page");
+        HowItWorksViewController *howitworksVC = [self.storyboard instantiateViewControllerWithIdentifier:@"HowItWorksViewController"];
+        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:howitworksVC];
         [self presentViewController:nav animated:YES completion:nil];
         [self.frostedViewController hideMenuViewController];
     }

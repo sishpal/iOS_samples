@@ -35,7 +35,10 @@
 -(IBAction)onSignInButtonPressed:(id)sender
 {
     NSLog(@"Sign In button pressed");
+    LogInViewController *loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"LogInViewController"];
+    [self.navigationController pushViewController:loginVC animated:YES];
 
 }
+
 
 @end
