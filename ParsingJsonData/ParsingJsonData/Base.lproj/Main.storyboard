@@ -120,9 +120,6 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9m4-6E-KMr">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="320" id="7BI-eP-0td"/>
-                                </constraints>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="nameAndAddress" rowHeight="60" id="tMh-xv-EHf" customClass="CustomDetailsViewCell">
@@ -359,14 +356,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="wN1-uK-Vx0" secondAttribute="trailing" id="3cT-Ld-DbL"/>
-                            <constraint firstAttribute="trailing" secondItem="9m4-6E-KMr" secondAttribute="trailing" id="4hs-yF-XqL"/>
                             <constraint firstItem="wN1-uK-Vx0" firstAttribute="top" secondItem="9m4-6E-KMr" secondAttribute="bottom" id="9ct-M8-Qt9"/>
+                            <constraint firstItem="9m4-6E-KMr" firstAttribute="trailing" secondItem="wN1-uK-Vx0" secondAttribute="trailing" id="Cuc-gd-W1o"/>
                             <constraint firstItem="VKC-KM-wH2" firstAttribute="top" secondItem="wN1-uK-Vx0" secondAttribute="bottom" id="M5b-sk-YSk"/>
                             <constraint firstItem="9m4-6E-KMr" firstAttribute="top" secondItem="AVe-GG-cCq" secondAttribute="bottom" id="UQn-HL-UOs"/>
                             <constraint firstItem="9m4-6E-KMr" firstAttribute="top" secondItem="AVe-GG-cCq" secondAttribute="bottom" id="ZEd-Rk-3t6"/>
                             <constraint firstItem="VKC-KM-wH2" firstAttribute="top" secondItem="9m4-6E-KMr" secondAttribute="bottom" constant="60" id="abZ-tQ-HIe"/>
-                            <constraint firstItem="9m4-6E-KMr" firstAttribute="leading" secondItem="7eE-Vj-4bL" secondAttribute="leading" id="fde-oV-HGL"/>
-                            <constraint firstAttribute="trailing" secondItem="9m4-6E-KMr" secondAttribute="trailing" id="nKO-Dd-2tV"/>
                             <constraint firstItem="wN1-uK-Vx0" firstAttribute="leading" secondItem="7eE-Vj-4bL" secondAttribute="leading" id="rvz-vD-isk"/>
                             <constraint firstItem="9m4-6E-KMr" firstAttribute="leading" secondItem="7eE-Vj-4bL" secondAttribute="leading" id="sWn-wZ-N82"/>
                             <constraint firstItem="wN1-uK-Vx0" firstAttribute="top" secondItem="9m4-6E-KMr" secondAttribute="bottom" id="z1z-lc-EAd"/>
@@ -444,7 +439,9 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ron-Tf-hYP"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ron-Tf-hYP">
+                                <frame key="frameInset" width="1000" height="1000"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
