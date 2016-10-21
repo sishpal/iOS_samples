@@ -19,13 +19,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.dicFacebookInfo =[[NSMutableDictionary alloc]init];
-
 }
 
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+-(IBAction)onFacebookButtonPressed:(id)sender
+{
+    NSLog(@"login with Facebook button is pressed");
+    [self fbSample];
 }
 
 
@@ -49,52 +55,9 @@
              [alertView show];
          } else {
                 [self getFaceBookData];
-                NSString *access_token = [[NSUserDefaults standardUserDefaults]objectForKey:@"access_token"];
-                NSLog(@"access is -> %@",access_token);
-                [self getFacebookInfoFromGraphAPI:access_token];
          }
      }];
 }
-
-
--(IBAction)onFacebookButtonPressed:(id)sender
-{
-    NSLog(@"login with Facebook button is pressed");
-    [self fbSample];
-}
-
-
-- (void)getFacebookInfoFromGraphAPI : (NSString *)accessToken //: (CompletionBlock)completion
-{
-    // [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    NGAPIClient *client = [NGAPIClient sharedHTTPClient];
-    [client getFaceBookInfoFromGraphAPI:accessToken completion:^(NSMutableDictionary *message, NSError *error)
-     {
-         if(error)
-         {
-             [MBProgressHUD hideHUDForView:self.view animated:YES];
-             [Utility showAlertWithTitle:@"Oops" withMessage:@"Something bad happened. Please try again."];
-         }
-         else
-         {
-             [MBProgressHUD hideHUDForView:self.view animated:YES];
-             if([message objectForKey:@"errors"])
-             {
-                 [Utility showAlertWithTitle:kAppName withMessage:[message objectForKey:@"errors"]];
-             }
-             else
-             {
-                 self.faceBookInfo = [[FacebookInfo alloc]initwithFacebookInfo:message];
-                 self.faceBookInfo.m_sAccessToken = [FBSDKAccessToken currentAccessToken].tokenString;
-                 self.sIsProvider = @"facebook";
-             }
-             NSLog(@"message by graphics API %@",message);
-             self.dicFacebookInfo = message;
-
-         }
-     }];
-}
-
 
 - (void)getFaceBookData //: (CompletionBlock)completion
 {
@@ -108,6 +71,7 @@
                  NSLog(@"result is %@",result);
                  NSString *fb_id = [Utility getFormattedValue:[result objectForKey:@"id"]];
                  self.m_fbId = fb_id;
+                 self.m_access_token = access_token;
                  [self facebookAccountVerification :fb_id];
              }
              else
@@ -137,9 +101,105 @@
              
              NSString *sStatus = [Utility getFormattedValue:[message objectForKey:@"status"]];
              NSString *sErrorCode = [Utility getFormattedValue:[message objectForKey:@"error_code"]];
-             if([sStatus isEqualToString:@"200"] && sErrorCode.length >= 0)
+             if([sStatus isEqualToString:@"200"] && sErrorCode.length <= 0)
              {
-                 [self SignUpUserViaFacebook];
+                 NSLog(@"Save Data into DataHolder");
+             }
+             else
+             {
+                 [self getFacebookInfoFromGraphAPI:self.m_access_token];
+             }
+         }
+     }];
+}
+
+
+- (void)getFacebookInfoFromGraphAPI : (NSString *)accessToken //: (CompletionBlock)completion
+{
+    // [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    NGAPIClient *client = [NGAPIClient sharedHTTPClient];
+    [client getFaceBookInfoFromGraphAPI:accessToken completion:^(NSMutableDictionary *message, NSError *error)
+     {
+         if(error)
+         {
+             [MBProgressHUD hideHUDForView:self.view animated:YES];
+             [Utility showAlertWithTitle:@"Oops" withMessage:@"Something bad happened. Please try again."];
+         }
+         else
+         {
+             [MBProgressHUD hideHUDForView:self.view animated:YES];
+             if([message objectForKey:@"errors"])
+             {
+                 [Utility showAlertWithTitle:kAppName withMessage:[message objectForKey:@"errors"]];
+             }
+             else
+             {
+                 self.faceBookInfo = [[FacebookInfo alloc]initwithFacebookInfo:message];
+                 self.faceBookInfo.m_sAccessToken = [FBSDKAccessToken currentAccessToken].tokenString;
+                 self.sIsProvider = @"facebook";
+             }
+             NSLog(@"message by graphics API %@",message);
+             self.dicFacebookInfo = message;
+             // check here email or date of birth.
+             NSString *email = [Utility getFormattedValue:[self.dicFacebookInfo objectForKey:@"email"]];
+             NSString *dateOfBirth = [Utility getFormattedValue:[self.dicFacebookInfo objectForKey:@"birthday"]];
+             if([email isEqualToString:@""] && [dateOfBirth isEqualToString:@""])
+             {
+                 NSLog(@"Enter the emailAddress and date of birth both");
+                 EmailViewController *emailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"EmailViewController"];
+                 emailVC.m_dicFacebookInfo = self.dicFacebookInfo;
+                 emailVC.m_fbId = self.m_fbId;
+                 [self.navigationController pushViewController:emailVC animated:YES];
+             }
+             else if([email isEqualToString:@""])
+             {
+                 NSLog(@"Enter the emailAddress");
+                 EmailViewController *emailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"EmailViewController"];
+                 emailVC.m_dicFacebookInfo = self.dicFacebookInfo;
+                 emailVC.m_fbId = self.m_fbId;
+                 [self.navigationController pushViewController:emailVC animated:YES];
+             }
+             else if([dateOfBirth isEqualToString:@""])
+             {
+                 NSLog(@"Enter the date of birth");
+                 EmailViewController *emailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"EmailViewController"];
+                 emailVC.m_dicFacebookInfo = self.dicFacebookInfo;
+                 emailVC.m_fbId = self.m_fbId;
+                 [self.navigationController pushViewController:emailVC animated:YES];
+             }
+             
+             else
+             {
+                [self SignUpUserViaFacebook];
+             }
+         }
+     }];
+}
+
+
+-(void)SignUpUserViaFacebook
+{
+    NGAPIClient *client = [NGAPIClient sharedHTTPClient];
+    [client SignUpUserViaFacebook : [self setJsonDataForSignUpUserViaFacebook] completion:^(NSMutableDictionary *message, NSError *error)
+     {
+         if(error)
+         {
+             NSLog(@"Something bad happend. Please try again.");
+             NSLog(@"errors => %@",error);
+             [MBProgressHUD hideHUDForView:self.view animated:YES];
+         }
+         else
+         {
+             [MBProgressHUD hideHUDForView:self.view animated:YES];
+             NSString *sStatus = [Utility getFormattedValue:[message objectForKey:@"status"]];
+             NSString *sErrorCode = [Utility getFormattedValue:[message objectForKey:@"error_code"]];
+             if([sStatus isEqualToString:@"200"] && sErrorCode.length <= 0)
+             {
+                 NSLog(@"Save Data into DataHolder");
+             }
+             else
+             {
+                 NSLog(@"message from SignUpUserViaFacebook => %@",message);
              }
          }
      }];
@@ -152,7 +212,6 @@
     NSMutableDictionary *dicUser =[[NSMutableDictionary alloc]init];
     NSMutableDictionary *dicData = [[NSMutableDictionary alloc]init];
     NSMutableDictionary *dictAttributes = [[NSMutableDictionary alloc]init];
-    
     NSLog(@"userinfo from facebook==%@",self.dicFacebookInfo);
     NSString *first_name = [Utility getFormattedValue:[self.dicFacebookInfo objectForKey:@"first_name"]];
     NSString *last_name = [Utility getFormattedValue:[self.dicFacebookInfo objectForKey:@"last_name"]];
@@ -170,23 +229,6 @@
     return dicFinal;
 }
 
--(void)SignUpUserViaFacebook
-{
-    NGAPIClient *client = [NGAPIClient sharedHTTPClient];
-    [client SignUpUserViaFacebook : [self setJsonDataForSignUpUserViaFacebook] completion:^(NSMutableDictionary *message, NSError *error)
-     {
-         if(error)
-         {
-             NSLog(@"Something bad happend. Please try again.");
-             NSLog(@"errors => %@",error);
-             [MBProgressHUD hideHUDForView:self.view animated:YES];
-         }
-         else
-         {
-             [MBProgressHUD hideHUDForView:self.view animated:YES];
-             NSLog(@"message from SignUpUserViaFacebook => %@",message);
-         }
-     }];
 
-}
+
 @end

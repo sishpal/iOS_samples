@@ -20,6 +20,7 @@
 		61246BFE1DB6279E0034FD46 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61246BFD1DB6279E0034FD46 /* FBSDKCoreKit.framework */; };
 		61246C001DB627AF0034FD46 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61246BFF1DB627AF0034FD46 /* FBSDKLoginKit.framework */; };
 		61246C021DB627BB0034FD46 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61246C011DB627BB0034FD46 /* FBSDKShareKit.framework */; };
+		612A7F011DB89F0700027406 /* EmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 612A7F001DB89F0700027406 /* EmailViewController.m */; };
 		6141BC1A1DB773F6000483DC /* JSONResponseSerializerWithData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6141BC151DB773F6000483DC /* JSONResponseSerializerWithData.m */; };
 		6141BC1B1DB773F6000483DC /* NGAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 6141BC171DB773F6000483DC /* NGAPIClient.m */; };
 		6141BC1C1DB773F6000483DC /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 6141BC191DB773F6000483DC /* Utility.m */; };
@@ -59,6 +60,8 @@
 		61246BFD1DB6279E0034FD46 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "FacebookSDKs-iOS-4.16.1/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
 		61246BFF1DB627AF0034FD46 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "FacebookSDKs-iOS-4.16.1/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
 		61246C011DB627BB0034FD46 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = "FacebookSDKs-iOS-4.16.1/FBSDKShareKit.framework"; sourceTree = "<group>"; };
+		612A7EFF1DB89F0700027406 /* EmailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailViewController.h; sourceTree = "<group>"; };
+		612A7F001DB89F0700027406 /* EmailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailViewController.m; sourceTree = "<group>"; };
 		6141BC061DB75F88000483DC /* FacebookIntegrationDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FacebookIntegrationDemo.entitlements; sourceTree = "<group>"; };
 		6141BC141DB773F6000483DC /* JSONResponseSerializerWithData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONResponseSerializerWithData.h; sourceTree = "<group>"; };
 		6141BC151DB773F6000483DC /* JSONResponseSerializerWithData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONResponseSerializerWithData.m; sourceTree = "<group>"; };
@@ -131,10 +134,7 @@
 				6141BC131DB768E4000483DC /* NGAPIClient */,
 				6141BC111DB76850000483DC /* ViewController */,
 				61246BDB1DB5F7DD0034FD46 /* Main.storyboard */,
-				61246BFF1DB627AF0034FD46 /* FBSDKLoginKit.framework */,
-				61246BFD1DB6279E0034FD46 /* FBSDKCoreKit.framework */,
-				61246C011DB627BB0034FD46 /* FBSDKShareKit.framework */,
-				61246BFB1DB627830034FD46 /* Bolts.framework */,
+				61C056BC1DB8E34B000D09AA /* Frameworks */,
 				61246BDE1DB5F7DD0034FD46 /* Assets.xcassets */,
 				61246BE01DB5F7DD0034FD46 /* LaunchScreen.storyboard */,
 				61246BE31DB5F7DD0034FD46 /* Info.plist */,
@@ -147,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				61246BD31DB5F7DC0034FD46 /* main.m */,
+				6141BC1D1DB776B2000483DC /* Constant.h */,
 				61246BFA1DB5FCBF0034FD46 /* FacebookIntegrationDemo-Prefix.pch */,
 			);
 			name = "Supporting Files";
@@ -169,6 +170,15 @@
 				4E59D1473D0598D2DBD8BEC6 /* libPods-FacebookIntegrationDemoTests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		612A7EFE1DB89EC900027406 /* EmailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				612A7EFF1DB89F0700027406 /* EmailViewController.h */,
+				612A7F001DB89F0700027406 /* EmailViewController.m */,
+			);
+			name = EmailViewController;
 			sourceTree = "<group>";
 		};
 		6141BC0F1DB76829000483DC /* AppDelegate */ = {
@@ -194,7 +204,7 @@
 			children = (
 				61246BD81DB5F7DC0034FD46 /* ViewController.h */,
 				61246BD91DB5F7DC0034FD46 /* ViewController.m */,
-				6141BC1D1DB776B2000483DC /* Constant.h */,
+				612A7EFE1DB89EC900027406 /* EmailViewController */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -224,6 +234,17 @@
 				6141BC201DB78348000483DC /* FacebookInfo.m */,
 			);
 			name = DataHolder;
+			sourceTree = "<group>";
+		};
+		61C056BC1DB8E34B000D09AA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				61246BFB1DB627830034FD46 /* Bolts.framework */,
+				61246C011DB627BB0034FD46 /* FBSDKShareKit.framework */,
+				61246BFD1DB6279E0034FD46 /* FBSDKCoreKit.framework */,
+				61246BFF1DB627AF0034FD46 /* FBSDKLoginKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		9AB93D5B4FB48248D07FE8E1 /* Pods */ = {
@@ -451,6 +472,7 @@
 				61246BD71DB5F7DC0034FD46 /* AppDelegate.m in Sources */,
 				6141BC1C1DB773F6000483DC /* Utility.m in Sources */,
 				61246BD41DB5F7DC0034FD46 /* main.m in Sources */,
+				612A7F011DB89F0700027406 /* EmailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
