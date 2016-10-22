@@ -19,5 +19,4 @@
 @property (nonatomic, strong) IBOutlet UITableView *tableview;
 
 
-
 @end

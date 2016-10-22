@@ -59,17 +59,31 @@ static NSString *const apiVersion = @"application/vnd.kobe.v1";
 }
 
 
-- (void)showAllVenues : (NSMutableDictionary *)parameter completion:(void (^)(NSMutableDictionary *message, NSError *error))completion
+-(void)showAllVenues : (NSMutableDictionary *)parameter completion:(void (^)(NSMutableDictionary *message, NSError *error))completion
 {
     NSString *path = @"venues";
     
      [self.requestSerializer setValue:@"1e6f2fb7bde87dd3dededd4727684618" forHTTPHeaderField:@"Authorization"];
     [self.requestSerializer setValue:contentType forHTTPHeaderField:@"Content-Type"];
     [self.requestSerializer setValue:apiVersion forHTTPHeaderField:@"Accept"];
-    [self GET:path parameters:parameter success:^(NSURLSessionDataTask *task, id responseObject) {
+    [self POST:path parameters:parameter success:^(NSURLSessionDataTask *task, id responseObject) {
         completion(responseObject, nil);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         completion(nil, error);
+    }];
+}
+
+-(void)showVenueDetails : (NSMutableDictionary *)parameter :(NSString *)venueId completion:(void (^)(NSMutableDictionary *message, NSError *error))completion
+{
+    NSString *path = @"venue";
+    path = [path stringByAppendingPathComponent:venueId];
+    [self.requestSerializer setValue:@"1e6f2fb7bde87dd3dededd4727684618" forHTTPHeaderField:@"Authorization"];
+    [self.requestSerializer setValue:contentType forHTTPHeaderField:@"Content-Type"];
+    [self.requestSerializer setValue:apiVersion forHTTPHeaderField:@"Accept"];
+    [self GET:path parameters:parameter success:^(NSURLSessionDataTask *task, id responseObject) {
+        completion(responseObject, nil);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        completion(parameter, error);
     }];
 }
 
@@ -151,6 +165,28 @@ static NSString *const apiVersion = @"application/vnd.kobe.v1";
     [self.requestSerializer setValue:contentType forHTTPHeaderField:@"Content-Type"];
     [self.requestSerializer setValue:apiVersion forHTTPHeaderField:@"Accept"];
     [self POST:path parameters:parameter success:^(NSURLSessionDataTask *task, id responseObject) {
+        completion(responseObject, nil);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        completion(nil, error);
+    }];
+}
+
+
+- (void)getNotification : (NSString *)parameter completion:(void (^)(NSMutableDictionary *message, NSError *error))completion
+{
+    NSMutableDictionary *dicMessage = [[NSUserDefaults standardUserDefaults]objectForKey:@"userdata"];
+    NSLog(@"dicData is -> %@",dicMessage);
+    NSString *m_uId = [Utility getFormattedValue:[dicMessage objectForKey:@"id"]];
+
+    
+    NSString *path = @"notifications";
+    path = [path stringByAppendingPathComponent:parameter];
+    path = [path stringByAppendingPathComponent:@"user"];
+    path = [path stringByAppendingPathComponent:m_uId];
+    // [self.requestSerializer setValue:@"1e6f2fb7bde87dd3dededd4727684618" forHTTPHeaderField:@"Authorization"];
+    [self.requestSerializer setValue:contentType forHTTPHeaderField:@"Content-Type"];
+    [self.requestSerializer setValue:apiVersion forHTTPHeaderField:@"Accept"];
+    [self GET:path parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         completion(responseObject, nil);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         completion(nil, error);

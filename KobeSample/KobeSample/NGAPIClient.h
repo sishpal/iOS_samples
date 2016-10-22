@@ -19,6 +19,8 @@
 
 - (void)showAllVenues : (NSMutableDictionary *)parameter completion:(void (^)(NSMutableDictionary *message, NSError *error))completion;
 
+-(void)showVenueDetails : (NSMutableDictionary *)parameter : (NSString *)venueId completion:(void (^)(NSMutableDictionary *message, NSError *error))completion;
+
 - (void)getTagList : (NSString *)parameter completion:(void (^)(NSMutableDictionary *message, NSError *error))completion;
 
 - (void)profileEdit : (NSMutableDictionary *)parameter completion:(void (^)(NSMutableDictionary *message, NSError *error))completion;
@@ -30,6 +32,8 @@
 - (void)SignUpUserViaFacebook : (NSMutableDictionary *)parameter completion:(void (^)(NSMutableDictionary *message, NSError *error))completion;
 
 - (void)getUserInfoForLogIn : (NSMutableDictionary *)parameter completion:(void (^)(NSMutableDictionary *message, NSError *error))completion;
+
+- (void)getNotification : (NSString *)parameter completion:(void (^)(NSMutableDictionary *message, NSError *error))completion;
 
 
 @end

@@ -24,6 +24,7 @@
 //    NSLog(@"Selected description is=> %@",self.data.m_description);
 //    NSLog(@"Selected hours is => %@",[self.data.m_workingHours componentsJoinedByString:@"\n"]);
 //    NSLog(@"value of is_open is => %@",self.data.m_isOpen);
+    NSLog(@"Venue id is=> %@",self.m_venueId);
     if([self.data.m_isOpen isEqualToString:@"1"])
         self.isOpen = @"OPEN NOW";
     else
@@ -31,11 +32,62 @@
     self.m_btnRedeem.layer.cornerRadius = 50/2;
     self.m_tableView.estimatedRowHeight = 50;
     self.m_tableView.rowHeight = UITableViewAutomaticDimension;
+    [self showVenueDetails];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+-(NSMutableDictionary *)setJsonDataForVenueDetails
+{
+    NSMutableDictionary *dicFinal =[[NSMutableDictionary alloc]init];
+    NSMutableDictionary *dicData = [[NSMutableDictionary alloc]init];
+    NSMutableDictionary *dictAttributes = [[NSMutableDictionary alloc]init];
+    NSMutableDictionary *dicMessage = [[NSUserDefaults standardUserDefaults]objectForKey:@"userdata"];
+    userInfo *objUserInfo = [[userInfo alloc]initWithData:dicMessage];
+    NSLog(@"objUserInfo is => %@",objUserInfo.m_id);
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    NSString *latitude = [NSString stringWithFormat:@"%f",appDelegate.m_currentCoordinate.latitude];
+    NSString *longitude = [NSString stringWithFormat:@"%f",appDelegate.m_currentCoordinate.longitude];
+    [dictAttributes setObject:latitude forKey:@"longitude"];
+    [dictAttributes setObject:longitude forKey:@"latitude"];
+    [dicData setObject:objUserInfo.m_id forKey:@"user_id"];
+    [dicData setObject:dictAttributes forKey:@"attributes"];
+    [dicFinal setObject:dicData forKey:@"data"];
+    return dicFinal;
+}
+
+
+
+-(void)showVenueDetails
+{
+    NGAPIClient *client = [NGAPIClient sharedHTTPClient];
+    [client showVenueDetails : [self setJsonDataForVenueDetails] : self.m_venueId completion:^(NSMutableDictionary *message, NSError *error)
+     {
+         if(error)
+         {
+             NSLog(@"Something bad happend. Please try again.");
+             [MBProgressHUD hideHUDForView:self.view animated:YES];
+             
+         }
+         else
+         {
+             [MBProgressHUD hideHUDForView:self.view animated:YES];
+                          NSLog(@" show Venue Details message is => %@",message);
+             NSString *status =  [Utility  getFormattedValue:[message objectForKey:@"status"]];
+             NSString *errorCode =  [Utility  getFormattedValue:[message objectForKey:@"error_code"]];
+                          NSLog(@"error code is => %@",errorCode);
+                          NSLog(@"status %@",status);
+             
+             NSMutableDictionary *dicVenues = [Utility getFormattedValue:[message objectForKey:@"venues"]];
+             [[venueInfo alloc]initWithData:dicVenues];
+
+             [_m_tableView reloadData];
+         }
+     }];
 }
 
 
@@ -62,7 +114,6 @@
     {
         return UITableViewAutomaticDimension;
     }
-    
 }
 
 

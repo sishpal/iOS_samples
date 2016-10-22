@@ -14,6 +14,7 @@
 #import "HeaderViewCell.h"
 #import "ShareWithViewController.h"
 #import "HowItWorksViewController.h"
+#import "NotificationViewController.h"
 
 
 @interface DEMOMenuViewController : UITableViewController <MFMailComposeViewControllerDelegate>

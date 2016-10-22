@@ -16,6 +16,7 @@
 @property (nonatomic, strong) IBOutlet UIButton *m_btnRedeem;
 @property (nonatomic, strong) IBOutlet UITableView *m_tableView;
 @property (nonatomic, strong) NSString *isOpen;
+@property (nonatomic, strong) NSString *m_venueId;
 
 
 @end

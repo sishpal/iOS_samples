@@ -28,4 +28,5 @@
 #import <FBSDKShareKit/FBSDKShareKit.h>
 #import "FacebookInfo.h"
 #import "VenueViewCell.h"
+#import "NotificationInfo.h"
 #endif /* KobeSample_Prefix_pch */

@@ -23,6 +23,9 @@
 		611F32DD1DA284E200009F07 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 611F32DC1DA284E200009F07 /* CoreLocation.framework */; };
 		611F32DF1DA284E900009F07 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 611F32DE1DA284E900009F07 /* MapKit.framework */; };
 		611F32E61DA28FE100009F07 /* ShowAllVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = 611F32E51DA28FE100009F07 /* ShowAllVenue.m */; };
+		61260F4D1DBB3B78004D4AE5 /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61260F4C1DBB3B78004D4AE5 /* NotificationViewController.m */; };
+		61260F511DBB4376004D4AE5 /* NotificationViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 61260F501DBB4376004D4AE5 /* NotificationViewCell.m */; };
+		61260F541DBB70B7004D4AE5 /* NotificationInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 61260F531DBB70B7004D4AE5 /* NotificationInfo.m */; };
 		612ADB681DB4F7FF0012C752 /* ShareWithViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 612ADB671DB4F7FF0012C752 /* ShareWithViewController.m */; };
 		612ADB6A1DB508910012C752 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 612ADB691DB508910012C752 /* Social.framework */; };
 		61379A5E1DA38453007ABD99 /* CustomViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 61379A5D1DA38453007ABD99 /* CustomViewCell.m */; };
@@ -87,6 +90,12 @@
 		611F32E01DA2857700009F07 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		611F32E41DA28FE100009F07 /* ShowAllVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowAllVenue.h; sourceTree = "<group>"; };
 		611F32E51DA28FE100009F07 /* ShowAllVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowAllVenue.m; sourceTree = "<group>"; };
+		61260F4B1DBB3B78004D4AE5 /* NotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationViewController.h; sourceTree = "<group>"; };
+		61260F4C1DBB3B78004D4AE5 /* NotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationViewController.m; sourceTree = "<group>"; };
+		61260F4F1DBB4376004D4AE5 /* NotificationViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationViewCell.h; sourceTree = "<group>"; };
+		61260F501DBB4376004D4AE5 /* NotificationViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationViewCell.m; sourceTree = "<group>"; };
+		61260F521DBB70B7004D4AE5 /* NotificationInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationInfo.h; sourceTree = "<group>"; };
+		61260F531DBB70B7004D4AE5 /* NotificationInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationInfo.m; sourceTree = "<group>"; };
 		612ADB661DB4F7FF0012C752 /* ShareWithViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareWithViewController.h; sourceTree = "<group>"; };
 		612ADB671DB4F7FF0012C752 /* ShareWithViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareWithViewController.m; sourceTree = "<group>"; };
 		612ADB691DB508910012C752 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
@@ -280,6 +289,25 @@
 			name = ShowAllVenue;
 			sourceTree = "<group>";
 		};
+		61260F4A1DBB3AFF004D4AE5 /* NotificationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				61260F4B1DBB3B78004D4AE5 /* NotificationViewController.h */,
+				61260F4C1DBB3B78004D4AE5 /* NotificationViewController.m */,
+				61260F4E1DBB4343004D4AE5 /* NotificationViewCell */,
+			);
+			name = NotificationViewController;
+			sourceTree = "<group>";
+		};
+		61260F4E1DBB4343004D4AE5 /* NotificationViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				61260F4F1DBB4376004D4AE5 /* NotificationViewCell.h */,
+				61260F501DBB4376004D4AE5 /* NotificationViewCell.m */,
+			);
+			name = NotificationViewCell;
+			sourceTree = "<group>";
+		};
 		612ADB651DB4F7CB0012C752 /* ShareWithViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -434,6 +462,7 @@
 				616ECCDE1DA66A5800BA6852 /* MenuViewCell.m */,
 				616ECCDF1DA66A5800BA6852 /* RootViewController.h */,
 				616ECCE01DA66A5800BA6852 /* RootViewController.m */,
+				61260F4A1DBB3AFF004D4AE5 /* NotificationViewController */,
 				61EE6EF31DBA1C0F00238551 /* HowItWorks */,
 				612ADB651DB4F7CB0012C752 /* ShareWithViewController */,
 				616CD1BD1DA78468008558D5 /* AfterMenuViewController */,
@@ -449,6 +478,8 @@
 				611F32CE1DA23C9300009F07 /* userInfo.m */,
 				611F32D91DA27F2800009F07 /* venueInfo.h */,
 				611F32DA1DA27F2800009F07 /* venueInfo.m */,
+				61260F521DBB70B7004D4AE5 /* NotificationInfo.h */,
+				61260F531DBB70B7004D4AE5 /* NotificationInfo.m */,
 				616ECCC01DA60E3800BA6852 /* tagInfo.h */,
 				616ECCC11DA60E3800BA6852 /* tagInfo.m */,
 				61C056B91DB8E2BE000D09AA /* FacebookInfo.h */,
@@ -673,9 +704,11 @@
 				611F32D71DA26CB000009F07 /* LaunchViewController.m in Sources */,
 				616ECCD21DA66A1200BA6852 /* REFrostedViewController.m in Sources */,
 				32C194E71D9F8FC0009B7070 /* ViewController.m in Sources */,
+				61260F541DBB70B7004D4AE5 /* NotificationInfo.m in Sources */,
 				611E37361DA51C1A006CCDEE /* SearchViewController.m in Sources */,
 				616ECCD41DA66A1200BA6852 /* UIView+REFrostedViewController.m in Sources */,
 				32C194E41D9F8FC0009B7070 /* AppDelegate.m in Sources */,
+				61260F4D1DBB3B78004D4AE5 /* NotificationViewController.m in Sources */,
 				616ECCE21DA66A5800BA6852 /* DEMONavigationController.m in Sources */,
 				611F32E61DA28FE100009F07 /* ShowAllVenue.m in Sources */,
 				61EE6EF61DBA1C3200238551 /* HowItWorksViewController.m in Sources */,
@@ -683,6 +716,7 @@
 				61C056C11DB8E649000D09AA /* EmailViewController.m in Sources */,
 				618329451DB0AD6C00DC53FA /* AllVenueMapViewController.m in Sources */,
 				61379A681DA39511007ABD99 /* CustomDetailsViewCell.m in Sources */,
+				61260F511DBB4376004D4AE5 /* NotificationViewCell.m in Sources */,
 				61C056BB1DB8E2BE000D09AA /* FacebookInfo.m in Sources */,
 				611F32DB1DA27F2800009F07 /* venueInfo.m in Sources */,
 				616ECCD01DA66A1200BA6852 /* RECommonFunctions.m in Sources */,

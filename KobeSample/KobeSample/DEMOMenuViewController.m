@@ -51,11 +51,11 @@
     [self.tableView reloadData];
 }
 
-- (IBAction)onLogOutButtonPressed:(id)sender
-{
-    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Log out" message:@"Are you sure?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Yes", nil];
-    [alertView show];
-}
+//- (IBAction)onLogOutButtonPressed:(id)sender
+//{
+//    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Log out" message:@"Are you sure?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Yes", nil];
+//    [alertView show];
+//}
 
 #pragma mark -
 #pragma mark UITableView Delegate
@@ -80,7 +80,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if(indexPath.row == 1 || indexPath.row == 3 || indexPath.row == 4 || indexPath.row == 5)
+    if(indexPath.row == 3 || indexPath.row == 4 || indexPath.row == 5)
     {
         NSLog(@"Select row for push on AfterMenuViewController");
         AfterMenuViewController *profileVC = [self.storyboard instantiateViewControllerWithIdentifier:@"AfterMenuViewController"];
@@ -94,6 +94,15 @@
         NSLog(@"Push on updateUserInfo page");
         UpdateUserInfoViewController *updateUserVC = [self.storyboard instantiateViewControllerWithIdentifier:@"UpdateUserInfoViewController"];
         UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:updateUserVC];
+        [self presentViewController:nav animated:YES completion:nil];
+        [self.frostedViewController hideMenuViewController];
+    }
+    if(indexPath.row == 1)
+    {
+        
+        NSLog(@"Push on Notification page");
+        NotificationViewController *notificationVC = [self.storyboard instantiateViewControllerWithIdentifier:@"NotificationViewController"];
+        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:notificationVC];
         [self presentViewController:nav animated:YES completion:nil];
         [self.frostedViewController hideMenuViewController];
     }
