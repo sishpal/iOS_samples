@@ -29,4 +29,8 @@
 #import "FacebookInfo.h"
 #import "VenueViewCell.h"
 #import "NotificationInfo.h"
+#import <GoogleMapsBase/GoogleMapsBase.h>
+#import <GoogleMapsCore/GoogleMapsCore.h>
+#import <GoogleMaps/GoogleMaps.h>
+
 #endif /* KobeSample_Prefix_pch */

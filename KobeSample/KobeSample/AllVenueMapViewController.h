@@ -8,15 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import "DetailsViewController.h"
 
 
-@interface AllVenueMapViewController : UIViewController <MKMapViewDelegate>
+@interface AllVenueMapViewController : UIViewController <GMSMapViewDelegate>
 @property (nonatomic, strong) NSString *m_longitude;
 @property (nonatomic, strong) NSString *m_latitude;
 @property (nonatomic, strong) NSString *m_address;
 @property (nonatomic, strong) NSString *m_name;
 @property (nonatomic, assign) CLLocationCoordinate2D m_coordinate;
-@property (nonatomic, strong) IBOutlet MKMapView *mapView;
+@property (nonatomic, strong) GMSCameraPosition *camera;
+@property (nonatomic, strong) IBOutlet GMSMapView *m_mapView;
+@property (nonatomic, assign) NSArray *arrinfo;
+@property (nonatomic, assign) NSArray *arrVenueData;
+
 
 
 @end

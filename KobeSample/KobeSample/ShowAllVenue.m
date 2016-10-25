@@ -23,15 +23,24 @@
     self.m_arrInfo = [[NSMutableArray alloc] init];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [self.navigationItem setHidesBackButton:YES];
-    [self showAllVenue];
     self.title = @"Venues List";
+    [self showAllVenue];
+
 }
 
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSLog(@"string from searchViewController %@",self.tags);
+    [self showAllVenue];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 
 - (IBAction)onMenuButtonPressed:(id)sender
@@ -53,6 +62,7 @@
     [dictAttribute setObject:@"1" forKey:@"page_no"];
     [dictAttribute setObject:latitude forKey:@"longitude"];
     [dictAttribute setObject:longitude forKey:@"latitude"];
+//    [dictAttribute setObject:self.tags forKey:@"tags"];
     [dicData setObject:dictAttribute forKey:@"attributes"];
     [dicData setObject:objUserInfo.m_id forKey:@"id"];
     [dicFinal setObject:dicData forKey:@"data"];
@@ -88,8 +98,8 @@
                      [self.m_arrInfo addObject:objVenue];
                  }
                  NSLog(@"array count is => %ld",(long)_m_arrInfo.count);
-                 [[NSUserDefaults standardUserDefaults]setObject:message forKey:@"venues"];
-                 [[NSUserDefaults standardUserDefaults]synchronize];
+//                 [[NSUserDefaults standardUserDefaults]setObject:message forKey:@"venues"];
+//                 [[NSUserDefaults standardUserDefaults]synchronize];
              }
              else
              {
@@ -151,6 +161,7 @@
 - (IBAction)onMapButtonPressed:(id)sender
 {
     AllVenueMapViewController *mapVC = [self.storyboard instantiateViewControllerWithIdentifier:@"AllVenueMapViewController"];
+    mapVC.arrVenueData = self.m_arrInfo;
     [self.navigationController pushViewController:mapVC animated:YES];
 }
 

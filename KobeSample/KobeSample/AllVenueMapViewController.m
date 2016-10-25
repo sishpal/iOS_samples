@@ -19,58 +19,84 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"Map";
-    NSMutableDictionary *dicMessage = [[NSUserDefaults standardUserDefaults]objectForKey:@"venues"];
-//    NSLog(@"dicData is -> %@",dicMessage);
-    NSArray *arrData = [Utility getFormattedValue:[dicMessage objectForKey:@"venues"]];
-//    NSLog(@"Array is => %@",arrData);
-    for(NSDictionary *dicVenues in arrData)
-    {
-        MKPointAnnotation * pointAnnotation = [[MKPointAnnotation alloc] init];
-        NSDictionary *dicAttribute = [Utility getFormattedValue:[dicVenues objectForKey:@"attributes"]];
-        self.m_latitude = [Utility getFormattedValue:[dicAttribute objectForKey:@"latitude"]];
-        self.m_longitude = [Utility getFormattedValue:[dicAttribute objectForKey:@"longitude"]];
-        self.m_name = [Utility getFormattedValue:[dicAttribute objectForKey:@"name"]];
-        self.m_address = [Utility getFormattedValue:[dicAttribute objectForKey:@"address"]];
-//        NSLog(@"latitude are=> %@",_m_latitude);
-//        NSLog(@"longitude are=> %@",_m_longitude);
-        float latitude = [self.m_latitude floatValue];
-        float longitude = [self.m_longitude floatValue];
-        NSString *name = self.m_name;
-        NSString *address = self.m_address;
-        _m_coordinate.latitude = latitude;
-        _m_coordinate.longitude = longitude;
-        pointAnnotation.coordinate = _m_coordinate;
-        pointAnnotation.title = name;
-        pointAnnotation.subtitle = address;
-        [_mapView addAnnotation:pointAnnotation];
-    }
-    MKCoordinateRegion adjustedRegion = [self.mapView regionThatFits:MKCoordinateRegionMakeWithDistance(_m_coordinate, 200, 100)];
-    [self.mapView setRegion:adjustedRegion animated:YES];
+    self.view = self.m_mapView;
+    self.m_mapView.delegate = self;
+    [GMSServices provideAPIKey:@"AIzaSyCQ0Pw_Zft8LFavmViQu2KLcElGDVF5q3c"];
+}
+
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self googleMap];
+
 }
 
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-
-- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
-{
-    static NSString *AnnotationViewID = @"annotationViewID";
-    MKAnnotationView *annotationView = (MKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:AnnotationViewID];
     
-    if (annotationView == nil)
-    {
-        annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:AnnotationViewID];
-    }
-    annotationView.canShowCallout = YES;
-    UIImage *img = [UIImage imageNamed:@"pin"];
-    annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-    annotationView.image = img;
-    annotationView.annotation = annotation;
-    return annotationView;
 }
+
+
+- (void)googleMap
+{
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    self.camera = [GMSCameraPosition cameraWithLatitude:appDelegate.m_currentCoordinate.latitude
+                                              longitude:appDelegate.m_currentCoordinate.longitude
+                                                   zoom:10];
+    self.m_mapView = [GMSMapView mapWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height) camera:self.camera];
+    self.m_mapView.delegate=self;
+    self.m_mapView.settings.myLocationButton = NO;
+    self.m_mapView.myLocationEnabled = NO;
+    self.m_mapView.settings.rotateGestures = NO;
+    self.m_mapView.settings.tiltGestures = NO;
+    [self dropMarkerOnMap];
+    
+}
+
+
+- (void)dropMarkerOnMap
+{
+    [self.m_mapView clear];
+    
+        GMSMutablePath *path = [GMSMutablePath path];
+        for(int i =0 ; i < self.arrVenueData.count ;i++)
+        {
+            venueInfo *venueList = (venueInfo *)[self.arrVenueData objectAtIndex:i];
+            float latitude = [venueList.m_latitude floatValue];
+            float longitude = [venueList.m_longitude floatValue];
+            GMSMarker *marker = [[GMSMarker alloc] init];
+            marker.position = CLLocationCoordinate2DMake(latitude,longitude);
+            marker.icon = [UIImage imageNamed:@"map_marker"];
+            marker.title = venueList.m_name;
+            marker.snippet = venueList.m_address;
+            marker.map = self.m_mapView;
+            [path addCoordinate: marker.position];
+        }
+        GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithPath:path];
+        [_m_mapView animateWithCameraUpdate:[GMSCameraUpdate fitBounds:bounds]];
+}
+
+
+- (void)mapView:(GMSMapView *)mapView didTapInfoWindowOfMarker:(GMSMarker *)marker
+{
+    NSLog(@"Select");
+    NSLog(@"title name is %@",marker.title);
+    for(int i =0 ; i < self.arrVenueData.count ;i++)
+    {
+        venueInfo *venueList = (venueInfo *)[self.arrVenueData objectAtIndex:i];
+        if([marker.title isEqualToString:venueList.m_name])
+        {
+            NSLog(@"venuelist.name is %@",venueList.m_name);
+            DetailsViewController *venueData = [self.storyboard instantiateViewControllerWithIdentifier:@"DetailsViewController"];
+            venueData.data = venueList;
+            [self.navigationController pushViewController:venueData animated:YES];
+        }
+    }
+}
+
 
 /*
 #pragma mark - Navigation

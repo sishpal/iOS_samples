@@ -126,6 +126,9 @@
 
 - (IBAction)onVenueListButtonPressed:(id)sender
 {
+    ShowAllVenue *showAllVenueVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ShowAllVenue"];
+    showAllVenueVC.tags = [self.arrSelectedTagInfo componentsJoinedByString:@","];
+    NSLog(@"string pass %@",showAllVenueVC.tags);
     [self.navigationController popViewControllerAnimated:NO];
 }
 

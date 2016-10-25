@@ -13,6 +13,7 @@
 
 @property (nonatomic, strong) venueInfo *holder;
 @property (nonatomic, assign) CLLocationCoordinate2D m_coordinate;
-@property (nonatomic, strong) IBOutlet MKMapView *mapView;
+@property (nonatomic, strong) IBOutlet GMSMapView *m_mapView;
+
 
 @end

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CollectionViewCell.h"
 #import "tagInfo.h"
+#import "ShowAllVenue.h"
 
 @interface SearchViewController : UIViewController <UITextFieldDelegate, UICollectionViewDelegate,UICollectionViewDataSource>
 

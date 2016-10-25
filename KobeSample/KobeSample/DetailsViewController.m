@@ -83,8 +83,9 @@
                           NSLog(@"status %@",status);
              
              NSMutableDictionary *dicVenues = [Utility getFormattedValue:[message objectForKey:@"venues"]];
-             [[venueInfo alloc]initWithData:dicVenues];
-
+             NSMutableDictionary *dicData = [Utility getFormattedValue:[dicVenues objectForKey:@"data"]];
+            venueInfo *venueData = [[venueInfo alloc]initWithVenueData:dicData];
+            self.data = venueData;
              [_m_tableView reloadData];
          }
      }];
