@@ -22,6 +22,8 @@
     [self startUpdatingCurrentLocation];
     [[FBSDKApplicationDelegate sharedInstance] application:application
                              didFinishLaunchingWithOptions:launchOptions];
+    [GMSPlacesClient provideAPIKey:@"AIzaSyAu-oND0SlOqDt_msB6zJPwtbXcK_CePlw"];
+
     return YES;
 }
 

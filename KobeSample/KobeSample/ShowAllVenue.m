@@ -20,11 +20,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationController.navigationBar.translucent = NO;
-    self.m_arrInfo = [[NSMutableArray alloc] init];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [self.navigationItem setHidesBackButton:YES];
     self.title = @"Venues List";
-    [self showAllVenue];
+    self.m_arrInfo = [[NSMutableArray alloc] init];
+    self.tags = @"";
 
 }
 
@@ -32,8 +32,16 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self.m_arrInfo removeAllObjects];
+    NSLog(@"array from search:: %@",self.arrSelectedTags);
     NSLog(@"string from searchViewController %@",self.tags);
+    if(self.arrSelectedTags.count)
+        self.tags = [self.arrSelectedTags componentsJoinedByString:@","];
+    else
+        self.tags = @"";
+    NSLog(@" passing tags is : %@",self.tags);
     [self showAllVenue];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,20 +60,21 @@
 {
     NSMutableDictionary *dicFinal =[[NSMutableDictionary alloc]init];
     NSMutableDictionary *dicData = [[NSMutableDictionary alloc]init];
-    NSMutableDictionary *dictAttribute = [[NSMutableDictionary alloc]init];
+    NSMutableDictionary *dictAttributes = [[NSMutableDictionary alloc]init];
     NSMutableDictionary *dicMessage = [[NSUserDefaults standardUserDefaults]objectForKey:@"userdata"];
     userInfo *objUserInfo = [[userInfo alloc]initWithData:dicMessage];
     NSLog(@"objUserInfo is => %@",objUserInfo.m_id);
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
     NSString *latitude = [NSString stringWithFormat:@"%f",appDelegate.m_currentCoordinate.latitude];
     NSString *longitude = [NSString stringWithFormat:@"%f",appDelegate.m_currentCoordinate.longitude];
-    [dictAttribute setObject:@"1" forKey:@"page_no"];
-    [dictAttribute setObject:latitude forKey:@"longitude"];
-    [dictAttribute setObject:longitude forKey:@"latitude"];
-//    [dictAttribute setObject:self.tags forKey:@"tags"];
-    [dicData setObject:dictAttribute forKey:@"attributes"];
+    [dictAttributes setObject:@"1" forKey:@"page_no"];
+    [dictAttributes setObject:latitude forKey:@"longitude"];
+    [dictAttributes setObject:longitude forKey:@"latitude"];
+    [dictAttributes setObject:self.tags forKey:@"tags"];
+    [dicData setObject:dictAttributes forKey:@"attributes"];
     [dicData setObject:objUserInfo.m_id forKey:@"id"];
     [dicFinal setObject:dicData forKey:@"data"];
+    NSLog(@"dicFinal is = %@",dicFinal);
     return dicFinal;
 }
 
@@ -140,6 +149,7 @@
     venueInfo *data = (venueInfo *) [_m_arrInfo objectAtIndex:indexPath.row];
     detailVC.data = data;
     [self.navigationController pushViewController:detailVC animated:YES];
+    [_tableview reloadData];
 }
 
 
@@ -154,6 +164,8 @@
 {
     NSLog(@"Search button pressed");
     SearchViewController *searchVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SearchViewController"];
+    if(self.tags.length)
+    searchVC.arrSelected = self.arrSelectedTags;
     [self.navigationController pushViewController:searchVC animated:NO];
 }
 

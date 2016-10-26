@@ -10,107 +10,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "KobeSample/ShowAllVenue.m"
-            timestampString = "499093611.871081"
+            timestampString = "499171224.952679"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "-viewWillAppear:"
+            startingLineNumber = "176"
+            endingLineNumber = "176"
+            landmarkName = "-onMapButtonPressed:"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "KobeSample/ShowAllVenue.m"
-            timestampString = "499093674.033762"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
-            landmarkName = "-setJsonDataForVenue"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "KobeSample/NGAPIClient.m"
-            timestampString = "499093715.63876"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "-showAllVenues:completion:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[NGAPIClient showAllVenues:completion:]"
-                  moduleName = "KobeSample"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/BerylSystems/Desktop/KobeSample/KobeSample/NGAPIClient.m"
-                  timestampString = "499093762.231845"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "71"
-                  endingLineNumber = "71"
-                  offsetFromSymbolStart = "494">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__40-[NGAPIClient showAllVenues:completion:]_block_invoke"
-                  moduleName = "KobeSample"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/BerylSystems/Desktop/KobeSample/KobeSample/NGAPIClient.m"
-                  timestampString = "499093762.235676"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "71"
-                  endingLineNumber = "71"
-                  offsetFromSymbolStart = "122">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__destroy_helper_block_.49"
-                  moduleName = "KobeSample"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/BerylSystems/Desktop/KobeSample/KobeSample/NGAPIClient.m"
-                  timestampString = "499093762.242708"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "71"
-                  endingLineNumber = "71"
-                  offsetFromSymbolStart = "29">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__40-[NGAPIClient showAllVenues:completion:]_block_invoke.51"
-                  moduleName = "KobeSample"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/BerylSystems/Desktop/KobeSample/KobeSample/NGAPIClient.m"
-                  timestampString = "499093762.245999"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "71"
-                  endingLineNumber = "71"
-                  offsetFromSymbolStart = "16">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

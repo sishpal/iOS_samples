@@ -18,6 +18,6 @@
 @property (nonatomic, strong) venueInfo *mapdata;
 @property (nonatomic, strong) IBOutlet UITableView *tableview;
 @property (nonatomic, strong) NSString *tags;
-
+@property (nonatomic, strong) NSArray *arrSelectedTags;
 
 @end

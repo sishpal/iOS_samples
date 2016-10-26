@@ -32,5 +32,7 @@
 #import <GoogleMapsBase/GoogleMapsBase.h>
 #import <GoogleMapsCore/GoogleMapsCore.h>
 #import <GoogleMaps/GoogleMaps.h>
+#import <GooglePlaces/GooglePlaces.h>
+#import <GooglePlacePicker/GooglePlacePicker.h>
 
 #endif /* KobeSample_Prefix_pch */
