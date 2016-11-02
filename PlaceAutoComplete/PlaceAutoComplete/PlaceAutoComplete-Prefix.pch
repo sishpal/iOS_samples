@@ -16,6 +16,13 @@
 #import "SPGooglePlacesAutocompleteUtilities.h"
 #import "SPGooglePlacesPlaceDetailQuery.h"
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
+#import <GoogleMapsBase/GoogleMapsBase.h>
+#import <GoogleMapsCore/GoogleMapsCore.h>
+#import <GoogleMaps/GoogleMaps.h>
+#import <GooglePlaces/GooglePlaces.h>
+#import <GooglePlacePicker/GooglePlacePicker.h>
+
 
 
 #endif /* PlaceAutoComplete_Prefix_pch */

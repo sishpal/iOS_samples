@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "CustomCell.h"
+@class SPGooglePlacesAutocompleteQuery;
 
 @interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 {
@@ -20,6 +21,7 @@
 @property (nonatomic, strong) IBOutlet UITextField *txtSearch;
 @property (nonatomic, strong) IBOutlet UITableView *m_tblView;
 @property (nonatomic, strong) NSString *strpass;
+
 
 @end
 

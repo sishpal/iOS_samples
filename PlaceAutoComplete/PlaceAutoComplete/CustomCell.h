@@ -12,4 +12,6 @@
 
 @property (nonatomic, strong) IBOutlet UILabel *m_lblName;
 
+
+
 @end
