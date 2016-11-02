@@ -29,8 +29,7 @@
 }
 
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.m_arrInfo removeAllObjects];
     NSLog(@"array from search:: %@",self.arrSelectedTags);
@@ -41,29 +40,64 @@
         self.tags = @"";
     NSLog(@" passing tags is : %@",self.tags);
     [self showAllVenue];
+    [self.tableview reloadData];
     
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+
 }
 
 
-
-- (IBAction)onMenuButtonPressed:(id)sender
-{
+- (IBAction)onMenuButtonPressed:(id)sender {
     [self.frostedViewController presentMenuViewController];
+
 }
 
--(NSMutableDictionary *)setJsonDataForVenue
-{
+
+-(void)showAllVenue {
+    NGAPIClient *client = [NGAPIClient sharedHTTPClient];
+    [client showAllVenues : [self setJsonDataForVenue] completion:^(NSMutableDictionary *message, NSError *error) {
+         if(error) {
+             NSLog(@"Something bad happend. Please try again.");
+             [MBProgressHUD hideHUDForView:self.view animated:YES];
+         }
+         else {
+             [MBProgressHUD hideHUDForView:self.view animated:YES];
+//             NSLog(@" showAllVenue message is => %@",message);
+             NSString *status =  [Utility  getFormattedValue:[message objectForKey:@"status"]];
+             NSString *errorCode =  [Utility  getFormattedValue:[message objectForKey:@"error_code"]];
+//             NSLog(@"error code is => %@",errorCode);
+//             NSLog(@"status %@",status);
+             if(status) {
+                 NSArray *arrData = [Utility getFormattedValue:[message objectForKey:@"venues"]];
+                 NSLog(@"data is=> %@",arrData);
+                 for (NSDictionary *dicVenues in arrData) {
+                     venueInfo *objVenue = [[venueInfo alloc]initWithVenueData:dicVenues];
+                     [self.m_arrInfo addObject:objVenue];
+                 }
+                 NSLog(@"array count is => %ld",(long)_m_arrInfo.count);
+                 [_tableview reloadData];
+             }
+             else {
+                 NSLog(@"Status not matched");
+             }
+         }
+     }];
+    
+}
+
+
+-(NSMutableDictionary *)setJsonDataForVenue {
     NSMutableDictionary *dicFinal =[[NSMutableDictionary alloc]init];
     NSMutableDictionary *dicData = [[NSMutableDictionary alloc]init];
     NSMutableDictionary *dictAttributes = [[NSMutableDictionary alloc]init];
     NSMutableDictionary *dicMessage = [[NSUserDefaults standardUserDefaults]objectForKey:@"userdata"];
     userInfo *objUserInfo = [[userInfo alloc]initWithData:dicMessage];
-    NSLog(@"objUserInfo is => %@",objUserInfo.m_id);
+//    NSLog(@"objUserInfo is => %@",objUserInfo.m_id);
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
     NSString *latitude = [NSString stringWithFormat:@"%f",appDelegate.m_currentCoordinate.latitude];
     NSString *longitude = [NSString stringWithFormat:@"%f",appDelegate.m_currentCoordinate.longitude];
@@ -74,60 +108,19 @@
     [dicData setObject:dictAttributes forKey:@"attributes"];
     [dicData setObject:objUserInfo.m_id forKey:@"id"];
     [dicFinal setObject:dicData forKey:@"data"];
-    NSLog(@"dicFinal is = %@",dicFinal);
+//    NSLog(@"dicFinal is = %@",dicFinal);
     return dicFinal;
+
 }
 
 
--(void)showAllVenue
-{
-    NGAPIClient *client = [NGAPIClient sharedHTTPClient];
-    [client showAllVenues : [self setJsonDataForVenue] completion:^(NSMutableDictionary *message, NSError *error)
-     {
-         if(error)
-         {
-             NSLog(@"Something bad happend. Please try again.");
-             [MBProgressHUD hideHUDForView:self.view animated:YES];
-
-         }
-         else
-         {
-             [MBProgressHUD hideHUDForView:self.view animated:YES];
-//             NSLog(@" showAllVenue message is => %@",message);
-             NSString *status =  [Utility  getFormattedValue:[message objectForKey:@"status"]];
-             NSString *errorCode =  [Utility  getFormattedValue:[message objectForKey:@"error_code"]];
-//             NSLog(@"error code is => %@",errorCode);
-//             NSLog(@"status %@",status);
-             if(status)
-             {
-                 NSArray *arrData = [Utility getFormattedValue:[message objectForKey:@"venues"]];
-                 NSLog(@"data is=> %@",arrData);
-                 for (NSDictionary *dicVenues in arrData) {
-                     venueInfo *objVenue = [[venueInfo alloc]initWithVenueData:dicVenues];
-                     [self.m_arrInfo addObject:objVenue];
-                 }
-                 NSLog(@"array count is => %ld",(long)_m_arrInfo.count);
-//                 [[NSUserDefaults standardUserDefaults]setObject:message forKey:@"venues"];
-//                 [[NSUserDefaults standardUserDefaults]synchronize];
-             }
-             else
-             {
-                 NSLog(@"Status not matched");
-             }
-             [_tableview reloadData];
-         }
-     }];
-}
-
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.m_arrInfo.count;
+
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CustomViewCell *customCell = [tableView dequeueReusableCellWithIdentifier:@"CustomViewCell"];
     venueInfo *data = (venueInfo *) [_m_arrInfo objectAtIndex:indexPath.row];
 //    NSLog(@"m_name is => %@",data.m_name);
@@ -138,45 +131,43 @@
     customCell.m_lblName.text = data.m_name;
     [customCell.m_lblName setFont:boldFont];
     customCell.m_lblAddress.text = data.m_address;
-    customCell.m_lblDistance.text = [data.m_distance stringByAppendingPathComponent:@"miles"];
+    customCell.m_lblDistance.text = [data.m_distance stringByAppendingPathComponent:@"miles."];
     return customCell;
+
 }
 
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     DetailsViewController *detailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"DetailsViewController"];
     venueInfo *data = (venueInfo *) [_m_arrInfo objectAtIndex:indexPath.row];
     detailVC.data = data;
     [self.navigationController pushViewController:detailVC animated:YES];
-    [_tableview reloadData];
+
 }
 
 
-- (IBAction)onVenueListButtonPressed:(id)sender
-{
-    NSLog(@"Venue list button pressed");
-   
-}
-
-
-- (IBAction)onSearchButtonPressed:(id)sender
-{
+- (IBAction)onSearchButtonPressed:(id)sender {
     NSLog(@"Search button pressed");
     SearchViewController *searchVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SearchViewController"];
     if(self.tags.length)
     searchVC.arrSelected = self.arrSelectedTags;
     [self.navigationController pushViewController:searchVC animated:NO];
+
 }
 
 
-- (IBAction)onMapButtonPressed:(id)sender
-{
+- (IBAction)onMapButtonPressed:(id)sender {
     AllVenueMapViewController *mapVC = [self.storyboard instantiateViewControllerWithIdentifier:@"AllVenueMapViewController"];
     mapVC.arrVenueData = self.m_arrInfo;
     [self.navigationController pushViewController:mapVC animated:YES];
+
 }
 
+
+- (IBAction)onVenueListButtonPressed:(id)sender {
+    NSLog(@"Venue list button pressed already on venue list page");
+    
+}
 /*
 #pragma mark - Navigation
 
@@ -186,5 +177,7 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
 
 @end

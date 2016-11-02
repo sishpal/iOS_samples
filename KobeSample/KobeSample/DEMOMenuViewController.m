@@ -21,15 +21,12 @@
 
 @implementation DEMOMenuViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad{
     [super viewDidLoad];
-    
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.opaque = YES;
-    //self.tableView.backgroundColor = [UIColor whiteColor];//[UIColor colorWithWhite:0.80 alpha:1.0];
     self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width - 100, self.tableView.frame.size.height);
     self.arrMenuTitle = [[NSMutableArray alloc]initWithObjects:@"Subscription",@"Notifications",@"How it works",@"Earn free drinks",@"FAQ",@"About",@"Share With",@"Logout", nil];
     self.arrData = [[NSMutableArray alloc] init];
@@ -45,34 +42,35 @@
     
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.tableView reloadData];
+
 }
 
-//- (IBAction)onLogOutButtonPressed:(id)sender
-//{
-//    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Log out" message:@"Are you sure?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Yes", nil];
-//    [alertView show];
-//}
 
 #pragma mark -
 #pragma mark UITableView Delegate
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex
 {
+    return self.arrMenuTitle.count;//[DataManager getMenuArray].count;
+}
+
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     cell.backgroundColor = [UIColor clearColor];
     cell.textLabel.textColor = [UIColor colorWithRed:62/255.0f green:68/255.0f blue:75/255.0f alpha:1.0f];
     cell.textLabel.font = [UIFont fontWithName:@"Avenir-Medium" size:17];
     cell.textLabel.tintColor = [UIColor whiteColor];
+
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)sectionIndex
-{
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)sectionIndex {
     if (sectionIndex == 0)
         return 0;
-    
     return 34;
 }
 
@@ -157,10 +155,7 @@
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex
-{
-    return self.arrMenuTitle.count;//[DataManager getMenuArray].count;
-}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {

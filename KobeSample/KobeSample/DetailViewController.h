@@ -18,15 +18,16 @@
 @property (nonatomic, strong) IBOutlet UITextField *m_txtlastName;
 @property (nonatomic, strong) IBOutlet UITextField *m_txtEmailAddress;
 @property (nonatomic, strong) IBOutlet UITextField *m_txtPassword;
-@property (nonatomic, strong) UITextField *m_txtActive;
 @property (nonatomic, strong) IBOutlet UIDatePicker *m_datePicker;
 @property (nonatomic, strong) IBOutlet UIButton *m_btnDateOfBirth;
 @property (nonnull, assign) IBOutlet UIToolbar *m_btnDone;
 @property (nonatomic, strong) FacebookInfo *faceBookInfo;
 @property (nonatomic, strong) NSString *sIsProvider;
+@property (nonatomic, strong) UITextField *m_txtActive;
 @property (nonatomic, strong) NSMutableDictionary *dicFacebookInfo;
 @property (nonatomic, strong) NSString *m_fbId;
 @property (nonatomic, strong) NSString *m_access_token;
+
 
 
 @end

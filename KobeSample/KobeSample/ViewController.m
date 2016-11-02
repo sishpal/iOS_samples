@@ -24,14 +24,19 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+
 }
+
 
 - (IBAction)onRegisterButtonPressed:(id)sender
 {
     NSLog(@"Register button pressed and Push on ShowlAllVenuesViewController");
-    DetailViewController *detailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"DetailViewController"];
-    [self.navigationController pushViewController:detailVC animated:YES];
+    DetailViewController *registerVC = [self.storyboard instantiateViewControllerWithIdentifier:@"DetailViewController"];
+    [self.navigationController pushViewController:registerVC animated:YES];
+
 }
+
+
 -(IBAction)onSignInButtonPressed:(id)sender
 {
     NSLog(@"Sign In button pressed");
@@ -39,6 +44,7 @@
     [self.navigationController pushViewController:loginVC animated:YES];
 
 }
+
 
 
 @end

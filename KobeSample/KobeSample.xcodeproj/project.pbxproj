@@ -283,7 +283,7 @@
 				611F32E51DA28FE100009F07 /* ShowAllVenue.m */,
 				61379A581DA383AE007ABD99 /* CustomViewCell */,
 				618329421DB0ACCF00DC53FA /* AllVenueMapViewController */,
-				61379A611DA39177007ABD99 /* DetailsViewController */,
+				61379A611DA39177007ABD99 /* VenueDetailViewController */,
 				616ECCD61DA66A3E00BA6852 /* Menu */,
 				611E37331DA51BB8006CCDEE /* SearchViewController */,
 			);
@@ -327,15 +327,15 @@
 			name = CustomViewCell;
 			sourceTree = "<group>";
 		};
-		61379A611DA39177007ABD99 /* DetailsViewController */ = {
+		61379A611DA39177007ABD99 /* VenueDetailViewController */ = {
 			isa = PBXGroup;
 			children = (
 				61379A621DA391D3007ABD99 /* DetailsViewController.h */,
 				61379A631DA391D3007ABD99 /* DetailsViewController.m */,
-				61379A651DA394AF007ABD99 /* CustomDetailsViewCell */,
 				61379A691DA3AE12007ABD99 /* MapViewController */,
+				61379A651DA394AF007ABD99 /* CustomDetailsViewCell */,
 			);
-			name = DetailsViewController;
+			name = VenueDetailViewController;
 			sourceTree = "<group>";
 		};
 		61379A651DA394AF007ABD99 /* CustomDetailsViewCell */ = {

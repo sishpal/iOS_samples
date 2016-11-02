@@ -22,30 +22,29 @@
     self.m_btnDone.hidden = YES;
     NSString *email = [Utility getFormattedValue:[self.m_dicFacebookInfo objectForKey:@"email"]];
     NSString *dateOfBirth = [Utility getFormattedValue:[self.m_dicFacebookInfo objectForKey:@"birthday"]];
-    if([email isEqualToString:@""] && [dateOfBirth isEqualToString:@""])
-    {
+    if([email isEqualToString:@""] && [dateOfBirth isEqualToString:@""]) {
         NSLog(@"Enter email and date of birth");
     }
-    else if([email isEqualToString:@""])
-    {
+    else if([email isEqualToString:@""]) {
         NSLog(@"enter email");
         self.m_btnDateOfBirth.hidden = YES;
     }
-    else if([dateOfBirth isEqualToString:@""])
-    {
+    else if([dateOfBirth isEqualToString:@""]) {
         NSLog(@"date of birth");
         self.m_txtfEmail.hidden = YES;
     }
+
 }
 
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+
 }
 
--(IBAction)onDateofBirthButtonPressed:(id)sender
-{
+
+-(IBAction)onDateofBirthButtonPressed:(id)sender {
     self.m_datePicker.hidden = NO;
     self.m_datePicker.backgroundColor = [UIColor lightGrayColor];
     self.m_btnDone.backgroundColor = [UIColor lightGrayColor];
@@ -57,70 +56,67 @@
     NSString *outputString = [formatter stringFromDate:date];
     //    NSLog(@"new formate of date is => %@",outputString);
     [self.m_btnDateOfBirth setTitle:[NSString stringWithFormat:@"%@",outputString] forState:UIControlStateNormal];
+
 }
 
--(IBAction)onDoneButtonPressed:(id)sender
-{
+
+-(IBAction)onDoneButtonPressed:(id)sender {
     NSLog(@"Done Button Pressed");
     self.m_datePicker.hidden = YES;
     self.m_btnDone.hidden = YES;
-}
--(IBAction)onSubmitButtonPressed:(id)sender
-{
-    [self SignUpUserViaFacebook];
+
 }
 
--(void)SignUpUserViaFacebook
-{
+
+-(IBAction)onSubmitButtonPressed:(id)sender {
+    [self SignUpUserViaFacebook];
+
+}
+
+
+-(void)SignUpUserViaFacebook {
     NGAPIClient *client = [NGAPIClient sharedHTTPClient];
-    [client SignUpUserViaFacebook : [self setJsonDataForSignUpUserViaFacebook] completion:^(NSMutableDictionary *message, NSError *error)
-     {
-         if(error)
-         {
+    [client SignUpUserViaFacebook : [self setJsonDataForSignUpUserViaFacebook] completion:^(NSMutableDictionary *message, NSError *error) {
+         if(error) {
              NSLog(@"Something bad happend. Please try again.");
              NSLog(@"errors => %@",error);
              [MBProgressHUD hideHUDForView:self.view animated:YES];
          }
-         else
-         {
+         else {
              [MBProgressHUD hideHUDForView:self.view animated:YES];
              NSString *sStatus = [Utility getFormattedValue:[message objectForKey:@"status"]];
              NSString *sErrorCode = [Utility getFormattedValue:[message objectForKey:@"error_code"]];
-             if([sStatus isEqualToString:@"200"] && sErrorCode.length <= 0)
-             {
+             if([sStatus isEqualToString:@"200"] && sErrorCode.length <= 0) {
                  NSLog(@"Save Data into DataHolder");
                  UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"" message:@"Congratulations" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"ok", nil];
                  [alertView show];
              }
-             else
-             {
+             else {
                  NSLog(@"message from SignUpUserViaFacebook => %@",message);
                  NSString *sMessage = [Utility getFormattedValue:[message objectForKey:@"message"]];
-                 
                  UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"" message:[NSString stringWithFormat:@"%@", sMessage] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"ok", nil];
                  [alertView show];
              }
          }
      }];
+
 }
 
--(NSMutableDictionary *)setJsonDataForSignUpUserViaFacebook
-{
+
+-(NSMutableDictionary *)setJsonDataForSignUpUserViaFacebook {
     NSMutableDictionary *dicFinal =[[NSMutableDictionary alloc]init];
     NSMutableDictionary *dicUser =[[NSMutableDictionary alloc]init];
     NSMutableDictionary *dicData = [[NSMutableDictionary alloc]init];
     NSMutableDictionary *dictAttributes = [[NSMutableDictionary alloc]init];
-    NSLog(@"userinfo from facebook==%@",self.m_dicFacebookInfo);
+//    NSLog(@"userinfo from facebook==%@",self.m_dicFacebookInfo);
     NSString *first_name = [Utility getFormattedValue:[self.m_dicFacebookInfo objectForKey:@"first_name"]];
     NSString *last_name = [Utility getFormattedValue:[self.m_dicFacebookInfo objectForKey:@"last_name"]];
     NSString *email = [Utility getFormattedValue:[self.m_dicFacebookInfo objectForKey:@"email"]];
-    if([email isEqualToString:@""])
-    {
+    if([email isEqualToString:@""]) {
         email = self.m_txtfEmail.text;
     }
     NSString *dateOfBirth = [Utility getFormattedValue:[self.m_dicFacebookInfo objectForKey:@"birthday"]];
-    if([dateOfBirth isEqualToString:@""])
-    {
+    if([dateOfBirth isEqualToString:@""]) {
         dateOfBirth = self.m_btnDateOfBirth.titleLabel.text;
     }
     [dictAttributes setObject:first_name forKey:@"first_name"];
@@ -133,12 +129,14 @@
     [dicUser setObject:dicData forKey:@"data"];
     [dicFinal setObject:dicUser forKey:@"user"];
     return dicFinal;
+
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return YES;
+
 }
 
 
@@ -151,5 +149,6 @@
     // Pass the selected object to the new view controller.
 }
 */
+
 
 @end

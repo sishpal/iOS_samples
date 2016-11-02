@@ -16,13 +16,15 @@
 #import "HowItWorksViewController.h"
 #import "NotificationViewController.h"
 
-
 @interface DEMOMenuViewController : UITableViewController <MFMailComposeViewControllerDelegate>
+
 @property (nonatomic, strong) NSMutableArray *arrMenuTitle;
 @property (nonatomic, strong) IBOutlet UIView *vwBottomView;
 @property (nonatomic, strong) NSMutableArray *arrData;
 @property (nonatomic, strong) HeaderViewCell *header;
 
 - (void)ReloadData;
+
+
 
 @end

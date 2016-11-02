@@ -25,50 +25,56 @@
     [self setAutomaticallyAdjustsScrollViewInsets:NO];
     self.m_datePicker.hidden = YES;
     self.m_btnDone.hidden = YES;
+
 }
 
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+
 }
+
 
 #pragma mark
 #pragma Facebook integration
 
--(IBAction)onSignUpWithFacebookButtonPressed:(id)sender
-{
+-(IBAction)onSignUpWithFacebookButtonPressed:(id)sender {
     NSLog(@"Sign Up with Facebook button is pressed");
     [self fbSample];
+
 }
 
 
--(void)fbSample
-{
+-(void)fbSample {
     NSArray *permissions = nil;
     if ([FBSDKAccessToken currentAccessToken].declinedPermissions.count > 0) {
         permissions = [FBSDKAccessToken currentAccessToken].declinedPermissions.allObjects;
-    } else {
+    }
+    else {
         permissions = @[@"email", @"public_profile", @"user_birthday"];
     }
     FBSDKLoginManager *fbsdkLoginManager = [[FBSDKLoginManager alloc] init];
     [fbsdkLoginManager logOut];
     [fbsdkLoginManager logInWithReadPermissions:permissions fromViewController:self handler:^(FBSDKLoginManagerLoginResult *result, NSError *error)
      {
-         NSLog(@"error is => %@",error);
+//         NSLog(@"error is => %@",error);
          if (error) {
-             NSLog(@"ero is %@",error);
-         } else if (result.isCancelled) {
+//             NSLog(@"ero is %@",error);
+         }
+         else if (result.isCancelled) {
              UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Login Failure" message:@"Kobe needs permission to your Facebook public profile and email address" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
              [alertView show];
-         } else {
+         }
+         else {
              [self getFaceBookData];
          }
      }];
+
 }
 
-- (void)getFaceBookData //: (CompletionBlock)completion
-{
+
+- (void)getFaceBookData {
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     if ([FBSDKAccessToken currentAccessToken]) {
         [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:nil]
@@ -82,101 +88,87 @@
                  self.m_access_token = access_token;
                  [self facebookAccountVerification :fb_id];
              }
-             else
-             {
+             else {
                  [MBProgressHUD hideHUDForView:self.view animated:YES];
              }
          }];
     }
+
 }
 
--(void)facebookAccountVerification:(NSString *)fb_id
-{
+
+-(void)facebookAccountVerification:(NSString *)fb_id {
     NGAPIClient *client = [NGAPIClient sharedHTTPClient];
     [client facebookAccountVerification : fb_id completion:^(NSMutableDictionary *message, NSError *error)
      {
-         if(error)
-         {
-             NSLog(@"Something bad happend. Please try again.");
-             NSLog(@"error iis => %@",error);
+         if(error) {
+//             NSLog(@"Something bad happend. Please try again.");
+//             NSLog(@"error iis => %@",error);
              [MBProgressHUD hideHUDForView:self.view animated:YES];
          }
-         else
-         {
+         else {
              [MBProgressHUD hideHUDForView:self.view animated:YES];
-             NSLog(@"message from facebookAccountVerification => %@",message);
-             
+//             NSLog(@"message from facebookAccountVerification => %@",message);
              NSString *sStatus = [Utility getFormattedValue:[message objectForKey:@"status"]];
              NSString *sErrorCode = [Utility getFormattedValue:[message objectForKey:@"error_code"]];
-             if([sStatus isEqualToString:@"200"] && sErrorCode.length <= 0)
-             {
+             if([sStatus isEqualToString:@"200"] && sErrorCode.length <= 0) {
                  NSLog(@"Save Data into DataHolder");
              }
-             else
-             {
+             else {
                  [self getFacebookInfoFromGraphAPI:self.m_access_token];
              }
          }
      }];
+
 }
 
 
-- (void)getFacebookInfoFromGraphAPI : (NSString *)accessToken //: (CompletionBlock)completion
-{
-    // [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+- (void)getFacebookInfoFromGraphAPI : (NSString *)accessToken {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     NGAPIClient *client = [NGAPIClient sharedHTTPClient];
-    [client getFaceBookInfoFromGraphAPI:accessToken completion:^(NSMutableDictionary *message, NSError *error)
-     {
+    [client getFaceBookInfoFromGraphAPI:accessToken completion:^(NSMutableDictionary *message, NSError *error) {
          if(error)
          {
              [MBProgressHUD hideHUDForView:self.view animated:YES];
              [Utility showAlertWithTitle:@"Oops" withMessage:@"Something bad happened. Please try again."];
          }
-         else
-         {
+         else {
              [MBProgressHUD hideHUDForView:self.view animated:YES];
-             if([message objectForKey:@"errors"])
-             {
+             if([message objectForKey:@"errors"]) {
                  [Utility showAlertWithTitle:kAppName withMessage:[message objectForKey:@"errors"]];
              }
-             else
-             {
+             else {
                  self.faceBookInfo = [[FacebookInfo alloc]initwithFacebookInfo:message];
                  self.faceBookInfo.m_sAccessToken = [FBSDKAccessToken currentAccessToken].tokenString;
                  self.sIsProvider = @"facebook";
              }
-             NSLog(@"message by graphics API %@",message);
+//             NSLog(@"message by graphics API %@",message);
              self.dicFacebookInfo = message;
              // check here email or date of birth.
              NSString *email = [Utility getFormattedValue:[self.dicFacebookInfo objectForKey:@"email"]];
              NSString *dateOfBirth = [Utility getFormattedValue:[self.dicFacebookInfo objectForKey:@"birthday"]];
-             if([email isEqualToString:@""] && [dateOfBirth isEqualToString:@""])
-             {
-                 NSLog(@"Enter the emailAddress and date of birth both");
+             if([email isEqualToString:@""] && [dateOfBirth isEqualToString:@""]) {
+//                 NSLog(@"Enter the emailAddress and date of birth both");
                  EmailViewController *emailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"EmailViewController"];
                  emailVC.m_dicFacebookInfo = self.dicFacebookInfo;
                  emailVC.m_fbId = self.m_fbId;
                  [self.navigationController pushViewController:emailVC animated:YES];
              }
-             else if([email isEqualToString:@""])
-             {
-                 NSLog(@"Enter the emailAddress");
+             else if([email isEqualToString:@""]) {
+//                 NSLog(@"Enter the emailAddress");
                  EmailViewController *emailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"EmailViewController"];
                  emailVC.m_dicFacebookInfo = self.dicFacebookInfo;
                  emailVC.m_fbId = self.m_fbId;
                  [self.navigationController pushViewController:emailVC animated:YES];
              }
-             else if([dateOfBirth isEqualToString:@""])
-             {
-                 NSLog(@"Enter the date of birth");
+             else if([dateOfBirth isEqualToString:@""]) {
+//                 NSLog(@"Enter the date of birth");
                  EmailViewController *emailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"EmailViewController"];
                  emailVC.m_dicFacebookInfo = self.dicFacebookInfo;
                  emailVC.m_fbId = self.m_fbId;
                  [self.navigationController pushViewController:emailVC animated:YES];
              }
-             
-             else
-             {
+             else{
                  [self SignUpUserViaFacebook];
              }
          }
@@ -184,48 +176,41 @@
 }
 
 
--(void)SignUpUserViaFacebook
-{
+-(void)SignUpUserViaFacebook {
     NGAPIClient *client = [NGAPIClient sharedHTTPClient];
-    [client SignUpUserViaFacebook : [self setJsonDataForSignUpUserViaFacebook] completion:^(NSMutableDictionary *message, NSError *error)
-     {
-         if(error)
-         {
-             NSLog(@"Something bad happend. Please try again.");
-             NSLog(@"errors => %@",error);
+    [client SignUpUserViaFacebook : [self setJsonDataForSignUpUserViaFacebook] completion:^(NSMutableDictionary *message, NSError *error) {
+         if(error) {
+//             NSLog(@"Something bad happend. Please try again.");
+//             NSLog(@"errors => %@",error);
              [MBProgressHUD hideHUDForView:self.view animated:YES];
          }
-         else
-         {
+         else {
              [MBProgressHUD hideHUDForView:self.view animated:YES];
              NSString *sStatus = [Utility getFormattedValue:[message objectForKey:@"status"]];
              NSString *sErrorCode = [Utility getFormattedValue:[message objectForKey:@"error_code"]];
-             if([sStatus isEqualToString:@"200"] && sErrorCode.length <= 0)
-             {
-                 NSLog(@"Save Data into DataHolder");
+             if([sStatus isEqualToString:@"200"] && sErrorCode.length <= 0) {
+//                 NSLog(@"Save Data into DataHolder");
                  UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"" message:@"Congratulations" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"ok", nil];
                  [alertView show];
              }
-             else
-             {
-                 NSLog(@"message from SignUpUserViaFacebook => %@",message);
-                 NSString *sMessage = [Utility getFormattedValue:[message objectForKey:@"message"]];
-                 
-                 UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"" message:[NSString stringWithFormat:@"%@", sMessage] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"ok", nil];
+             else {
+//                 NSLog(@"message from SignUpUserViaFacebook => %@",message);
+                 NSString *errorMessage = [Utility getFormattedValue:[message objectForKey:@"message"]];
+                 UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"" message:[NSString stringWithFormat:@"%@",errorMessage] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"ok", nil];
                  [alertView show];
              }
          }
      }];
+
 }
 
 
--(NSMutableDictionary *)setJsonDataForSignUpUserViaFacebook
-{
+-(NSMutableDictionary *)setJsonDataForSignUpUserViaFacebook {
     NSMutableDictionary *dicFinal =[[NSMutableDictionary alloc]init];
     NSMutableDictionary *dicUser =[[NSMutableDictionary alloc]init];
     NSMutableDictionary *dicData = [[NSMutableDictionary alloc]init];
     NSMutableDictionary *dictAttributes = [[NSMutableDictionary alloc]init];
-    NSLog(@"userinfo from facebook==%@",self.dicFacebookInfo);
+//    NSLog(@"userinfo from facebook==%@",self.dicFacebookInfo);
     NSString *first_name = [Utility getFormattedValue:[self.dicFacebookInfo objectForKey:@"first_name"]];
     NSString *last_name = [Utility getFormattedValue:[self.dicFacebookInfo objectForKey:@"last_name"]];
     NSString *email = [Utility getFormattedValue:[self.dicFacebookInfo objectForKey:@"email"]];
@@ -240,22 +225,17 @@
     [dicUser setObject:dicData forKey:@"data"];
     [dicFinal setObject:dicUser forKey:@"user"];
     return dicFinal;
+    
 }
-
-
 
 
 #pragma mark
 #pragma Method for registeration
 
-
--(void)userInfo
-{
+-(void)userInfo {
         NGAPIClient *client = [NGAPIClient sharedHTTPClient];
-        [client getUserInfo : [self setJsonData] completion:^(NSMutableDictionary *message, NSError *error)
-         {
-             if(error)
-             {
+        [client getUserInfo : [self setJsonData] completion:^(NSMutableDictionary *message, NSError *error) {
+             if(error) {
                  NSLog(@"Something bad happend. Please try again.");
              }
              else
@@ -263,9 +243,9 @@
 //                 NSLog(@"message is => %@",message);
                  NSString *status =  [Utility  getFormattedValue:[message objectForKey:@"status"]];
                  NSString *errorCode =  [Utility  getFormattedValue:[message objectForKey:@"error_code"]];
-                 NSLog(@"error code is => %@",errorCode);
+//                 NSLog(@"error code is => %@",errorCode);
 //                 NSLog(@"status %@",status);
-                 if([status isEqualToString:@"200"] && errorCode.length == 0 ){
+                 if([status isEqualToString:@"200"] && errorCode.length == 0 ) {
                      NSDictionary *dicUser = [Utility getFormattedValue:[message objectForKey:@"user"]];
 //                     NSLog(@"user info is  => %@",dicUser);
                      NSDictionary *dicData = [Utility getFormattedValue:[dicUser objectForKey:@"data"]];
@@ -275,17 +255,16 @@
                      RootViewController *showallvenuevC = [self.storyboard instantiateViewControllerWithIdentifier:@"rootController"];
                      [self presentViewController:showallvenuevC animated:YES completion:nil];
                  }
-                 else
-                 {
+                 else {
                      NSLog(@"Status not match");
                  }
              }
      }];
+
 }
 
 
-- (NSMutableDictionary *)setJsonData
-{
+- (NSMutableDictionary *)setJsonData {
     NSMutableDictionary *dicFinal =[[NSMutableDictionary alloc]init];
     NSMutableDictionary *dicUser =[[NSMutableDictionary alloc]init];
     NSMutableDictionary *dicData = [[NSMutableDictionary alloc]init];
@@ -301,8 +280,9 @@
     [dicData setObject:dictAttribute forKey:@"attributes"];
     [dicUser setObject:dicData forKey:@"data"];
     [dicFinal setObject:dicUser forKey:@"user"];
-    NSLog(@"dicAttribute is => %@",dicFinal);
+//    NSLog(@"dicAttribute is => %@",dicFinal);
     return dicFinal;
+    
 }
 
 
@@ -311,76 +291,64 @@
 
 -(void)setScrollWhenKeyboardUp
 {
-    NSLog(@"setScrollWhenKeyUp method is called");
+//    NSLog(@"setScrollWhenKeyUp method is called");
 //    self.m_datePicker.hidden = YES;
-    if([[Utility iPhoneModel]isEqualToString:@"iphone5s"])
-    {
-        if (!([self.m_txtActive isEqual:self.m_txtFirstName] || [self.m_txtActive isEqual:self.m_txtlastName]))
-        {
+    if([[Utility iPhoneModel]isEqualToString:@"iphone5s"]) {
+        if (!([self.m_txtActive isEqual:self.m_txtFirstName] || [self.m_txtActive isEqual:self.m_txtlastName])) {
             [self.m_scrollView setContentOffset:CGPointMake(0, 115) animated:YES];
         }
         [self.m_scrollView setContentSize:(CGSizeMake(self.m_scrollView.frame.size.width, self.m_scrollView.frame.size.height +241))];
     }
-    else if([[Utility iPhoneModel]isEqualToString:@"iphone6"])
-    {
-        if(![self.m_txtActive isEqual:self.m_txtFirstName])
-        {
+    else if([[Utility iPhoneModel]isEqualToString:@"iphone6"]) {
+        if(![self.m_txtActive isEqual:self.m_txtFirstName]) {
             [self.m_scrollView setContentOffset:CGPointMake(0, 65) animated:YES];
         }
         [self.m_scrollView setContentSize:(CGSizeMake(self.m_scrollView.frame.size.width, self.m_scrollView.frame.size.height +107))];
     }
-    else if([[Utility iPhoneModel]isEqualToString:@"iphone6+"])
-    {
+    else if([[Utility iPhoneModel]isEqualToString:@"iphone6+"]) {
         [self.m_scrollView setContentSize:(CGSizeMake(self.m_scrollView.frame.size.width, self.m_scrollView.frame.size.height +50))];
     }
+
 }
 
 
 #pragma mark
 #pragma setSCrollWhenKeyDown method
 
-
--(void)setScrollWhenKeyDown
-{
+-(void)setScrollWhenKeyDown {
     NSLog(@"setScrollWhenJeyboardDown method called");
     [self.m_scrollView setContentSize:(CGSizeMake(0,0))];
     [self.m_scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+
 }
 
 
 #pragma mark
 #pragma mark - UITextField Delegates
 
-
--(void)textFieldDidBeginEditing:(UITextField *)textField
-{
+-(void)textFieldDidBeginEditing:(UITextField *)textField {
     self.m_txtActive = textField;
     [self setScrollWhenKeyboardUp];
+
 }
 
 
-//-(void)textFieldDidEndEditing:(UITextField *)textField
-//{
-//    NSLog(@"endEditing");
-//}
-
-
-- (IBAction)onBackButtonPressed:(id)sender
-{
+- (IBAction)onBackButtonPressed:(id)sender {
     NSLog(@"Back button pressed");
     [self.navigationController popViewControllerAnimated:YES];
+
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     [self setScrollWhenKeyDown];
     return YES;
+
 }
 
 
--(IBAction)onDateofBirthButtonPressed:(id)sender
-{
+-(IBAction)onDateofBirthButtonPressed:(id)sender {
     self.m_datePicker.hidden = NO;
     self.m_datePicker.backgroundColor = [UIColor lightGrayColor];
     self.m_btnDone.backgroundColor = [UIColor lightGrayColor];
@@ -392,64 +360,56 @@
     NSString *outputString = [formatter stringFromDate:date];
 //    NSLog(@"new formate of date is => %@",outputString);
     [self.m_btnDateOfBirth setTitle:[NSString stringWithFormat:@"%@",outputString] forState:UIControlStateNormal];
+
 }
 
 
-- (BOOL)checkValidation
-{
-    if([self.m_txtFirstName.text isEqualToString:@""])
-    {
+- (BOOL)checkValidation {
+    if([self.m_txtFirstName.text isEqualToString:@""]) {
         NSLog(@"Please Enter the First Name");
         return NO;
     }
-    else if([self.m_txtlastName.text isEqualToString:@""])
-    {
+    else if([self.m_txtlastName.text isEqualToString:@""]) {
         NSLog(@"Please Enter the Last Name");
         return NO;
     }
-    else if([self.m_txtEmailAddress.text isEqualToString:@""])
-    {
+    else if([self.m_txtEmailAddress.text isEqualToString:@""]) {
         NSLog(@"Please Enter the Email Address");
         return NO;
     }
-    else if([self.m_txtPassword.text isEqualToString:@""])
-    {
+    else if([self.m_txtPassword.text isEqualToString:@""]) {
         NSLog(@"Please Enter the Password");
         return NO;
     }
-    else if([self.m_btnDateOfBirth.titleLabel.text isEqualToString:@""])
-    {
+    else if([self.m_btnDateOfBirth.titleLabel.text isEqualToString:@""]) {
        NSLog(@"Please Select the Date of Birth");
         return NO;
     }
-    else
-    {
+    else {
         return YES;
-
     }
+
 }
 
 
--(IBAction)onSignUpButtonPressed:(id)sender
-{
+-(IBAction)onSignUpButtonPressed:(id)sender {
     NSLog(@"SignInButton Pressed");
-    if([self checkValidation])
-    {
+    if([self checkValidation]) {
         [self userInfo];
     }
-    else
-    {
+    else{
         UIActionSheet *actionSheetSign = [[UIActionSheet alloc]initWithTitle:@"Please Enter the all Fields Requirment." delegate:self cancelButtonTitle:@"Ok" destructiveButtonTitle:nil otherButtonTitles:nil, nil];
         [actionSheetSign showInView:self.view];
     }
+
 }
 
 
--(IBAction)onDoneButtonPressed:(id)sender
-{
+-(IBAction)onDoneButtonPressed:(id)sender {
     NSLog(@"Done Button Pressed");
     self.m_datePicker.hidden = YES;
     self.m_btnDone.hidden = YES;
+
 }
 
 

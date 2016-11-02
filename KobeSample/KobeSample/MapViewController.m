@@ -16,8 +16,7 @@
 @synthesize m_coordinate;
 
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"Map";
     float latitude = [self.holder.m_latitude floatValue];
@@ -37,22 +36,21 @@
     marker.snippet = address;
     marker.map = self.m_mapView;
     self.m_mapView.delegate = self;
+
 }
 
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+
 }
 
 
-
-- (IBAction)onBackButtonPressed:(id)sender
-{
+- (IBAction)onBackButtonPressed:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+
 }
-
-
 
 /*
 #pragma mark - Navigation
