@@ -35,5 +35,7 @@
 
 - (void)getNotification : (NSString *)parameter completion:(void (^)(NSMutableDictionary *message, NSError *error))completion;
 
+- (void)showAllVenuesName : (NSString *)parameter completion:(void (^)(NSMutableDictionary *message, NSError *error))completion;
+
 
 @end

@@ -34,5 +34,6 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import <GooglePlaces/GooglePlaces.h>
 #import <GooglePlacePicker/GooglePlacePicker.h>
+#import "VenuesName.h"
 
 #endif /* KobeSample_Prefix_pch */

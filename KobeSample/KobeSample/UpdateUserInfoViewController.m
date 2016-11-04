@@ -62,6 +62,7 @@
     userInfo *info = [[userInfo alloc]initWithData:dictData];
     self.m_sImgData =  UIImageJPEGRepresentation(self.m_imageView.image, 0.50f);
     NSString *imgString = [Utility base64StringFromData:self.m_sImgData length:(int)self.m_sImgData.length];
+    
     NSString *fname = self.m_firstName.text;
     NSLog(@"name is ==>%@",fname);
     NSString *firstName = self.m_firstName.text;
@@ -69,21 +70,51 @@
     NSString *emailAddress = self.m_emailAddress.text;
     NSString *dateOfBirth = self.m_dateOfBirth.titleLabel.text;
     NSLog(@"dob is %@",dateOfBirth);
-    [dictAttribute setObject:dateOfBirth forKey:@"date_of_birth"];
-    [dictAttribute setObject:firstName forKey:@"first_name"];
-    [dictAttribute setObject:lastName forKey:@"last_name"];
-    [dictAttribute setObject:emailAddress forKey:@"email"];
-    [dictAttribute setObject:imgString forKey:@"image"];
-    [dicData setObject:dictAttribute forKey:@"attributes"];
-    [dicData setObject:info.m_id forKey:@"id"];
-    [dicUser setObject:dicData forKey:@"data"];
-    [dicFinal setObject:dicUser forKey:@"user"];
-    return dicFinal;
+        [dictAttribute setObject:dateOfBirth forKey:@"date_of_birth"];
+        [dictAttribute setObject:firstName forKey:@"first_name"];
+        [dictAttribute setObject:lastName forKey:@"last_name"];
+        [dictAttribute setObject:emailAddress forKey:@"email"];
+        [dictAttribute setObject:imgString forKey:@"image"];
+        [dicData setObject:dictAttribute forKey:@"attributes"];
+        [dicData setObject:info.m_id forKey:@"id"];
+        [dicUser setObject:dicData forKey:@"data"];
+        [dicFinal setObject:dicUser forKey:@"user"];
+        return dicFinal;
+    
+}
+
+-(BOOL)CheckValidation {
+    
+     if([self.m_firstName.text isEqualToString:@""]) {
+        NSLog(@"Please Enter the First Name");
+        [Utility showAlertWithTitle:@"Error" withMessage:@"Please Enter First Name"];
+         return NO;
+    }
+    else if([self.m_lastName.text isEqualToString:@""]) {
+        NSLog(@"Please Enter the Last Name");
+        [Utility showAlertWithTitle:@"Error" withMessage:@"Please Enter Last Name"];
+        return NO;
+    }
+    else if([self.m_emailAddress.text isEqualToString:@""]) {
+        NSLog(@"Please Enter the Email-Address");
+        [Utility showAlertWithTitle:@"Error" withMessage:@"Please Enter Email-Address"];
+        return NO;
+    }
+    else if([self.m_dateOfBirth.titleLabel.text isEqualToString:@""]) {
+        NSLog(@"Please Select the Date of Birth");
+        [Utility showAlertWithTitle:@"Error" withMessage:@"Please Select the Date of Birth"];
+        return NO;
+    }
+    else
+    return  YES;
 }
 
 
 -(void)profileEdit
 {
+    if([self CheckValidation]){
+        
+    
     NGAPIClient *client = [NGAPIClient sharedHTTPClient];
     [client profileEdit : [self setJsonDataForProfileEdit] completion:^(NSMutableDictionary *message, NSError *error)
      {
@@ -109,6 +140,7 @@
              [[NSUserDefaults standardUserDefaults]synchronize];
          }
      }];
+    }
 }
 
 

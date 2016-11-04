@@ -18,13 +18,19 @@
     [super viewDidLoad];
     self.navigationController.navigationBar.translucent = NO;
     self.arrTagInfo = [[NSMutableArray alloc] init];
+    self.arrVenuesName = [[NSMutableArray alloc] init];
+    self.arrFinal = [[NSMutableArray alloc]init];
     self.arrSelectedTagInfo = [[NSMutableArray alloc] init];
-    self.m_searchView.layer.borderWidth = 1;
-    self.m_addressView.layer.borderWidth = 1;
+    self.m_txtSearchViaResturent.layer.borderWidth = 1;
+    self.m_txtSearchViaAddress.layer.borderWidth = 1;
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    self.m_txtSearchViaResturent.text = nil;
     [self tagList];
+    self.tableview.hidden = YES;
+    [self showAllVenuesName];
     // Do any additional setup after loading the view.
 }
+
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -33,9 +39,11 @@
     
 }
 
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    
 }
 
 
@@ -112,6 +120,7 @@
     return cell;
 }
 
+
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     self.flag = YES;
@@ -132,24 +141,122 @@
 }
 
 
-//- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
-//{
+-(void)showAllVenuesName
+{
+    NGAPIClient *client = [NGAPIClient sharedHTTPClient];
+    [client showAllVenuesName : @"" completion:^(NSMutableDictionary *message, NSError *error)
+     {
+         if(error)
+         {
+             [MBProgressHUD hideHUDForView:self.view animated:YES];
+             NSLog(@"Something bad happend. Please try again(ShowAllVenuesName).");
+         }
+         else
+         {
+             NSLog(@"message from showAllVenuesName => %@",message);
+             [MBProgressHUD hideHUDForView:self.view animated:YES];
+             NSArray *arrData = [Utility getFormattedValue:[message objectForKey:@"venues"]];
+             NSLog(@"arrdata from showAllVenuesName=> %@",arrData);
+             for (NSDictionary *dicData in arrData) {
+                 VenuesName *objtagInfo = [[VenuesName alloc]initWithData:dicData];
+                 [self.arrVenuesName addObject:objtagInfo];
+             }
+             NSLog(@"count of array from showAllVenuesName -> %ld",(long)_arrVenuesName.count);
+         }
+     }];
+}
+
+#pragma mark
+#pragma tableview Delegates and DataSource.
 
 
-//}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if(_arrFinal.count>0)
+        return _arrFinal.count;
+    else
+    return self.arrVenuesName.count;
+    
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    TableViewCell *customCell = [tableView dequeueReusableCellWithIdentifier:@"TableViewCell"];
+    if(_arrFinal.count>0) {
+        VenuesName *data = (VenuesName *) [_arrFinal objectAtIndex:indexPath.row];
+        customCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        NSLog(@"value of entered text is := %@",self.myString);
+        NSLog(@"data.m_name %@",data.m_Name);
+        customCell.m_lblName.text = data.m_Name;
+        
+    }
+    else {
+        VenuesName *data = (VenuesName *) [_arrVenuesName objectAtIndex:indexPath.row];
+        customCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        NSLog(@"value of entered text is := %@",self.myString);
+        customCell.m_lblName.text = data.m_Name;
+    }
+    return customCell;
+    
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField           // became first responder
+{
+    NSLog(@"array arrvenuesname is %ld",_arrVenuesName.count);
+    [self.tableview reloadData];
+    self.tableview.hidden = NO;
+    
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    self.myString = [self.m_txtSearchViaResturent.text stringByReplacingCharactersInRange:range withString:string];
+    return YES;
+    
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
+{
+    NSLog(@"mstr %@",_myString);
+    [self sortedData:_myString];
+    return YES;
+}
+-(void)sortedData:(NSString *)myString
+{
+    [_arrFinal removeAllObjects];
+    NSLog(@"mystring is %@",myString);
+    for (VenuesName *data in self.arrVenuesName) {
+        NSLog(@"value of data %@",data.m_Name);
+        if([data.m_Name isEqualToString:myString])
+        {
+            [self.arrFinal addObject:data];
+        }
+        [self.tableview reloadData];
+    }
+
+
+}
+
+
+
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    self.tableview.hidden = YES;
+    [textField resignFirstResponder];
+    NSLog(@"retun called");
+    return YES;
+}
+
+
+- (IBAction)onSearchButtonPressed:(id)sender
+{
+    NSLog(@"Search Button Pressed");
+}
 
 
 - (IBAction)onBackButtonPressed:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
-}
-
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    [textField resignFirstResponder];
-    NSLog(@"retun called");
-    return YES;
 }
 
 
@@ -169,10 +276,12 @@
 }
 
 
-- (IBAction)onSearchButtonPressed:(id)sender
-{
-    NSLog(@"Search Button Pressed");
-}
+//- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+//{
+//    NSLog(@"entered value %@",self.m_searchView.text);
+//    return YES;
+//}
+
 
 
 /*
