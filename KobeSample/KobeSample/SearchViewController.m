@@ -171,10 +171,11 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if(_arrFinal.count>0)
-        return _arrFinal.count;
-    else
-    return self.arrVenuesName.count;
+//    if(_arrFinal.count>0)
+//        return _arrFinal.count;
+//    else
+//    return self.arrVenuesName.count;
+    return _arrFinal.count;
     
 }
 
@@ -189,12 +190,6 @@
         customCell.m_lblName.text = data.m_Name;
         
     }
-    else {
-        VenuesName *data = (VenuesName *) [_arrVenuesName objectAtIndex:indexPath.row];
-        customCell.selectionStyle = UITableViewCellSelectionStyleNone;
-        NSLog(@"value of entered text is := %@",self.myString);
-        customCell.m_lblName.text = data.m_Name;
-    }
     return customCell;
     
 }
@@ -203,43 +198,57 @@
 {
     NSLog(@"array arrvenuesname is %ld",_arrVenuesName.count);
     [self.tableview reloadData];
-    self.tableview.hidden = NO;
-    
+    if([textField isEqual:self.m_txtSearchViaResturent])
+    {
+        self.tableview.hidden = NO;
+    }
+    else
+    {
+        self.tableview.hidden = YES;
+    }
 }
+
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    self.myString = [self.m_txtSearchViaResturent.text stringByReplacingCharactersInRange:range withString:string];
-    return YES;
-    
-}
-
-- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
-{
-    NSLog(@"mstr %@",_myString);
-    [self sortedData:_myString];
-    return YES;
-}
--(void)sortedData:(NSString *)myString
-{
-    [_arrFinal removeAllObjects];
-    NSLog(@"mystring is %@",myString);
-    for (VenuesName *data in self.arrVenuesName) {
-        NSLog(@"value of data %@",data.m_Name);
-        if([data.m_Name isEqualToString:myString])
+    self.myString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    if([textField isEqual:self.m_txtSearchViaResturent] && textField.text.length ==self.m_txtSearchViaResturent.text.length)
+    {
+        if(self.myString.length > 0)
         {
-            [self.arrFinal addObject:data];
+            [self filterContentForSearchText:self.myString scope:nil];
+            [self.tableview reloadData];
         }
-        [self.tableview reloadData];
     }
+    return YES;
+}
 
+//- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField       // return NO to disallow editing.
+//
+//{
+//    if(self.m_txtSearchViaAddress.text.length>=0)
+//        self.tableview.hidden = YES;
+//    else
+//        self.tableview.hidden = NO;
+//    return YES;
+//}
 
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+{
+    [self.arrFinal removeAllObjects];
+//    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K CONTAINS[c]  %@",@"m_Name", searchText ];
+    NSArray *seachArray = [_arrVenuesName filteredArrayUsingPredicate:predicate];
+
+    
+    NSLog(@"value of entered text is %@",self.m_txtSearchViaResturent.text);
+    
+    self.arrFinal = [NSMutableArray arrayWithArray : seachArray];
 }
 
 
-
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     self.tableview.hidden = YES;
     [textField resignFirstResponder];
@@ -248,13 +257,13 @@
 }
 
 
-- (IBAction)onSearchButtonPressed:(id)sender
+-(IBAction)onSearchButtonPressed:(id)sender
 {
     NSLog(@"Search Button Pressed");
 }
 
 
-- (IBAction)onBackButtonPressed:(id)sender
+-(IBAction)onBackButtonPressed:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
 }

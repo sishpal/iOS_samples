@@ -16,9 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     UITapGestureRecognizer *tapGesture1 = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(tapGesture:)];
-//    tapGesture1.numberOfTapsRequired = 1;
     [tapGesture1 setDelegate:self];
     [self.m_imageView addGestureRecognizer:tapGesture1];
     [self setAutomaticallyAdjustsScrollViewInsets:NO];
@@ -26,15 +24,12 @@
     self.m_btnDone.hidden = YES;
     NSMutableDictionary *dictData = [[NSUserDefaults standardUserDefaults]objectForKey:@"userdata"];
     userInfo *info = [[userInfo alloc]initWithData:dictData];
-    //[self.arrData addObject:info];
     self.m_firstName.text = info.m_firstName;
     self.m_lastName.text = info.m_lastName;
     self.m_emailAddress.text = info.m_emailAddress;
     [self.m_dateOfBirth setTitle:info.m_dateOfBirth forState:UIControlStateNormal];
     NSLog(@"img url => %@",info.m_image);
     [self setCellData:info.m_image];
-//    [self.m_imageView setImageWithURL:[NSURL URLWithString: info.m_image] placeholderImage:[UIImage imageNamed:@"download"]];
-//    NSLog(@"image s->%@",info.m_image);
     self.m_imageView.layer.cornerRadius = 40;
     self.m_imageView.layer.masksToBounds = YES;
     self.m_imageView.clipsToBounds = YES;
@@ -62,7 +57,6 @@
     userInfo *info = [[userInfo alloc]initWithData:dictData];
     self.m_sImgData =  UIImageJPEGRepresentation(self.m_imageView.image, 0.50f);
     NSString *imgString = [Utility base64StringFromData:self.m_sImgData length:(int)self.m_sImgData.length];
-    
     NSString *fname = self.m_firstName.text;
     NSLog(@"name is ==>%@",fname);
     NSString *firstName = self.m_firstName.text;
@@ -70,16 +64,16 @@
     NSString *emailAddress = self.m_emailAddress.text;
     NSString *dateOfBirth = self.m_dateOfBirth.titleLabel.text;
     NSLog(@"dob is %@",dateOfBirth);
-        [dictAttribute setObject:dateOfBirth forKey:@"date_of_birth"];
-        [dictAttribute setObject:firstName forKey:@"first_name"];
-        [dictAttribute setObject:lastName forKey:@"last_name"];
-        [dictAttribute setObject:emailAddress forKey:@"email"];
-        [dictAttribute setObject:imgString forKey:@"image"];
-        [dicData setObject:dictAttribute forKey:@"attributes"];
-        [dicData setObject:info.m_id forKey:@"id"];
-        [dicUser setObject:dicData forKey:@"data"];
-        [dicFinal setObject:dicUser forKey:@"user"];
-        return dicFinal;
+    [dictAttribute setObject:dateOfBirth forKey:@"date_of_birth"];
+    [dictAttribute setObject:firstName forKey:@"first_name"];
+    [dictAttribute setObject:lastName forKey:@"last_name"];
+    [dictAttribute setObject:emailAddress forKey:@"email"];
+    [dictAttribute setObject:imgString forKey:@"image"];
+    [dicData setObject:dictAttribute forKey:@"attributes"];
+    [dicData setObject:info.m_id forKey:@"id"];
+    [dicUser setObject:dicData forKey:@"data"];
+    [dicFinal setObject:dicUser forKey:@"user"];
+    return dicFinal;
     
 }
 
@@ -113,8 +107,6 @@
 -(void)profileEdit
 {
     if([self CheckValidation]){
-        
-    
     NGAPIClient *client = [NGAPIClient sharedHTTPClient];
     [client profileEdit : [self setJsonDataForProfileEdit] completion:^(NSMutableDictionary *message, NSError *error)
      {
@@ -146,15 +138,35 @@
 
 - (void) tapGesture: (id)sender
 {
-    [self selectImages];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"TAKE PHOTO",@"CHOOSE FROM LIBRARY", nil];
+    [actionSheet showInView:self.view];
 }
 
 
--(IBAction)onEditButtonPressed:(id)sender
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    [self selectImages];
+    if(buttonIndex == 1)
+    {
+        [self selectImages];
+    }
+    if(buttonIndex == 0)
+        {
+            NSLog(@"selected take photo");
+            if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera])
+            {
+                UIImagePickerController *imgPicker = [[UIImagePickerController alloc] init];
+                imgPicker.delegate = self;
+                imgPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+                [self presentViewController:imgPicker animated:YES completion:^{
+                    
+                }];
+            }
+            else
+            {
+                [Utility showAlertWithTitle:@"Error" withMessage:@"Device has no camera."];
+            }
+        }
 }
-
 
 -(IBAction)onDateofBirthButtonPressed:(id)sender
 {
@@ -293,7 +305,7 @@
 }
 -(IBAction)onImageClicked:(id)sender
 {
-    [self selectImages];
+   // [self selectImages];
 }
 
 - (void)setCellData : (NSString *)sUrl
