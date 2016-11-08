@@ -15,6 +15,7 @@
 		6126203D1DD05755008ECEA9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6126203B1DD05755008ECEA9 /* LaunchScreen.storyboard */; };
 		612620481DD05755008ECEA9 /* AccordianSampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 612620471DD05755008ECEA9 /* AccordianSampleTests.m */; };
 		612620571DD066D1008ECEA9 /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 612620561DD066D1008ECEA9 /* TableViewCell.m */; };
+		61BD29681DD207BC003DFD0C /* FZAccordionTableView in Resources */ = {isa = PBXBuildFile; fileRef = 61BD29671DD207BC003DFD0C /* FZAccordionTableView */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		612620521DD05793008ECEA9 /* AccordianSample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AccordianSample-Prefix.pch"; sourceTree = "<group>"; };
 		612620551DD066D1008ECEA9 /* TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
 		612620561DD066D1008ECEA9 /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
+		61BD29671DD207BC003DFD0C /* FZAccordionTableView */ = {isa = PBXFileReference; lastKnownFileType = folder; path = FZAccordionTableView; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 				612620341DD05754008ECEA9 /* ViewController.m */,
 				612620551DD066D1008ECEA9 /* TableViewCell.h */,
 				612620561DD066D1008ECEA9 /* TableViewCell.m */,
+				61BD29671DD207BC003DFD0C /* FZAccordionTableView */,
 				612620361DD05755008ECEA9 /* Main.storyboard */,
 				612620391DD05755008ECEA9 /* Assets.xcassets */,
 				6126203B1DD05755008ECEA9 /* LaunchScreen.storyboard */,
@@ -201,6 +204,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6126203D1DD05755008ECEA9 /* LaunchScreen.storyboard in Resources */,
+				61BD29681DD207BC003DFD0C /* FZAccordionTableView in Resources */,
 				6126203A1DD05755008ECEA9 /* Assets.xcassets in Resources */,
 				612620381DD05755008ECEA9 /* Main.storyboard in Resources */,
 			);
@@ -426,6 +430,7 @@
 				6126204E1DD05755008ECEA9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6126204F1DD05755008ECEA9 /* Build configuration list for PBXNativeTarget "AccordianSampleTests" */ = {
 			isa = XCConfigurationList;
@@ -434,6 +439,7 @@
 				612620511DD05755008ECEA9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

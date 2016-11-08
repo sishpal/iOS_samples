@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "TableViewCell.h"
-@interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+#import "FZAccordionTableView/FZAccordionTableView.h"
+@interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource,UIGestureRecognizerDelegate>
 
 
 @property(nonatomic, strong)IBOutlet UITableView *m_tableView;
 @property (nonatomic, strong) NSString *name;
+
 @end
 
