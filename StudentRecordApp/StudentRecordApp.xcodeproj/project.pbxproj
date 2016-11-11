@@ -1,0 +1,583 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6126A3241DD5940200EC8EE3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6126A3231DD5940200EC8EE3 /* main.m */; };
+		6126A3271DD5940200EC8EE3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6126A3261DD5940200EC8EE3 /* AppDelegate.m */; };
+		6126A32A1DD5940200EC8EE3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6126A3291DD5940200EC8EE3 /* ViewController.m */; };
+		6126A32D1DD5940200EC8EE3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6126A32B1DD5940200EC8EE3 /* Main.storyboard */; };
+		6126A32F1DD5940200EC8EE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6126A32E1DD5940200EC8EE3 /* Assets.xcassets */; };
+		6126A3321DD5940200EC8EE3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6126A3301DD5940200EC8EE3 /* LaunchScreen.storyboard */; };
+		6126A33D1DD5940300EC8EE3 /* StudentRecordAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6126A33C1DD5940300EC8EE3 /* StudentRecordAppTests.m */; };
+		6126A3491DD5946D00EC8EE3 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6126A3481DD5946D00EC8EE3 /* libsqlite3.0.tbd */; };
+		6126A34D1DD595AE00EC8EE3 /* DBConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6126A34C1DD595AE00EC8EE3 /* DBConnectionManager.m */; };
+		6126A3561DD59D5800EC8EE3 /* studentInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6126A3551DD59D5800EC8EE3 /* studentInfo.m */; };
+		6126A3621DD5A73300EC8EE3 /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6126A3611DD5A73300EC8EE3 /* RegistrationViewController.m */; };
+		6126A3661DD5A7A200EC8EE3 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6126A3651DD5A7A200EC8EE3 /* LoginViewController.m */; };
+		6126A36C1DD5B89A00EC8EE3 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 6126A36B1DD5B89A00EC8EE3 /* Utility.m */; };
+		6126A36E1DD5C2A000EC8EE3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6126A36D1DD5C2A000EC8EE3 /* UIKit.framework */; };
+		6126A3731DD5DFF900EC8EE3 /* StudentRecordApp.sql in Resources */ = {isa = PBXBuildFile; fileRef = 6126A3721DD5DFF900EC8EE3 /* StudentRecordApp.sql */; };
+		6126A3771DD5E24200EC8EE3 /* ShowAllStudentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6126A3761DD5E24200EC8EE3 /* ShowAllStudentViewController.m */; };
+		6126A37A1DD5E4C000EC8EE3 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6126A3791DD5E4C000EC8EE3 /* CustomCell.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6126A3391DD5940300EC8EE3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6126A3171DD5940200EC8EE3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6126A31E1DD5940200EC8EE3;
+			remoteInfo = StudentRecordApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6126A31F1DD5940200EC8EE3 /* StudentRecordApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudentRecordApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6126A3231DD5940200EC8EE3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6126A3251DD5940200EC8EE3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		6126A3261DD5940200EC8EE3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		6126A3281DD5940200EC8EE3 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		6126A3291DD5940200EC8EE3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		6126A32C1DD5940200EC8EE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6126A32E1DD5940200EC8EE3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6126A3311DD5940200EC8EE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6126A3331DD5940200EC8EE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6126A3381DD5940300EC8EE3 /* StudentRecordAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StudentRecordAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6126A33C1DD5940300EC8EE3 /* StudentRecordAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StudentRecordAppTests.m; sourceTree = "<group>"; };
+		6126A33E1DD5940300EC8EE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6126A3481DD5946D00EC8EE3 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		6126A34B1DD595AE00EC8EE3 /* DBConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBConnectionManager.h; sourceTree = "<group>"; };
+		6126A34C1DD595AE00EC8EE3 /* DBConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBConnectionManager.m; sourceTree = "<group>"; };
+		6126A3541DD59D5800EC8EE3 /* studentInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = studentInfo.h; sourceTree = "<group>"; };
+		6126A3551DD59D5800EC8EE3 /* studentInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = studentInfo.m; sourceTree = "<group>"; };
+		6126A3601DD5A73300EC8EE3 /* RegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationViewController.h; sourceTree = "<group>"; };
+		6126A3611DD5A73300EC8EE3 /* RegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationViewController.m; sourceTree = "<group>"; };
+		6126A3641DD5A7A200EC8EE3 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		6126A3651DD5A7A200EC8EE3 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		6126A36A1DD5B89A00EC8EE3 /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		6126A36B1DD5B89A00EC8EE3 /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
+		6126A36D1DD5C2A000EC8EE3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		6126A3701DD5C80900EC8EE3 /* StudentRecordApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StudentRecordApp-Prefix.pch"; sourceTree = "<group>"; };
+		6126A3711DD5CCC400EC8EE3 /* Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
+		6126A3721DD5DFF900EC8EE3 /* StudentRecordApp.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = StudentRecordApp.sql; sourceTree = "<group>"; };
+		6126A3751DD5E24200EC8EE3 /* ShowAllStudentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowAllStudentViewController.h; sourceTree = "<group>"; };
+		6126A3761DD5E24200EC8EE3 /* ShowAllStudentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowAllStudentViewController.m; sourceTree = "<group>"; };
+		6126A3781DD5E4C000EC8EE3 /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
+		6126A3791DD5E4C000EC8EE3 /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6126A31C1DD5940200EC8EE3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6126A36E1DD5C2A000EC8EE3 /* UIKit.framework in Frameworks */,
+				6126A3491DD5946D00EC8EE3 /* libsqlite3.0.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6126A3351DD5940300EC8EE3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6126A3161DD5940200EC8EE3 = {
+			isa = PBXGroup;
+			children = (
+				6126A3211DD5940200EC8EE3 /* StudentRecordApp */,
+				6126A33B1DD5940300EC8EE3 /* StudentRecordAppTests */,
+				6126A3201DD5940200EC8EE3 /* Products */,
+				6126A3471DD5946D00EC8EE3 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		6126A3201DD5940200EC8EE3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6126A31F1DD5940200EC8EE3 /* StudentRecordApp.app */,
+				6126A3381DD5940300EC8EE3 /* StudentRecordAppTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6126A3211DD5940200EC8EE3 /* StudentRecordApp */ = {
+			isa = PBXGroup;
+			children = (
+				6126A34E1DD595B600EC8EE3 /* AppDelegate */,
+				6126A3691DD5B87100EC8EE3 /* Utilty */,
+				6126A3531DD59D2800EC8EE3 /* Data Holder */,
+				6126A3501DD595F100EC8EE3 /* DBConnectionManager */,
+				6126A34F1DD595CC00EC8EE3 /* ViewController */,
+				6126A32B1DD5940200EC8EE3 /* Main.storyboard */,
+				6126A32E1DD5940200EC8EE3 /* Assets.xcassets */,
+				6126A3301DD5940200EC8EE3 /* LaunchScreen.storyboard */,
+				6126A3331DD5940200EC8EE3 /* Info.plist */,
+				6126A3221DD5940200EC8EE3 /* Supporting Files */,
+			);
+			path = StudentRecordApp;
+			sourceTree = "<group>";
+		};
+		6126A3221DD5940200EC8EE3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6126A3231DD5940200EC8EE3 /* main.m */,
+				6126A3711DD5CCC400EC8EE3 /* Constant.h */,
+				6126A3701DD5C80900EC8EE3 /* StudentRecordApp-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6126A33B1DD5940300EC8EE3 /* StudentRecordAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				6126A33C1DD5940300EC8EE3 /* StudentRecordAppTests.m */,
+				6126A33E1DD5940300EC8EE3 /* Info.plist */,
+			);
+			path = StudentRecordAppTests;
+			sourceTree = "<group>";
+		};
+		6126A3471DD5946D00EC8EE3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6126A36D1DD5C2A000EC8EE3 /* UIKit.framework */,
+				6126A3481DD5946D00EC8EE3 /* libsqlite3.0.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6126A34E1DD595B600EC8EE3 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				6126A3251DD5940200EC8EE3 /* AppDelegate.h */,
+				6126A3261DD5940200EC8EE3 /* AppDelegate.m */,
+			);
+			name = AppDelegate;
+			sourceTree = "<group>";
+		};
+		6126A34F1DD595CC00EC8EE3 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6126A3281DD5940200EC8EE3 /* ViewController.h */,
+				6126A3291DD5940200EC8EE3 /* ViewController.m */,
+				6126A3631DD5A78300EC8EE3 /* LoginViewController */,
+				6126A35F1DD5A70300EC8EE3 /* RegistrationViewController */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		6126A3501DD595F100EC8EE3 /* DBConnectionManager */ = {
+			isa = PBXGroup;
+			children = (
+				6126A34B1DD595AE00EC8EE3 /* DBConnectionManager.h */,
+				6126A34C1DD595AE00EC8EE3 /* DBConnectionManager.m */,
+			);
+			name = DBConnectionManager;
+			sourceTree = "<group>";
+		};
+		6126A3531DD59D2800EC8EE3 /* Data Holder */ = {
+			isa = PBXGroup;
+			children = (
+				6126A3721DD5DFF900EC8EE3 /* StudentRecordApp.sql */,
+				6126A3541DD59D5800EC8EE3 /* studentInfo.h */,
+				6126A3551DD59D5800EC8EE3 /* studentInfo.m */,
+			);
+			name = "Data Holder";
+			sourceTree = "<group>";
+		};
+		6126A35F1DD5A70300EC8EE3 /* RegistrationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6126A3601DD5A73300EC8EE3 /* RegistrationViewController.h */,
+				6126A3611DD5A73300EC8EE3 /* RegistrationViewController.m */,
+				6126A3741DD5E20500EC8EE3 /* ShowAllStudent */,
+			);
+			name = RegistrationViewController;
+			sourceTree = "<group>";
+		};
+		6126A3631DD5A78300EC8EE3 /* LoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6126A3641DD5A7A200EC8EE3 /* LoginViewController.h */,
+				6126A3651DD5A7A200EC8EE3 /* LoginViewController.m */,
+			);
+			name = LoginViewController;
+			sourceTree = "<group>";
+		};
+		6126A3691DD5B87100EC8EE3 /* Utilty */ = {
+			isa = PBXGroup;
+			children = (
+				6126A36A1DD5B89A00EC8EE3 /* Utility.h */,
+				6126A36B1DD5B89A00EC8EE3 /* Utility.m */,
+			);
+			name = Utilty;
+			sourceTree = "<group>";
+		};
+		6126A3741DD5E20500EC8EE3 /* ShowAllStudent */ = {
+			isa = PBXGroup;
+			children = (
+				6126A3751DD5E24200EC8EE3 /* ShowAllStudentViewController.h */,
+				6126A3761DD5E24200EC8EE3 /* ShowAllStudentViewController.m */,
+				6126A37B1DD5E4CC00EC8EE3 /* CustomCell */,
+			);
+			name = ShowAllStudent;
+			sourceTree = "<group>";
+		};
+		6126A37B1DD5E4CC00EC8EE3 /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				6126A3781DD5E4C000EC8EE3 /* CustomCell.h */,
+				6126A3791DD5E4C000EC8EE3 /* CustomCell.m */,
+			);
+			name = CustomCell;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6126A31E1DD5940200EC8EE3 /* StudentRecordApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6126A3411DD5940300EC8EE3 /* Build configuration list for PBXNativeTarget "StudentRecordApp" */;
+			buildPhases = (
+				6126A31B1DD5940200EC8EE3 /* Sources */,
+				6126A31C1DD5940200EC8EE3 /* Frameworks */,
+				6126A31D1DD5940200EC8EE3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StudentRecordApp;
+			productName = StudentRecordApp;
+			productReference = 6126A31F1DD5940200EC8EE3 /* StudentRecordApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6126A3371DD5940300EC8EE3 /* StudentRecordAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6126A3441DD5940300EC8EE3 /* Build configuration list for PBXNativeTarget "StudentRecordAppTests" */;
+			buildPhases = (
+				6126A3341DD5940300EC8EE3 /* Sources */,
+				6126A3351DD5940300EC8EE3 /* Frameworks */,
+				6126A3361DD5940300EC8EE3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6126A33A1DD5940300EC8EE3 /* PBXTargetDependency */,
+			);
+			name = StudentRecordAppTests;
+			productName = StudentRecordAppTests;
+			productReference = 6126A3381DD5940300EC8EE3 /* StudentRecordAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6126A3171DD5940200EC8EE3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = "Beryl Systems";
+				TargetAttributes = {
+					6126A31E1DD5940200EC8EE3 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 5KMQP3KP7U;
+						ProvisioningStyle = Automatic;
+					};
+					6126A3371DD5940300EC8EE3 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 5KMQP3KP7U;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 6126A31E1DD5940200EC8EE3;
+					};
+				};
+			};
+			buildConfigurationList = 6126A31A1DD5940200EC8EE3 /* Build configuration list for PBXProject "StudentRecordApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6126A3161DD5940200EC8EE3;
+			productRefGroup = 6126A3201DD5940200EC8EE3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6126A31E1DD5940200EC8EE3 /* StudentRecordApp */,
+				6126A3371DD5940300EC8EE3 /* StudentRecordAppTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6126A31D1DD5940200EC8EE3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6126A3321DD5940200EC8EE3 /* LaunchScreen.storyboard in Resources */,
+				6126A3731DD5DFF900EC8EE3 /* StudentRecordApp.sql in Resources */,
+				6126A32F1DD5940200EC8EE3 /* Assets.xcassets in Resources */,
+				6126A32D1DD5940200EC8EE3 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6126A3361DD5940300EC8EE3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6126A31B1DD5940200EC8EE3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6126A36C1DD5B89A00EC8EE3 /* Utility.m in Sources */,
+				6126A32A1DD5940200EC8EE3 /* ViewController.m in Sources */,
+				6126A3621DD5A73300EC8EE3 /* RegistrationViewController.m in Sources */,
+				6126A3561DD59D5800EC8EE3 /* studentInfo.m in Sources */,
+				6126A37A1DD5E4C000EC8EE3 /* CustomCell.m in Sources */,
+				6126A34D1DD595AE00EC8EE3 /* DBConnectionManager.m in Sources */,
+				6126A3661DD5A7A200EC8EE3 /* LoginViewController.m in Sources */,
+				6126A3771DD5E24200EC8EE3 /* ShowAllStudentViewController.m in Sources */,
+				6126A3271DD5940200EC8EE3 /* AppDelegate.m in Sources */,
+				6126A3241DD5940200EC8EE3 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6126A3341DD5940300EC8EE3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6126A33D1DD5940300EC8EE3 /* StudentRecordAppTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6126A33A1DD5940300EC8EE3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6126A31E1DD5940200EC8EE3 /* StudentRecordApp */;
+			targetProxy = 6126A3391DD5940300EC8EE3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6126A32B1DD5940200EC8EE3 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6126A32C1DD5940200EC8EE3 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6126A3301DD5940200EC8EE3 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6126A3311DD5940200EC8EE3 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6126A33F1DD5940300EC8EE3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6126A3401DD5940300EC8EE3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6126A3421DD5940300EC8EE3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5KMQP3KP7U;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "StudentRecordApp/StudentRecordApp-Prefix.pch";
+				INFOPLIST_FILE = StudentRecordApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.berylsytems.StudentRecordApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		6126A3431DD5940300EC8EE3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5KMQP3KP7U;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "StudentRecordApp/StudentRecordApp-Prefix.pch";
+				INFOPLIST_FILE = StudentRecordApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.berylsytems.StudentRecordApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		6126A3451DD5940300EC8EE3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 5KMQP3KP7U;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "StudentRecordApp/StudentRecordApp-Prefix.pch";
+				INFOPLIST_FILE = StudentRecordAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.berylsytems.StudentRecordAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StudentRecordApp.app/StudentRecordApp";
+			};
+			name = Debug;
+		};
+		6126A3461DD5940300EC8EE3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 5KMQP3KP7U;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "StudentRecordApp/StudentRecordApp-Prefix.pch";
+				INFOPLIST_FILE = StudentRecordAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.berylsytems.StudentRecordAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StudentRecordApp.app/StudentRecordApp";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6126A31A1DD5940200EC8EE3 /* Build configuration list for PBXProject "StudentRecordApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6126A33F1DD5940300EC8EE3 /* Debug */,
+				6126A3401DD5940300EC8EE3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6126A3411DD5940300EC8EE3 /* Build configuration list for PBXNativeTarget "StudentRecordApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6126A3421DD5940300EC8EE3 /* Debug */,
+				6126A3431DD5940300EC8EE3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6126A3441DD5940300EC8EE3 /* Build configuration list for PBXNativeTarget "StudentRecordAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6126A3451DD5940300EC8EE3 /* Debug */,
+				6126A3461DD5940300EC8EE3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6126A3171DD5940200EC8EE3 /* Project object */;
+}
