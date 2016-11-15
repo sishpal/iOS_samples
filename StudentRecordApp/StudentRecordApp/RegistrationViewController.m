@@ -18,7 +18,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setAutomaticallyAdjustsScrollViewInsets:NO];
-
+    self.m_txtName.text = self.StudentEdit.m_Name;
+    self.m_txtrollNo.text = self.StudentEdit.m_RollNo;
+    self.m_txtClass.text = self.StudentEdit.m_Class;
+    self.m_txtSection.text = self.StudentEdit.m_Section;
+    if(_myBool == YES)
+    {
+        [self.btnRegister setTitle:@"Update" forState:UIControlStateNormal];
+    }
+    else
+    {
+        [self.btnRegister setTitle:@"Register" forState:UIControlStateNormal];
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -87,6 +99,26 @@
     {
         if( sqlite3_step(statement) == SQLITE_DONE )
             NSLog(@"Sucessfully Submitted");
+        NSString *yes = @"1";
+//        [[NSUserDefaults standardUserDefaults]setObject: yes forKey:@"student"];
+//        [[NSUserDefaults standardUserDefaults]synchronize];
+    }
+    else
+        NSLog( @"Failed from sqlite3_prepare_v2. Error is:  %s", sqlite3_errmsg(database) );
+    // Finalize statement.
+    sqlite3_finalize(statement);
+    statement = nil;
+}
+
+- (void)EditRecord
+{
+    sqlite3_stmt *statement = nil;
+    sqlite3 *database = [DBConnectionManager getDatabaseObject];
+    NSString *query = [NSString stringWithFormat:@"update student set s_name = '%@',roll_no = '%@',class = '%@', section = '%@' where roll_no='%@'",_m_txtName.text, _m_txtrollNo.text, _m_txtClass.text,_m_txtSection.text,_StudentEdit.m_RollNo];
+    if( sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, NULL) == SQLITE_OK )
+    {
+        if( sqlite3_step(statement) == SQLITE_DONE )
+            NSLog(@"Sucessfully Submitted");
     }
     else
         NSLog( @"Failed from sqlite3_prepare_v2. Error is:  %s", sqlite3_errmsg(database) );
@@ -118,6 +150,12 @@
     else if([self.m_txtSection.text isEqualToString:@""])
     {
         NSLog(@"Please Enter the Section");
+    }
+    else if(_myBool == YES)
+    {
+        [self EditRecord];
+        ShowAllStudentViewController *detailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ShowAllStudentViewController"];
+        [self.navigationController pushViewController:detailVC animated:YES];
     }
     else
     {

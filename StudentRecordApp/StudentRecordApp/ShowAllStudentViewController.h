@@ -8,11 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "CustomCell.h"
+#import "RegistrationViewController.h"
+#import "CustomSortCell.h"
+#import "FavoriteViewController.h"
 
 @interface ShowAllStudentViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property(nonatomic,strong) IBOutlet UITableView *tableview;
+@property(nonatomic,strong) IBOutlet UITableView *tableSortBy;
 @property (nonatomic, strong) NSMutableArray *studentArray;
-@property(nonatomic,strong) studentInfo *data;
+@property (nonatomic, strong) NSMutableArray *studentLikedArray;
+@property (nonatomic,strong) studentInfo *data;
+@property (nonatomic, strong) IBOutlet UIButton *m_btnLike;
 
 
 @end

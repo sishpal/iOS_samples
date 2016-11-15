@@ -18,7 +18,6 @@
         self.m_RollNo = @"";
         self.m_Class = @"";
         self.m_Section = @"";
-        self.m_dateOfBirth = @"";
     }
     return self;
 }

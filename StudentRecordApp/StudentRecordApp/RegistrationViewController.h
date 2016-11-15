@@ -17,6 +17,9 @@
 @property (nonatomic, strong) IBOutlet UITextField *m_txtClass;
 @property (nonatomic, strong) IBOutlet UITextField *m_txtSection;
 @property (nonatomic, strong) UITextField *m_txtActive;
+@property (nonatomic, assign) BOOL *myBool;
+@property (nonatomic, strong) studentInfo *StudentEdit;
+@property (nonatomic, strong) IBOutlet UIButton *btnRegister;
 
 
 

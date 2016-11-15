@@ -14,6 +14,5 @@
 @property (nonatomic, strong) NSString *m_RollNo;
 @property (nonatomic, strong) NSString *m_Class;
 @property (nonatomic, strong) NSString *m_Section;
-@property (nonatomic, strong) NSString *m_dateOfBirth;
 
 @end

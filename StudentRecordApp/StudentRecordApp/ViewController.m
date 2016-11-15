@@ -17,15 +17,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    NSMutableArray *data = [[NSUserDefaults standardUserDefaults]objectForKey:@"student"];
-    
-    if(data.count<=0)
-    {
         ShowAllStudentViewController *detailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ShowAllStudentViewController"];
         [self.navigationController pushViewController:detailVC animated:YES];
-    }
-        
-
 }
 
 

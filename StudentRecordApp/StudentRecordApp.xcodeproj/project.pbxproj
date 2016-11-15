@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		611B801B1DDAEFB10008ABA4 /* FavoriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 611B801A1DDAEFB10008ABA4 /* FavoriteViewController.m */; };
+		611B801F1DDAF0360008ABA4 /* FavoriteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 611B801E1DDAF0360008ABA4 /* FavoriteCell.m */; };
+		6122D5EB1DD99641003E8789 /* CustomSortCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6122D5EA1DD99641003E8789 /* CustomSortCell.m */; };
 		6126A3241DD5940200EC8EE3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6126A3231DD5940200EC8EE3 /* main.m */; };
 		6126A3271DD5940200EC8EE3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6126A3261DD5940200EC8EE3 /* AppDelegate.m */; };
 		6126A32A1DD5940200EC8EE3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6126A3291DD5940200EC8EE3 /* ViewController.m */; };
@@ -37,6 +40,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		611B80191DDAEFB10008ABA4 /* FavoriteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteViewController.h; sourceTree = "<group>"; };
+		611B801A1DDAEFB10008ABA4 /* FavoriteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteViewController.m; sourceTree = "<group>"; };
+		611B801D1DDAF0360008ABA4 /* FavoriteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteCell.h; sourceTree = "<group>"; };
+		611B801E1DDAF0360008ABA4 /* FavoriteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteCell.m; sourceTree = "<group>"; };
+		6122D5E91DD99641003E8789 /* CustomSortCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSortCell.h; sourceTree = "<group>"; };
+		6122D5EA1DD99641003E8789 /* CustomSortCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSortCell.m; sourceTree = "<group>"; };
 		6126A31F1DD5940200EC8EE3 /* StudentRecordApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudentRecordApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6126A3231DD5940200EC8EE3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6126A3251DD5940200EC8EE3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -91,6 +100,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		611B801C1DDAEFC00008ABA4 /* FavoriteViewController */ = {
+			isa = PBXGroup;
+			children = (
+				611B80191DDAEFB10008ABA4 /* FavoriteViewController.h */,
+				611B801A1DDAEFB10008ABA4 /* FavoriteViewController.m */,
+				611B801D1DDAF0360008ABA4 /* FavoriteCell.h */,
+				611B801E1DDAF0360008ABA4 /* FavoriteCell.m */,
+			);
+			name = FavoriteViewController;
+			sourceTree = "<group>";
+		};
 		6126A3161DD5940200EC8EE3 = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +138,7 @@
 				6126A3531DD59D2800EC8EE3 /* Data Holder */,
 				6126A3501DD595F100EC8EE3 /* DBConnectionManager */,
 				6126A34F1DD595CC00EC8EE3 /* ViewController */,
+				611B801C1DDAEFC00008ABA4 /* FavoriteViewController */,
 				6126A32B1DD5940200EC8EE3 /* Main.storyboard */,
 				6126A32E1DD5940200EC8EE3 /* Assets.xcassets */,
 				6126A3301DD5940200EC8EE3 /* LaunchScreen.storyboard */,
@@ -235,6 +256,8 @@
 		6126A37B1DD5E4CC00EC8EE3 /* CustomCell */ = {
 			isa = PBXGroup;
 			children = (
+				6122D5E91DD99641003E8789 /* CustomSortCell.h */,
+				6122D5EA1DD99641003E8789 /* CustomSortCell.m */,
 				6126A3781DD5E4C000EC8EE3 /* CustomCell.h */,
 				6126A3791DD5E4C000EC8EE3 /* CustomCell.m */,
 			);
@@ -352,9 +375,12 @@
 				6126A3561DD59D5800EC8EE3 /* studentInfo.m in Sources */,
 				6126A37A1DD5E4C000EC8EE3 /* CustomCell.m in Sources */,
 				6126A34D1DD595AE00EC8EE3 /* DBConnectionManager.m in Sources */,
+				611B801B1DDAEFB10008ABA4 /* FavoriteViewController.m in Sources */,
 				6126A3661DD5A7A200EC8EE3 /* LoginViewController.m in Sources */,
+				611B801F1DDAF0360008ABA4 /* FavoriteCell.m in Sources */,
 				6126A3771DD5E24200EC8EE3 /* ShowAllStudentViewController.m in Sources */,
 				6126A3271DD5940200EC8EE3 /* AppDelegate.m in Sources */,
+				6122D5EB1DD99641003E8789 /* CustomSortCell.m in Sources */,
 				6126A3241DD5940200EC8EE3 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
