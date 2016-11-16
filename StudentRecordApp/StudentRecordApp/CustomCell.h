@@ -12,4 +12,7 @@
 @property (nonatomic, strong) IBOutlet UILabel *m_lblName;
 @property (nonatomic, strong) IBOutlet UILabel *m_lblClass;
 @property (nonatomic, strong) IBOutlet UIButton *m_btnLike;
+@property (nonatomic , strong) NSMutableArray *m_Finalarray;
+
+
 @end

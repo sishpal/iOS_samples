@@ -12,13 +12,13 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+
     // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 //    [self.m_btnLike setTitle:@"Like" forState:UIControlStateNormal];
-
 
     // Configure the view for the selected state
 }
@@ -30,12 +30,16 @@
 
 -(void)isLike
 {
+
     if([self.m_btnLike.titleLabel.text isEqualToString:@"Like"])
     {
         [self.m_btnLike setTitle:@"Liked" forState:UIControlStateNormal];
+//        [self.m_Finalarray addObject: ];
+
     }
     else if([self.m_btnLike.titleLabel.text isEqualToString:@"Liked"])
         [self.m_btnLike setTitle:@"Like" forState:UIControlStateNormal];
+    
 }
 
 

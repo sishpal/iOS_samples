@@ -30,12 +30,15 @@
 }
 
 
+#pragma mark
+#pragma mark - UIClass Methods
+
 - (void) showData
 {
     [self.studentArray removeAllObjects];
     sqlite3_stmt *statement = nil;
     sqlite3 *database = [DBConnectionManager getDatabaseObject];
-    NSString *Query = [NSString stringWithFormat: @"select s_name,roll_no,class,section from student"];
+    NSString *Query = [NSString stringWithFormat: @"select s_name,roll_no,class,section,s_id from student"];
     
     if( sqlite3_prepare_v2(database, [Query UTF8String], -1, &statement, NULL) == SQLITE_OK )
     {
@@ -46,6 +49,7 @@
             data.m_RollNo = [[NSString alloc] initWithUTF8String:(const char*) sqlite3_column_text(statement, 1)];
             data.m_Class = [[NSString alloc] initWithUTF8String:(const char*) sqlite3_column_text(statement, 2)];
             data.m_Section = [[NSString alloc] initWithUTF8String:(const char*) sqlite3_column_text(statement, 3)];
+//            data.m_id = +1;
             [self.studentArray addObject:data];
 
         }
@@ -69,7 +73,7 @@
     [self.studentArray removeAllObjects];
     sqlite3_stmt *statement = nil;
     sqlite3 *database = [DBConnectionManager getDatabaseObject];
-    NSString *Query = [NSString stringWithFormat: @"select s_name,roll_no,class,section from student order by s_name ASC"];
+    NSString *Query = [NSString stringWithFormat: @"select s_name,roll_no,class,section,s_id from student order by s_name ASC"];
     
     if( sqlite3_prepare_v2(database, [Query UTF8String], -1, &statement, NULL) == SQLITE_OK )
     {
@@ -102,7 +106,7 @@
     [self.studentArray removeAllObjects];
     sqlite3_stmt *statement = nil;
     sqlite3 *database = [DBConnectionManager getDatabaseObject];
-    NSString *Query = [NSString stringWithFormat: @"select s_name,roll_no,class,section from student order by s_name DESC"];
+    NSString *Query = [NSString stringWithFormat: @"select s_name,roll_no,class,section,s_id from student order by s_name DESC"];
     
     if( sqlite3_prepare_v2(database, [Query UTF8String], -1, &statement, NULL) == SQLITE_OK )
     {
@@ -135,7 +139,7 @@
     [self.studentArray removeAllObjects];
     sqlite3_stmt *statement = nil;
     sqlite3 *database = [DBConnectionManager getDatabaseObject];
-    NSString *Query = [NSString stringWithFormat: @"select s_name,roll_no,class,section from student order by class ASC"];
+    NSString *Query = [NSString stringWithFormat: @"select s_name,roll_no,class,section,s_id from student order by class ASC"];
     
     if( sqlite3_prepare_v2(database, [Query UTF8String], -1, &statement, NULL) == SQLITE_OK )
     {
@@ -168,7 +172,7 @@
     [self.studentArray removeAllObjects];
     sqlite3_stmt *statement = nil;
     sqlite3 *database = [DBConnectionManager getDatabaseObject];
-    NSString *Query = [NSString stringWithFormat: @"select s_name,roll_no,class,section from student order by class DESC"];
+    NSString *Query = [NSString stringWithFormat: @"select s_name,roll_no,class,section,s_id from student order by class DESC"];
     
     if( sqlite3_prepare_v2(database, [Query UTF8String], -1, &statement, NULL) == SQLITE_OK )
     {
@@ -180,7 +184,6 @@
             data.m_Class = [[NSString alloc] initWithUTF8String:(const char*) sqlite3_column_text(statement, 2)];
             data.m_Section = [[NSString alloc] initWithUTF8String:(const char*) sqlite3_column_text(statement, 3)];
             [self.studentArray addObject:data];
-            
         }
     }
     else
@@ -196,6 +199,8 @@
     [self.tableview reloadData];
 }
 
+#pragma mark
+#pragma UITableView Delegates and Methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if([self.tableview isEqual:tableView])
@@ -212,13 +217,20 @@
         CustomCell *customCell = [tableView dequeueReusableCellWithIdentifier:@"CustomCell"];
         customCell.selectionStyle = UITableViewCellSelectionStyleNone;
         [customCell.m_btnLike setTitle:@"Like" forState:UIControlStateNormal];
-
         studentInfo *data = (studentInfo *) [self.studentArray objectAtIndex:indexPath.row];
+        data.m_id = data.m_id+indexPath.row;
+        NSLog(@"s_id is -> %ld",data.m_id);
+        NSLog(@"name is -> %@",data.m_Name);
+        NSLog(@"rollno is -> %@",data.m_RollNo);
+        NSLog(@"class is -> %@",data.m_Class);
+        NSLog(@"section is -> %@",data.m_Section);
         customCell.m_lblName.text = data.m_Name;
         customCell.m_lblClass.text = data.m_Class;
-        NSLog(@"title is := %@%ld",customCell.m_btnLike.titleLabel.text,indexPath.row+1);
-        if([customCell.m_btnLike.titleLabel.text isEqualToString:@"Liked"])
+        customCell.m_btnLike.layer.cornerRadius = 40/2;
+        NSLog(@"title is := %@-%ld",customCell.m_btnLike.titleLabel.text,indexPath.row);
+        if([customCell.m_btnLike.titleLabel.text isEqualToString:@"Liked"]) {
             [self.studentLikedArray addObject:data];
+        }
         return customCell;
     }
     else
@@ -237,6 +249,7 @@
     }
     
 }
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if([self.tableSortBy isEqual:tableView])
@@ -270,6 +283,9 @@
     }
 }
 
+#pragma mark
+#pragma UIControls Methods
+
 
 -(IBAction)onRegisterButtonPressed:(id)sender
 {
@@ -279,23 +295,13 @@
     
 }
 
+
 -(IBAction)onSortByButtonPressed:(id)sender
 {
     NSLog(@"SortBy button is pressed");
     self.tableSortBy.hidden = NO;
 }
 
-
--(IBAction)onLikeButtonPressed:(id)sender
-{
-    [self isLike];
-}
-
-
--(void)isLike
-{
-    
-}
 
 -(IBAction)FavoriteView:(id)sender
 {
@@ -305,6 +311,8 @@
     favoriteVC.FavoriteArray = self.studentLikedArray;
     [self.navigationController pushViewController:favoriteVC animated:YES];
 }
+
+
 /*
 #pragma mark - Navigation
 
@@ -314,5 +322,6 @@
     // Pass the selected object to the new view controller.
 }
 */
+
 
 @end

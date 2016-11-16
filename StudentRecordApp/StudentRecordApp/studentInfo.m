@@ -18,6 +18,7 @@
         self.m_RollNo = @"";
         self.m_Class = @"";
         self.m_Section = @"";
+        self.m_id = 1;
     }
     return self;
 }

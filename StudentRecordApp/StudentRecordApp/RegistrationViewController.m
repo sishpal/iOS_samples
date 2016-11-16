@@ -100,12 +100,10 @@
         if( sqlite3_step(statement) == SQLITE_DONE )
             NSLog(@"Sucessfully Submitted");
         NSString *yes = @"1";
-//        [[NSUserDefaults standardUserDefaults]setObject: yes forKey:@"student"];
-//        [[NSUserDefaults standardUserDefaults]synchronize];
+
     }
     else
         NSLog( @"Failed from sqlite3_prepare_v2. Error is:  %s", sqlite3_errmsg(database) );
-    // Finalize statement.
     sqlite3_finalize(statement);
     statement = nil;
 }
@@ -118,7 +116,7 @@
     if( sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, NULL) == SQLITE_OK )
     {
         if( sqlite3_step(statement) == SQLITE_DONE )
-            NSLog(@"Sucessfully Submitted");
+            NSLog(@"Sucessfully Updated");
     }
     else
         NSLog( @"Failed from sqlite3_prepare_v2. Error is:  %s", sqlite3_errmsg(database) );
