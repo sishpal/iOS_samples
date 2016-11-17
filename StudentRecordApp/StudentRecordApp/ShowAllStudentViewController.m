@@ -18,7 +18,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.studentArray = [[NSMutableArray alloc] init];
-    self.studentLikedArray = [[NSMutableArray alloc] init];
+    self.FinalArray = [[NSMutableArray alloc]init];
+    self.SelectedLikeArray = [[NSMutableArray alloc] init];
     self.tableSortBy.hidden = YES;
     self.navigationController.navigationBar.translucent = NO;
     [self showData];
@@ -49,9 +50,8 @@
             data.m_RollNo = [[NSString alloc] initWithUTF8String:(const char*) sqlite3_column_text(statement, 1)];
             data.m_Class = [[NSString alloc] initWithUTF8String:(const char*) sqlite3_column_text(statement, 2)];
             data.m_Section = [[NSString alloc] initWithUTF8String:(const char*) sqlite3_column_text(statement, 3)];
-//            data.m_id = +1;
+            data.m_id =  sqlite3_column_int(statement, 4);
             [self.studentArray addObject:data];
-
         }
     }
     else
@@ -84,6 +84,7 @@
             data.m_RollNo = [[NSString alloc] initWithUTF8String:(const char*) sqlite3_column_text(statement, 1)];
             data.m_Class = [[NSString alloc] initWithUTF8String:(const char*) sqlite3_column_text(statement, 2)];
             data.m_Section = [[NSString alloc] initWithUTF8String:(const char*) sqlite3_column_text(statement, 3)];
+            data.m_id =  sqlite3_column_int(statement, 4);
             [self.studentArray addObject:data];
         }
     }
@@ -117,6 +118,7 @@
             data.m_RollNo = [[NSString alloc] initWithUTF8String:(const char*) sqlite3_column_text(statement, 1)];
             data.m_Class = [[NSString alloc] initWithUTF8String:(const char*) sqlite3_column_text(statement, 2)];
             data.m_Section = [[NSString alloc] initWithUTF8String:(const char*) sqlite3_column_text(statement, 3)];
+            data.m_id =  sqlite3_column_int(statement, 4);
             [self.studentArray addObject:data];
         }
     }
@@ -150,6 +152,7 @@
             data.m_RollNo = [[NSString alloc] initWithUTF8String:(const char*) sqlite3_column_text(statement, 1)];
             data.m_Class = [[NSString alloc] initWithUTF8String:(const char*) sqlite3_column_text(statement, 2)];
             data.m_Section = [[NSString alloc] initWithUTF8String:(const char*) sqlite3_column_text(statement, 3)];
+            data.m_id =  sqlite3_column_int(statement, 4);
             [self.studentArray addObject:data];
         }
     }
@@ -183,6 +186,7 @@
             data.m_RollNo = [[NSString alloc] initWithUTF8String:(const char*) sqlite3_column_text(statement, 1)];
             data.m_Class = [[NSString alloc] initWithUTF8String:(const char*) sqlite3_column_text(statement, 2)];
             data.m_Section = [[NSString alloc] initWithUTF8String:(const char*) sqlite3_column_text(statement, 3)];
+            data.m_id =  sqlite3_column_int(statement, 4);
             [self.studentArray addObject:data];
         }
     }
@@ -218,7 +222,6 @@
         customCell.selectionStyle = UITableViewCellSelectionStyleNone;
         [customCell.m_btnLike setTitle:@"Like" forState:UIControlStateNormal];
         studentInfo *data = (studentInfo *) [self.studentArray objectAtIndex:indexPath.row];
-        data.m_id = data.m_id+indexPath.row;
         NSLog(@"s_id is -> %ld",data.m_id);
         NSLog(@"name is -> %@",data.m_Name);
         NSLog(@"rollno is -> %@",data.m_RollNo);
@@ -226,11 +229,13 @@
         NSLog(@"section is -> %@",data.m_Section);
         customCell.m_lblName.text = data.m_Name;
         customCell.m_lblClass.text = data.m_Class;
+        customCell.studentData = data;
         customCell.m_btnLike.layer.cornerRadius = 40/2;
-        NSLog(@"title is := %@-%ld",customCell.m_btnLike.titleLabel.text,indexPath.row);
-        if([customCell.m_btnLike.titleLabel.text isEqualToString:@"Liked"]) {
-            [self.studentLikedArray addObject:data];
-        }
+        customCell.parentVC = self;
+         NSLog(@"title is := %@-%ld",customCell.m_btnLike.titleLabel.text,indexPath.row);
+//        if([customCell.m_btnLike.titleLabel.text isEqualToString:@"Liked"]) {
+//            [self.studentLikedArray addObject:data];
+//        }
         return customCell;
     }
     else
@@ -306,9 +311,19 @@
 -(IBAction)FavoriteView:(id)sender
 {
     NSLog(@"FavoriteView clicked");
-    
     FavoriteViewController *favoriteVC = [self.storyboard instantiateViewControllerWithIdentifier:@"FavoriteViewController"];
-    favoriteVC.FavoriteArray = self.studentLikedArray;
+    
+    for(NSInteger i = 0; i< self.SelectedLikeArray.count;i++)
+    {
+        studentInfo *allData = (studentInfo *) [self.studentArray objectAtIndex:i];
+        studentInfo *selectedData = (studentInfo *) [self.SelectedLikeArray objectAtIndex:i];
+
+        NSLog(@"id from total is -> %ld",allData.m_id);
+        NSLog(@"id from selected is -> %ld",selectedData.m_id);
+        if(allData.m_id == selectedData.m_id)
+        [self.FinalArray addObject:selectedData];
+    }
+    favoriteVC.FavoriteArray = self.FinalArray;
     [self.navigationController pushViewController:favoriteVC animated:YES];
 }
 

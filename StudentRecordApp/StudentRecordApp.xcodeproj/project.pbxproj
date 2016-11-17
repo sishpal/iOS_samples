@@ -249,6 +249,7 @@
 				6126A3751DD5E24200EC8EE3 /* ShowAllStudentViewController.h */,
 				6126A3761DD5E24200EC8EE3 /* ShowAllStudentViewController.m */,
 				6126A37B1DD5E4CC00EC8EE3 /* CustomCell */,
+				612E58101DDD88CB008A9D9A /* CustomSortCell */,
 			);
 			name = ShowAllStudent;
 			sourceTree = "<group>";
@@ -256,12 +257,19 @@
 		6126A37B1DD5E4CC00EC8EE3 /* CustomCell */ = {
 			isa = PBXGroup;
 			children = (
-				6122D5E91DD99641003E8789 /* CustomSortCell.h */,
-				6122D5EA1DD99641003E8789 /* CustomSortCell.m */,
 				6126A3781DD5E4C000EC8EE3 /* CustomCell.h */,
 				6126A3791DD5E4C000EC8EE3 /* CustomCell.m */,
 			);
 			name = CustomCell;
+			sourceTree = "<group>";
+		};
+		612E58101DDD88CB008A9D9A /* CustomSortCell */ = {
+			isa = PBXGroup;
+			children = (
+				6122D5E91DD99641003E8789 /* CustomSortCell.h */,
+				6122D5EA1DD99641003E8789 /* CustomSortCell.m */,
+			);
+			name = CustomSortCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
