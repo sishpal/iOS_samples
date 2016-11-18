@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSString *m_Class;
 @property (nonatomic, strong) NSString *m_Section;
 @property (nonatomic, assign) NSInteger m_id;
+@property (nonatomic, assign) NSInteger m_favorites;
 
 
 @end

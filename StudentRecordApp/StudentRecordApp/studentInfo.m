@@ -19,6 +19,7 @@
         self.m_Class = @"";
         self.m_Section = @"";
         self.m_id = 0;
+        self.m_favorites = 0;
     }
     return self;
 }

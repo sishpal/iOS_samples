@@ -17,9 +17,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.studentArray = [[NSMutableArray alloc] init];
+    self.allStudentArray = [[NSMutableArray alloc] init];
     self.FinalArray = [[NSMutableArray alloc]init];
-    self.SelectedLikeArray = [[NSMutableArray alloc] init];
+//    self.SelectedLikeArray = [[NSMutableArray alloc] init];
     self.tableSortBy.hidden = YES;
     self.navigationController.navigationBar.translucent = NO;
     [self showData];
@@ -36,10 +36,10 @@
 
 - (void) showData
 {
-    [self.studentArray removeAllObjects];
+    [self.allStudentArray removeAllObjects];
     sqlite3_stmt *statement = nil;
     sqlite3 *database = [DBConnectionManager getDatabaseObject];
-    NSString *Query = [NSString stringWithFormat: @"select s_name,roll_no,class,section,s_id from student"];
+    NSString *Query = [NSString stringWithFormat: @"select s_name,roll_no,class,section,s_id,favorites from student"];
     
     if( sqlite3_prepare_v2(database, [Query UTF8String], -1, &statement, NULL) == SQLITE_OK )
     {
@@ -51,7 +51,8 @@
             data.m_Class = [[NSString alloc] initWithUTF8String:(const char*) sqlite3_column_text(statement, 2)];
             data.m_Section = [[NSString alloc] initWithUTF8String:(const char*) sqlite3_column_text(statement, 3)];
             data.m_id =  sqlite3_column_int(statement, 4);
-            [self.studentArray addObject:data];
+            data.m_favorites = sqlite3_column_int(statement, 5);
+            [self.allStudentArray addObject:data];
         }
     }
     else
@@ -70,7 +71,7 @@
 
 - (void) SortByNameASC
 {
-    [self.studentArray removeAllObjects];
+    [self.allStudentArray removeAllObjects];
     sqlite3_stmt *statement = nil;
     sqlite3 *database = [DBConnectionManager getDatabaseObject];
     NSString *Query = [NSString stringWithFormat: @"select s_name,roll_no,class,section,s_id from student order by s_name ASC"];
@@ -85,7 +86,8 @@
             data.m_Class = [[NSString alloc] initWithUTF8String:(const char*) sqlite3_column_text(statement, 2)];
             data.m_Section = [[NSString alloc] initWithUTF8String:(const char*) sqlite3_column_text(statement, 3)];
             data.m_id =  sqlite3_column_int(statement, 4);
-            [self.studentArray addObject:data];
+            data.m_favorites = sqlite3_column_int(statement, 5);
+            [self.allStudentArray addObject:data];
         }
     }
     else
@@ -104,7 +106,7 @@
 
 - (void) SortByNameDESC
 {
-    [self.studentArray removeAllObjects];
+    [self.allStudentArray removeAllObjects];
     sqlite3_stmt *statement = nil;
     sqlite3 *database = [DBConnectionManager getDatabaseObject];
     NSString *Query = [NSString stringWithFormat: @"select s_name,roll_no,class,section,s_id from student order by s_name DESC"];
@@ -119,7 +121,8 @@
             data.m_Class = [[NSString alloc] initWithUTF8String:(const char*) sqlite3_column_text(statement, 2)];
             data.m_Section = [[NSString alloc] initWithUTF8String:(const char*) sqlite3_column_text(statement, 3)];
             data.m_id =  sqlite3_column_int(statement, 4);
-            [self.studentArray addObject:data];
+            data.m_favorites = sqlite3_column_int(statement, 5);
+            [self.allStudentArray addObject:data];
         }
     }
     else
@@ -138,7 +141,7 @@
 
 - (void) SortByClassASC
 {
-    [self.studentArray removeAllObjects];
+    [self.allStudentArray removeAllObjects];
     sqlite3_stmt *statement = nil;
     sqlite3 *database = [DBConnectionManager getDatabaseObject];
     NSString *Query = [NSString stringWithFormat: @"select s_name,roll_no,class,section,s_id from student order by class ASC"];
@@ -153,7 +156,8 @@
             data.m_Class = [[NSString alloc] initWithUTF8String:(const char*) sqlite3_column_text(statement, 2)];
             data.m_Section = [[NSString alloc] initWithUTF8String:(const char*) sqlite3_column_text(statement, 3)];
             data.m_id =  sqlite3_column_int(statement, 4);
-            [self.studentArray addObject:data];
+            data.m_favorites = sqlite3_column_int(statement, 5);
+            [self.allStudentArray addObject:data];
         }
     }
     else
@@ -172,7 +176,7 @@
 
 - (void) SortByClassDESC
 {
-    [self.studentArray removeAllObjects];
+    [self.allStudentArray removeAllObjects];
     sqlite3_stmt *statement = nil;
     sqlite3 *database = [DBConnectionManager getDatabaseObject];
     NSString *Query = [NSString stringWithFormat: @"select s_name,roll_no,class,section,s_id from student order by class DESC"];
@@ -187,7 +191,8 @@
             data.m_Class = [[NSString alloc] initWithUTF8String:(const char*) sqlite3_column_text(statement, 2)];
             data.m_Section = [[NSString alloc] initWithUTF8String:(const char*) sqlite3_column_text(statement, 3)];
             data.m_id =  sqlite3_column_int(statement, 4);
-            [self.studentArray addObject:data];
+            data.m_favorites = sqlite3_column_int(statement, 5);
+            [self.allStudentArray addObject:data];
         }
     }
     else
@@ -208,7 +213,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if([self.tableview isEqual:tableView])
-    return self.studentArray.count;
+    return self.allStudentArray.count;
     else
         return 4;
     
@@ -221,8 +226,9 @@
         CustomCell *customCell = [tableView dequeueReusableCellWithIdentifier:@"CustomCell"];
         customCell.selectionStyle = UITableViewCellSelectionStyleNone;
         [customCell.m_btnLike setTitle:@"Like" forState:UIControlStateNormal];
-        studentInfo *data = (studentInfo *) [self.studentArray objectAtIndex:indexPath.row];
+        studentInfo *data = (studentInfo *) [self.allStudentArray objectAtIndex:indexPath.row];
         NSLog(@"s_id is -> %ld",data.m_id);
+        NSLog(@"student favorites vlaue is -> %ld",data.m_favorites);
         NSLog(@"name is -> %@",data.m_Name);
         NSLog(@"rollno is -> %@",data.m_RollNo);
         NSLog(@"class is -> %@",data.m_Class);
@@ -232,10 +238,6 @@
         customCell.studentData = data;
         customCell.m_btnLike.layer.cornerRadius = 40/2;
         customCell.parentVC = self;
-         NSLog(@"title is := %@-%ld",customCell.m_btnLike.titleLabel.text,indexPath.row);
-//        if([customCell.m_btnLike.titleLabel.text isEqualToString:@"Liked"]) {
-//            [self.studentLikedArray addObject:data];
-//        }
         return customCell;
     }
     else
@@ -282,7 +284,7 @@
     {
         RegistrationViewController *detailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"RegistrationViewController"];
         detailVC.myBool = YES;
-        studentInfo *data = (studentInfo *) [_studentArray objectAtIndex:indexPath.row];
+        studentInfo *data = (studentInfo *) [_allStudentArray objectAtIndex:indexPath.row];
         detailVC.StudentEdit = data;
         [self.navigationController pushViewController:detailVC animated:YES];
     }
@@ -312,18 +314,18 @@
 {
     NSLog(@"FavoriteView clicked");
     FavoriteViewController *favoriteVC = [self.storyboard instantiateViewControllerWithIdentifier:@"FavoriteViewController"];
-    
-    for(NSInteger i = 0; i< self.SelectedLikeArray.count;i++)
-    {
-        studentInfo *allData = (studentInfo *) [self.studentArray objectAtIndex:i];
-        studentInfo *selectedData = (studentInfo *) [self.SelectedLikeArray objectAtIndex:i];
-
-        NSLog(@"id from total is -> %ld",allData.m_id);
-        NSLog(@"id from selected is -> %ld",selectedData.m_id);
-        if(allData.m_id == selectedData.m_id)
-        [self.FinalArray addObject:selectedData];
-    }
-    favoriteVC.FavoriteArray = self.FinalArray;
+//    
+//    for(NSInteger i = 0; i< self.SelectedLikeArray.count;i++)
+//    {
+//        studentInfo *allData = (studentInfo *) [self.studentArray objectAtIndex:i];
+//        studentInfo *selectedData = (studentInfo *) [self.SelectedLikeArray objectAtIndex:i];
+//
+//        NSLog(@"id from total is -> %ld",allData.m_id);
+//        NSLog(@"id from selected is -> %ld",selectedData.m_id);
+//        if(allData.m_id == selectedData.m_id)
+//        [self.FinalArray addObject:selectedData];
+//    }
+//    favoriteVC.FavoriteArray = self.FinalArray;
     [self.navigationController pushViewController:favoriteVC animated:YES];
 }
 
