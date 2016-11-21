@@ -38,12 +38,13 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 100;
+    return 10;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     CustomScrollViewControlllerCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CustomScrollViewControlllerCell" forIndexPath:indexPath];
+    cell.m_tableView.tag = indexPath.row;
     [cell.m_tableView reloadData];
     return cell;
 }
@@ -69,16 +70,19 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if(indexPath.row == 0)
     {
-        ViewControllerCell *Cell = [tableView dequeueReusableCellWithIdentifier:@"Time"];
+        ViewControllerCell *Cell = [tableView dequeueReusableCellWithIdentifier:@"image"];
         Cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return Cell;
     }
     else{
-        ViewControllerCell *Cell = [tableView dequeueReusableCellWithIdentifier:@"Image"];
+        ViewControllerCell *Cell = [tableView dequeueReusableCellWithIdentifier:@"name"];
         Cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return Cell;
     }
 }
+
+
+
 
 /*
 #pragma mark - Navigation

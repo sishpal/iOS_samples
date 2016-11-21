@@ -10,9 +10,8 @@
 #import "CustomScrollViewControlllerCell.h"
 #import "ViewControllerCell.h"
 
-@interface ScrollViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource,UITableViewDelegate,UITableViewDataSource>
+@interface ScrollViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource,UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
 @property (nonatomic, strong) IBOutlet UICollectionView *m_collectionView;
-@property (nonatomic, strong) IBOutlet UITableView *m_tableView;
 
 
 @end

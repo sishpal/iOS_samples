@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FXBlurView.h"
 
 @interface ViewControllerCell : UITableViewCell
 @property (nonatomic, strong) IBOutlet UIImageView *m_image;

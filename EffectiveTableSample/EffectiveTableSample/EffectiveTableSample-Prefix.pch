@@ -1,0 +1,20 @@
+//
+//  EffectiveTableSample-Prefix.pch
+//  EffectiveTableSample
+//
+//  Created by Beryl Systems on 21/11/16.
+//  Copyright © 2016 Beryl Systems. All rights reserved.
+//
+
+#ifndef EffectiveTableSample_Prefix_pch
+#define EffectiveTableSample_Prefix_pch
+
+#import <CoreGraphics/CoreGraphics.h>
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <Accelerate/Accelerate.h>
+#import <QuartzCore/QuartzCore.h>
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* EffectiveTableSample_Prefix_pch */
